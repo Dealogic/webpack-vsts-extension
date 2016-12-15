@@ -4,7 +4,7 @@
   "friendlyName": "Webpack Build",
   "description": "Build with Webpack",
   "author": "jkanczler",
-  "helpMarkDown": "Replace with markdown to show in help",
+  "helpMarkDown": "The JavaScript application will be built by Webpack based on the provided configuration file.",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -20,29 +20,26 @@
   "instanceNameFormat": "webpack $(message)",
   "inputs": [
     {
-      "name": "cwd",
+      "name": "currentWorkingDirectory",
       "type": "filePath",
       "label": "Working Directory",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Current working directory when wepback is run."
+      "helpMarkDown": "Current working directory where Wepback is run."
     },
     {
-      "name": "msg",
+      "name": "webpackConfigurationFilename",
       "type": "string",
-      "label": "Message",
-      "defaultValue": "Hello World",
-      "required": true,
-      "helpMarkDown": "Message to echo out"
+      "label": "Webpack Configuration File Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The name of the Webpack configuration file."
     }
   ],
   "execution": {
     "Node": {
-      "target": "sample.js",
+      "target": "index.js",
       "argumentFormat": ""
-    },
-    "PowerShell3": {
-      "target": "sample.ps1"
     }
   }
 }

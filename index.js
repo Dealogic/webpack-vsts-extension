@@ -3,14 +3,15 @@ var tl = require('vso-task-lib');
 
 var echo = new tl.ToolRunner(tl.which('echo', true));
 
-var msg = tl.getInput('msg', true);
-echo.arg(msg);
+var currentWorkingDirectory = tl.getPathInput('currentWorkingDirectory', false);
+var webpackConfigurationFilename = tl.getInput('webpackConfigurationFilename', true);
 
-var cwd = tl.getPathInput('cwd', false);
+echo.arg(currentWorkingDirectory)
+echo.arg(webpackConfigurationFilename);
 
 // will error and fail task if it doesn't exist
-tl.checkPath(cwd, 'cwd');
-tl.cd(cwd);
+tl.checkPath(currentWorkingDirectory, 'currentWorkingDirectory');
+tl.cd(currentWorkingDirectory);
 
 echo.exec({ failOnStdErr: false})
 .then(function(code) {
