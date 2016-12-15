@@ -1,0 +1,15 @@
+{
+  "name": "wepback-vsts",
+  "version": "0.1.0",
+  "description": "Build with Webpack",
+  "main": "sample.js",
+  "scripts": {
+    "upload": "tfx build tasks upload --task.path .",
+    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f1"
+  },
+  "author": "jkanczler",
+  "license": "MIT",
+  "dependencies": {
+    "vso-task-lib": "0.5.5"
+  }
+}
