@@ -24,7 +24,7 @@
       "type": "filePath",
       "label": "Working Directory",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "helpMarkDown": "Current working directory where Wepback is run."
     },
     {
