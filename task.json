@@ -4,8 +4,8 @@
   "friendlyName": "Webpack Build",
   "description": "Build with Webpack",
   "author": "jkanczler",
-  "helpMarkDown": "The JavaScript application will be built by Webpack based on the provided configuration file.",
-  "category": "Utility",
+  "helpMarkDown": "The JavaScript application will be built by Webpack based on the provided arguments.",
+  "category": "Build",
   "visibility": [
     "Build",
     "Release"
@@ -24,22 +24,21 @@
       "type": "filePath",
       "label": "Working Directory",
       "defaultValue": "",
-      "required": false,
+      "required": true,
       "helpMarkDown": "Current working directory where Wepback is run."
     },
     {
-      "name": "webpackConfigurationFilename",
+      "name": "webpackArguments",
       "type": "string",
-      "label": "Webpack Configuration File Name",
+      "label": "Arguments",
       "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The name of the Webpack configuration file."
+      "required": true,
+      "helpMarkDown": "The arguments for the Webpack command."
     }
   ],
   "execution": {
     "Node": {
-      "target": "index.js",
-      "argumentFormat": ""
+      "target": "index.js"
     }
   }
 }

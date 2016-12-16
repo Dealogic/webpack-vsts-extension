@@ -4,12 +4,20 @@
   "description": "Build with Webpack",
   "main": "index.js",
   "scripts": {
-    "upload": "npm install && tfx build tasks upload --task.path .",
+    "setup": "npm install && typings install",
+    "build": "tsc",
+    "upload": "npm run setup && npm run build && tfx build tasks upload --task.path .",
     "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f1"
   },
   "author": "jkanczler",
   "license": "MIT",
   "dependencies": {
-    "vso-task-lib": "0.5.5"
+    "@types/q": "0.0.32",
+    "tslint": "4.1.0",
+    "vsts-task-lib": "1.1.0"
+  },
+  "devDependencies": {
+    "typescript": "2.1.4",
+    "typings": "2.0.0"
   }
 }

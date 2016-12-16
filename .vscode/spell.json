@@ -1,7 +1,8 @@
 {
   "language": "en",
   "ignoreWordsList": [
-    "Webpack"
+    "Webpack",
+    "typings"
   ],
   "mistakeTypeToStatus": {
     "Passive voice": "Hint",
