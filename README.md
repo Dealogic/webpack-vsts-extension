@@ -11,6 +11,8 @@ You can read more about creation of custom tasks [here](http://blog.devmatter.co
 * The warnings are handled as partially succeeded builds.
 * The errors are handled as failed builds.
 
+![alt text](https://raw.githubusercontent.com/wiki/jkanczler/webpack-vsts/BuildSummary.png "Webpack Build Summary")
+
 ## Future Plan
 * Provide an option to handle warnings as errors.
 * Webpack custom section on the Summary page to show more information even for successful builds.
