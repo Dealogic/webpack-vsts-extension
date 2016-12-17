@@ -3,10 +3,10 @@ import { build } from "./lib/webpack";
 
 async function run(): Promise<void> {
     try {
-        const currentWorkingDirectory = tl.getPathInput("currentWorkingDirectory", false);
-        const webpackArguments = tl.getInput("webpackArguments", false);
+        const workingFolder = tl.getPathInput("workingFolder", false);
+        const webpackArguments = tl.getInput("arguments", false);
 
-        const result = build(currentWorkingDirectory, webpackArguments);
+        const result = build(workingFolder, webpackArguments);
 
         let hasErrors = false;
         let hasWarnings = false;

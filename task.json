@@ -20,17 +20,17 @@
   "instanceNameFormat": "webpack $(message)",
   "inputs": [
     {
-      "name": "currentWorkingDirectory",
+      "name": "workingFolder",
       "type": "filePath",
-      "label": "Working Directory",
+      "label": "working folder",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Current working directory where Wepback is run."
+      "helpMarkDown": "Working folder where Wepback is run."
     },
     {
-      "name": "webpackArguments",
+      "name": "arguments",
       "type": "string",
-      "label": "Arguments",
+      "label": "arguments",
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "The arguments for the Webpack command."

@@ -4,7 +4,8 @@
     "Webpack",
     "typings",
     "VSTS",
-    "are handled"
+    "are handled",
+    "webpack"
   ],
   "mistakeTypeToStatus": {
     "Passive voice": "Hint",
