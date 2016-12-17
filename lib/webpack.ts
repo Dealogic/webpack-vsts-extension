@@ -2,7 +2,11 @@ import { execSync, ExecOptionsWithStringEncoding } from "child_process";
 import { IWebpackResult } from "./IWebpackResult";
 
 const executeWebpackCommand = (currentWorkingDirectory: string, webpackArguments: string) => {
-    const webpackCommand = `node "${currentWorkingDirectory}\\node_modules\\webpack\\bin\\webpack.js" ${webpackArguments} --json`;
+    if (webpackArguments) {
+        webpackArguments += " ";
+    }
+
+    const webpackCommand = `node "${currentWorkingDirectory}\\node_modules\\webpack\\bin\\webpack.js" ${webpackArguments}--json`;
 
     console.log(`Running command: ${webpackCommand}`);
 

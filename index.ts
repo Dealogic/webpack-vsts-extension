@@ -4,7 +4,7 @@ import { build } from "./lib/webpack";
 async function run(): Promise<void> {
     try {
         const currentWorkingDirectory = tl.getPathInput("currentWorkingDirectory", false);
-        const webpackArguments = tl.getInput("webpackArguments", true);
+        const webpackArguments = tl.getInput("webpackArguments", false);
 
         const result = build(currentWorkingDirectory, webpackArguments);
 

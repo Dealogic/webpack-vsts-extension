@@ -32,7 +32,7 @@
       "type": "string",
       "label": "Arguments",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "helpMarkDown": "The arguments for the Webpack command."
     }
   ],
