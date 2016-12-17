@@ -5,7 +5,9 @@
     "typings",
     "VSTS",
     "are handled",
-    "webpack"
+    "webpack",
+    "tfx-cli",
+    "npm"
   ],
   "mistakeTypeToStatus": {
     "Passive voice": "Hint",
