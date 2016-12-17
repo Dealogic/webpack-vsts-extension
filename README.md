@@ -65,6 +65,8 @@ npm run upload
 
 Now you can add the webpack task to your VSTS build as a new build step.
 
+![alt text](https://raw.githubusercontent.com/wiki/jkanczler/webpack-vsts/WebpackBuildTask.png "Webpack Build Task in Task Catalog")
+
 ### 7. Configure the task
 
 Setting          | Description
