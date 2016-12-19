@@ -16,6 +16,7 @@ You can read more about creation of custom tasks [here](http://blog.devmatter.co
 ## Future Plan
 * Provide an option to handle warnings as errors.
 * Webpack custom section on the Summary page to show more information even for successful builds.
+* Publish webpack-extension onto the Visual Studio Team System marketplace
 
 ## How to use it
 
@@ -73,5 +74,5 @@ Now you can add the webpack task to your VSTS build as a new build step.
 
 Setting          | Description
 --- | ---
-working folder | The path of the working folder where webpack build will run. Optional, if the path is not provided, then the root folder will be used.
+working folder | The path of the working folder where webpack build will run (locally installed webpack required). Optional, if the path is not provided, then the root folder will be used.
 arguments | As the task is using the webpack-cli you can provide your arguments. For example you can pass `--config my.webpack.config.js` if you have custom configuration file.
