@@ -11,7 +11,7 @@ You can read more about creation of custom tasks [here](http://blog.devmatter.co
 * The warnings are handled as partially succeeded builds.
 * The errors are handled as failed builds.
 
-![alt text](https://raw.githubusercontent.com/wiki/jkanczler/webpack-vsts/BuildSummary.png "Webpack Build Summary")
+![alt text](https://raw.githubusercontent.com/wiki/Dealogic/webpack-vsts-extension/BuildSummary.png "Webpack Build Summary")
 
 ## Future Plan
 * Provide an option to handle warnings as errors.
@@ -68,7 +68,7 @@ npm run upload
 
 Now you can add the webpack task to your VSTS build as a new build step.
 
-![alt text](https://raw.githubusercontent.com/wiki/jkanczler/webpack-vsts/WebpackBuildTask.png "Webpack Build Task in Task Catalog")
+![alt text](https://raw.githubusercontent.com/wiki/Dealogic/webpack-vsts-extension/WebpackBuildTask.png "Webpack Build Task in Task Catalog")
 
 ### 7. Configure the task
 
