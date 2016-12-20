@@ -1,4 +1,4 @@
-export interface IWebpackResult {
+export interface IWebpackBuildResult {
     warnings?: string[];
     errors?: string[];
 }

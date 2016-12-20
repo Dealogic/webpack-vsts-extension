@@ -1,5 +1,5 @@
 import tl = require("vsts-task-lib/task");
-import { build } from "./lib/webpack";
+import { build } from "./WebpackBuild";
 
 async function run(): Promise<void> {
     try {

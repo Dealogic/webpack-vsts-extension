@@ -1,5 +1,5 @@
 import { execSync, ExecOptionsWithStringEncoding } from "child_process";
-import { IWebpackResult } from "./IWebpackResult";
+import { IWebpackBuildResult } from "./IWebpackBuildResult";
 
 const executeWebpackCommand = (workingFolder: string, webpackArguments: string) => {
     if (webpackArguments) {
@@ -25,12 +25,12 @@ const fixStdOut = (stdout: string) => {
 
 const processStdOut = (stdout: string) => {
     const fixedStdOut = fixStdOut(stdout);
-    const result = <IWebpackResult>JSON.parse(fixedStdOut);
+    const result = <IWebpackBuildResult>JSON.parse(fixedStdOut);
 
     return result;
 };
 
-export function build(currentWorkingDirectory: string, webpackArguments: string): IWebpackResult {
+export function build(currentWorkingDirectory: string, webpackArguments: string): IWebpackBuildResult {
     const stdout = executeWebpackCommand(currentWorkingDirectory, webpackArguments);
 
     return processStdOut(stdout);
