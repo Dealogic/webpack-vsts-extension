@@ -53,7 +53,7 @@ Clone webpack-vsts repository to your local machine and navigate into the cloned
 
 ```
 git clone --branch 0.1.0 https://github.com/Dealogic/webpack-vsts-extension.git
-cd webpack-vsts
+cd webpack-vsts-extension
 ```
 
 ### 5. Run the upload npm script
