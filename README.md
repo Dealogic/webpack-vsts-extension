@@ -52,7 +52,7 @@ https://my-account.visualstudio.com/DefaultCollection) and the token.
 Clone webpack-vsts repository to your local machine and navigate into the cloned folder.
 
 ```
-git clone --branch 0.1.0 https://github.com/jkanczler/webpack-vsts.git
+git clone --branch 0.1.0 https://github.com/Dealogic/webpack-vsts-extension.git
 cd webpack-vsts
 ```
 
