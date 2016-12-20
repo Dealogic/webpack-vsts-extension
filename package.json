@@ -12,11 +12,10 @@
   "author": "jkanczler",
   "license": "MIT",
   "dependencies": {
-    "@types/q": "0.0.32",
-    "tslint": "4.1.0",
     "vsts-task-lib": "1.1.0"
   },
   "devDependencies": {
+    "tslint": "4.1.1",
     "typescript": "2.1.4",
     "typings": "2.0.0"
   }
