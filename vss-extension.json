@@ -2,10 +2,10 @@
     "manifestVersion": 1,
     "id": "webpack-vsts-extension",
     "version": "0.1.0",
-    "name": "webpack",
+    "name": "Webpack",
     "description": "Module Bundler",
     "publisher": "Dealogic",
-    "public": true,
+    "public": false,
     "icons": {
         "default": "icon.png",
         "large": "icon-large.png"
@@ -53,7 +53,7 @@
     ],
     "files": [
         {
-            "path": "tasks/webpack"
+            "path": "tasks/webpack-build-task"
         }
     ],
     "contributions": [
@@ -64,7 +64,7 @@
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "webpack"
+                "name": "tasks/webpack-build-task"
             }
         }
     ]

@@ -1,22 +1,20 @@
 {
-  "name": "wepback-vsts",
+  "name": "wepback-vsts-extension",
   "version": "0.1.0",
-  "description": "Build with Webpack",
+  "description": "Webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && typings install",
-    "build": "tsc",
-    "upload": "npm run setup && npm run build && tfx build tasks upload --task.path ./tasks/webpack",
-    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f1"
+    "setup": "npm install && typings install && cd tasks/webpack-build-task && npm install",
+    "build": "npm run setup && tsc && tfx extension create --manifest-glob vss-extension.json --output-path ./dist",
+    "upload-webpack-build-task": "cd tasks/webpack-build-task && npm run upload",
+    "delete-webpack-build-task": "cd tasks/webpack-build-task && npm run delete"
   },
-  "author": "jkanczler",
+  "author": "Dealogic",
   "license": "MIT",
-  "dependencies": {
-    "vsts-task-lib": "1.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "tslint": "4.1.1",
     "typescript": "2.1.4",
-    "typings": "2.0.0"
+    "typings": "2.1.0"
   }
 }

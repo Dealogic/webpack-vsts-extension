@@ -1,7 +1,9 @@
 node_modules
+tasks/webpack-build-task/node_modules
 typings
+tasks/webpack-build-task/typings
 **/*.js
 **/*.js.map
-npm-debug.log
-.taskkey
-*.vsix
+**/npm-debug.log
+**/.taskkey
+dist

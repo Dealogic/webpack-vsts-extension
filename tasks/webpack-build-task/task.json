@@ -1,23 +1,25 @@
 {
   "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
   "name": "webpack",
-  "friendlyName": "Webpack Build",
+  "friendlyName": "Webpack",
   "description": "Build with Webpack",
-  "author": "jkanczler",
+  "author": "Dealogic",
   "helpMarkDown": "The JavaScript application will be built by Webpack based on the provided arguments.",
   "category": "Build",
   "visibility": [
     "Build",
     "Release"
   ],
-  "demands": [],
+  "demands": [
+    "node.js"
+  ],
   "version": {
     "Major": "0",
     "Minor": "1",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "webpack $(message)",
+  "instanceNameFormat": "webpack $(command)",
   "inputs": [
     {
       "name": "workingFolder",
@@ -26,6 +28,14 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Working folder where Wepback is run."
+    },
+    {
+      "name": "webpackJsLocation",
+      "type": "string",
+      "label": "webpack.js location",
+      "defaultValue": "node_modules/webpack/bin/webpack.js",
+      "required": true,
+      "helpMarkDown": "Location of the webpack.js."
     },
     {
       "name": "arguments",
@@ -38,7 +48,7 @@
   ],
   "execution": {
     "Node": {
-      "target": "WebpackBuild.js"
+      "target": "index.js"
     }
   }
 }

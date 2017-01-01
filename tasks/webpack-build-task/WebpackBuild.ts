@@ -1,14 +1,18 @@
 import { execSync, ExecOptionsWithStringEncoding } from "child_process";
+import * as path from "path";
 import { IWebpackBuildResult } from "./IWebpackBuildResult";
+import * as tl from "vsts-task-lib/task";
 
-const executeWebpackCommand = (workingFolder: string, webpackArguments: string) => {
+const executeWebpackCommand = (workingFolder: string, webpackJsLocation: string, webpackArguments: string) => {
     if (webpackArguments) {
         webpackArguments += " ";
     } else {
         webpackArguments = "";
     }
 
-    const webpackCommand = `node "${workingFolder}\\node_modules\\webpack\\bin\\webpack.js" ${webpackArguments}--json`;
+    tl.cd(workingFolder);
+    webpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
+    const webpackCommand = `node "${webpackJsLocation}" ${webpackArguments}--json`;
 
     console.log(`Running command: ${webpackCommand}`);
 
@@ -30,8 +34,8 @@ const processStdOut = (stdout: string) => {
     return result;
 };
 
-export function build(currentWorkingDirectory: string, webpackArguments: string): IWebpackBuildResult {
-    const stdout = executeWebpackCommand(currentWorkingDirectory, webpackArguments);
+export function build(currentWorkingDirectory: string, webpackJsLocation: string, webpackArguments: string): IWebpackBuildResult {
+    const stdout = executeWebpackCommand(currentWorkingDirectory, webpackJsLocation, webpackArguments);
 
     return processStdOut(stdout);
 }

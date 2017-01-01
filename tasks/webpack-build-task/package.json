@@ -1,0 +1,24 @@
+{
+  "name": "webpack-build-task",
+  "version": "0.1.0",
+  "description": "Webpack build task for Visual Studio Team System (VSTS)",
+  "main": "index.js",
+  "scripts": {
+    "upload": "npm run build && tfx build tasks upload",
+    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f1"
+  },
+  "keywords": [
+    "webpack",
+    "build",
+    "module",
+    "bundler",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Dealogic",
+  "license": "MIT",
+  "dependencies": {
+    "vsts-task-lib": "1.1.0"
+  },
+  "devDependencies": {}
+}

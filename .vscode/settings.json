@@ -6,6 +6,7 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "node_modules": true,
+        "tasks/webpack-build-task/node_modules/**": true,
         "**/*.js": true,
         "**/*.js.map": true
     }
