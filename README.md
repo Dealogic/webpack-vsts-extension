@@ -6,6 +6,8 @@
 
 Installation can be done using [Visual Studio MarketPlace](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension).
 
+The extension currently in beta phase that means it's private on the marketplace. Please send an [email](mailto:jozsef.kanczler@dealogic.com) to us and we can share the extension to you.
+
 ## Source Code
 
 Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-extension).
