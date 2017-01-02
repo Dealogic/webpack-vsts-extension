@@ -5,14 +5,14 @@ import * as tl from "vsts-task-lib/task";
 
 const executeWebpackCommand = (workingFolder: string, webpackJsLocation: string, webpackArguments: string) => {
     if (webpackArguments) {
-        webpackArguments += " ";
+        webpackArguments = `--json ${webpackArguments}`;
     } else {
-        webpackArguments = "";
+        webpackArguments = "--json";
     }
 
     tl.cd(workingFolder);
     webpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
-    const webpackCommand = `node "${webpackJsLocation}" ${webpackArguments}--json`;
+    const webpackCommand = `node "${webpackJsLocation}" ${webpackArguments}`;
 
     console.log(`Running command: ${webpackCommand}`);
 

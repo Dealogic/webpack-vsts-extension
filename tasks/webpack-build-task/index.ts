@@ -2,13 +2,12 @@ import tl = require("vsts-task-lib/task");
 import { build } from "./WebpackBuild";
 import { IWebpackBuildResult } from "./IWebpackBuildResult";
 import os = require("os");
+import prettyBytes = require("pretty-bytes");
 
 const getSizeString = (size: number) => {
-    if (size > 999) {
-        return `${Math.round(size / 1000)} kB`;
-    } else {
-        return `${size} bytes`;
-    }
+    const sizeAsString = prettyBytes(size);
+
+    return sizeAsString.replace(" B", " bytes");
 };
 
 const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult): void => {

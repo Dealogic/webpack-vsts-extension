@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
     "id": "webpack-vsts-extension",
-    "version": "0.1.0",
-    "name": "Webpack",
-    "description": "Module Bundler",
+    "version": "1.0.0",
+    "name": "webpack",
+    "description": "Create bundle from JavaScript modules",
     "publisher": "Dealogic",
     "public": false,
     "icons": {

@@ -1,10 +1,10 @@
 {
   "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
   "name": "webpack",
-  "friendlyName": "Webpack",
-  "description": "Build with Webpack",
+  "friendlyName": "webpack",
+  "description": "Create bundle from JavaScript modules",
   "author": "Dealogic",
-  "helpMarkDown": "The JavaScript application will be built by Webpack based on the provided arguments.",
+  "helpMarkDown": "[More information](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension) [webpack](https://webpack.github.io/)",
   "category": "Build",
   "visibility": [
     "Build",
@@ -14,20 +14,36 @@
     "node.js"
   ],
   "version": {
-    "Major": "0",
-    "Minor": "1",
+    "Major": "1",
+    "Minor": "0",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
+  "groups": [
+    {
+      "name": "advanced",
+      "displayName": "Advanced",
+      "isExpanded": false
+    }
+  ],
   "instanceNameFormat": "webpack $(command)",
   "inputs": [
+    {
+      "name": "arguments",
+      "type": "string",
+      "label": "arguments",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The arguments for the webpack command."
+    },
     {
       "name": "workingFolder",
       "type": "filePath",
       "label": "working folder",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Working folder where Wepback is run."
+      "helpMarkDown": "Working folder where webpack command is run. If you leave it blank it is the root of the repo.",
+      "groupName": "advanced"
     },
     {
       "name": "webpackJsLocation",
@@ -35,15 +51,8 @@
       "label": "webpack.js location",
       "defaultValue": "node_modules/webpack/bin/webpack.js",
       "required": true,
-      "helpMarkDown": "Location of the webpack.js."
-    },
-    {
-      "name": "arguments",
-      "type": "string",
-      "label": "arguments",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The arguments for the Webpack command."
+      "helpMarkDown": "Location of the webpack.js.",
+      "groupName": "advanced"
     }
   ],
   "execution": {
