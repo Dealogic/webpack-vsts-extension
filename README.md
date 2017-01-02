@@ -28,13 +28,13 @@ Through the arguments setting additional webpack arguments can be provided. For 
 
 ![Webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
 
-The webpack build task is running the webpack command and reporting the warnings and errors under the issues section:
+The webpack build errors and warnings are reported under the issues / build section on the summary page:
 
-Screenshot has to be added here!
+![Webpack build issues](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildIssues.png)
 
-A custom section will be added onto the summary page that is trying to summarize the webpack build:
+The webpack build result section is added onto the summary page to summarize the result:
 
-Screenshot has to be added here!
+![Webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
 Currently only one webpack build task is supported per builds for now!
 

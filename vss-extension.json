@@ -20,6 +20,12 @@
     ],
     "screenshots": [
         {
+            "path": "screenshots/WebpackBuildResult.png"
+        },
+        {
+            "path": "screenshots/WebpackBuildIssues.png"
+        },
+        {
             "path": "screenshots/TaskCatalog.png"
         },
         {
