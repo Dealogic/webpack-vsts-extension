@@ -21,6 +21,9 @@
     "screenshots": [
         {
             "path": "screenshots/screenshot01.png"
+        },
+        {
+            "path": "screenshots/TaskCatalog.png"
         }
     ],
     "content": {
@@ -49,7 +52,9 @@
         "webpack",
         "build",
         "module",
-        "bundler"
+        "bundler",
+        "javascript",
+        "typescript"
     ],
     "files": [
         {

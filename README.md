@@ -14,7 +14,7 @@ Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-ex
 
 Add the task to your build configuration:
 
-![Add webpack task]()
+![Add webpack task](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/TaskCatalog.png)
 
 ## License
 
