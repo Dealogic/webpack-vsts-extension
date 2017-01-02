@@ -24,6 +24,9 @@
         },
         {
             "path": "screenshots/TaskCatalog.png"
+        },
+        {
+            "path": "screenshots/WebpackArguments.png"
         }
     ],
     "content": {
