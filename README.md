@@ -18,7 +18,7 @@ Add the task to your build configuration:
 
 By default without any configuration the build task is trying to run the locally installed webpack.js from the root folder in the repository with the `--json` flag. For example:
 ```
-node "C:\a\1\s\node_modules\webpack\bin\webpack.js" --json"
+node "C:\a\1\s\node_modules\webpack\bin\webpack.js" --json
 ```
 
 Through the arguments setting additional webpack arguments can be provided. For example:
@@ -36,7 +36,7 @@ The webpack build result section is added onto the summary page to summarize the
 
 ![Webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
-Currently only one webpack build task is supported per builds for now!
+### Currently only one webpack build task is supported per builds for now!
 
 ### Advanced Settings
 
