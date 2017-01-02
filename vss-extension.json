@@ -20,13 +20,13 @@
     ],
     "screenshots": [
         {
-            "path": "screenshots/screenshot01.png"
-        },
-        {
             "path": "screenshots/TaskCatalog.png"
         },
         {
             "path": "screenshots/WebpackArguments.png"
+        },
+        {
+            "path": "screenshots/AdvancedSettings.png"
         }
     ],
     "content": {
