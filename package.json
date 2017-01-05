@@ -1,7 +1,7 @@
 {
   "name": "wepback-vsts-extension",
-  "version": "0.1.0",
-  "description": "Webpack Visual Studio Team System (VSTS) Extension",
+  "version": "0.9.3",
+  "description": "webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
     "setup": "npm install && typings install && cd tasks/webpack-build-task && npm run build",

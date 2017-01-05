@@ -1,12 +1,10 @@
-# Webpack build task for Visual Studio Team Services
+# Webpack build task for Visual Studio Team Services [PREVIEW]
 
 [Webpack](https://webpack.github.io/) build task for [Visual Studio Team Services](https://www.visualstudio.com/fr-fr/products/visual-studio-team-services-vs.aspx).
 
 ## Installation
 
 Installation can be done using [Visual Studio MarketPlace](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension).
-
-The extension currently in beta phase that means it's private on the marketplace. Please send an [email](mailto:jozsef.kanczler@dealogic.com) to us and we can share the extension to you.
 
 ## Source Code
 
@@ -28,15 +26,15 @@ Through the arguments setting additional webpack arguments can be provided. For 
 --config webpack.dist.config.js
 ```
 
-![Webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
+![webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
 
 The webpack build errors and warnings are reported under the issues / build section on the summary page:
 
-![Webpack build issues](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildIssues.png)
+![webpack build issues](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildIssues.png)
 
 The webpack build result section is added onto the summary page to summarize the result:
 
-![Webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
+![webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
 ### Currently only one webpack build task is supported per builds for now!
 
