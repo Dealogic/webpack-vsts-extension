@@ -1,10 +1,8 @@
 # Webpack build task for Visual Studio Team Services [PREVIEW]
 
-## Build Status
+[Webpack](https://webpack.github.io/) build task for [Visual Studio Team Services](https://www.visualstudio.com/fr-fr/products/visual-studio-team-services-vs.aspx).
 
 ![build status](https://dealogic.visualstudio.com/DefaultCollection/_apis/public/build/definitions/4cd19643-db3a-4dcc-b481-76a7800dd64d/7871/badge)
-
-[Webpack](https://webpack.github.io/) build task for [Visual Studio Team Services](https://www.visualstudio.com/fr-fr/products/visual-studio-team-services-vs.aspx).
 
 ## Installation
 
