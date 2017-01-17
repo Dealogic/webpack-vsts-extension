@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "setup": "npm install && typings install && cd tasks/webpack-build-task && npm run build",
-    "build": "npm run setup && tsc && tfx extension create --manifest-glob vss-extension.json --output-path ./dist",
+    "build": "npm run setup && tsc && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
     "upload-webpack-build-task": "cd tasks/webpack-build-task && npm run upload",
     "delete-webpack-build-task": "cd tasks/webpack-build-task && npm run delete"
   },
@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "tfx-cli": "0.3.45",
     "tslint": "4.1.1",
     "typescript": "2.1.4",
     "typings": "2.1.0"
