@@ -3,11 +3,25 @@ import { build } from "./WebpackBuild";
 import { IWebpackBuildResult } from "./IWebpackBuildResult";
 import os = require("os");
 import prettyBytes = require("pretty-bytes");
+import filenamify = require("filenamify");
+import path = require("path");
 
 const getSizeString = (size: number) => {
     const sizeAsString = prettyBytes(size);
 
     return sizeAsString.replace(" B", " bytes");
+};
+
+const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
+    let webpackResultFilename: string = path.join(workingFolder, `${filenamify(taskDisplayName).trim()}.webpack.result.md`);
+
+    let counter = 0;
+    while (tl.exist(webpackResultFilename)) {
+        counter++;
+        webpackResultFilename = generateWebpackResultFilename(workingFolder, `${taskDisplayName}${counter}`);
+    }
+
+    return webpackResultFilename;
 };
 
 const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult): void => {
@@ -40,12 +54,27 @@ const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpack
         resultFileContent += `ERROR IN ${error}  ${os.EOL}`;
     }
 
-    tl.writeFile(`${workingFolder}webpack.result.md`, resultFileContent);
+    const taskDisplayName = tl.getVariable("task.displayname");
+    const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
 
-    console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=Webpack Build Result;]${workingFolder}webpack.result.md`);
+    tl.writeFile(webpackResultFilename, resultFileContent);
+
+    console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${taskDisplayName} result;]${webpackResultFilename}`);
+};
+
+const convertMessageToSingleLine = (message: string): string => {
+    let messageParts = message.split("\n");
+
+    for (let index = 0; index < messageParts.length; index++) {
+        messageParts[index] = messageParts[index].trim();
+    }
+
+    return messageParts.join("; ");
 };
 
 async function run(): Promise<void> {
+    const taskDisplayName = tl.getVariable("task.displayname");
+
     try {
         const workingFolder = tl.getPathInput("workingFolder", false);
         const webpackJsLocation = tl.getInput("webpackJsLocation", true);
@@ -57,16 +86,16 @@ async function run(): Promise<void> {
         let hasWarnings = result && result.warnings && result.warnings.length > 0;
 
         if (hasErrors) {
-            tl.setResult(tl.TaskResult.Failed, "Webpack Build Failed");
+            tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         } else if (hasWarnings) {
-            tl.warning("Webpack Build Partially Succeeded");
+            tl.warning(`${taskDisplayName} partially succeeded`);
         } else {
-            console.log("Webpack Build Succeeded");
+            console.log(`${taskDisplayName} succeeded`);
         }
 
         if (hasErrors) {
             for (let error of result.errors) {
-                error = error.replace("\n", " ");
+                error = `${taskDisplayName}: ${convertMessageToSingleLine(error)}`;
 
                 tl.error(error);
             }
@@ -74,7 +103,7 @@ async function run(): Promise<void> {
 
         if (hasWarnings) {
             for (let warning of result.warnings) {
-                warning = warning.replace("\n", " ");
+                warning = `${taskDisplayName}: ${convertMessageToSingleLine(warning)}`;
 
                 tl.warning(warning);
             }
@@ -86,7 +115,7 @@ async function run(): Promise<void> {
 
         createWebpackResultMarkdownFile(workingFolder, result);
     } catch (err) {
-        tl.setResult(tl.TaskResult.Failed, "Webpack Build Failed");
+        tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err.message);
     }
 }

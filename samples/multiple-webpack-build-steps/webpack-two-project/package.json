@@ -1,0 +1,14 @@
+{
+  "name": "webpack-two-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "1.14.0"
+  }
+}
