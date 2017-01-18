@@ -5,7 +5,7 @@
     "name": "webpack",
     "description": "[PREVIEW] Create bundle from JavaScript modules",
     "publisher": "Dealogic",
-    "public": false,
+    "public": true,
     "icons": {
         "default": "icon.png",
         "large": "icon-large.png"
