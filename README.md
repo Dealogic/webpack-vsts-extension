@@ -38,14 +38,27 @@ The webpack build result section is added onto the summary page to summarize the
 
 ![webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
-### Currently only one webpack build task is supported per builds for now!
-
 ### Advanced Settings
 
 - Working folder where webpack command is run. If you leave it blank it is the root of the repo.
 - Location of the webpack.js. By default it is the locally installed webpack node module package.
 
 ![Advanced settings](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/AdvancedSettings.png)
+
+### Multiple Build Steps
+
+Multiple webpack build steps are supported now. To distinguish the webpack build steps on the summary page
+and in the list of issues, set the display name properly for the steps:
+
+![Multiple setps with different name](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/MultipleStepsWithDifferentName.png)
+
+The issues in case of multiple build steps:
+
+![Issues section for multiple steps](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/IssuesForMultipleSteps.png)
+
+The result sections in case of multiple build steps:
+
+![Result sections for multiple steps](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/ResultSectionsForMultipleSteps.png)
 
 ## License
 

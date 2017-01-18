@@ -26,7 +26,7 @@
       "isExpanded": false
     }
   ],
-  "instanceNameFormat": "webpack $(command)",
+  "instanceNameFormat": "webpack",
   "inputs": [
     {
       "name": "arguments",
