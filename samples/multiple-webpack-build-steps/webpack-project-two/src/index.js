@@ -1,1 +1,1 @@
-console.log('Hi, from webpack-project-two!')
+console.log('Hi, from webpack-project-two!');
