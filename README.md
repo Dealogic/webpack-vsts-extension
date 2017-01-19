@@ -56,6 +56,10 @@ and in the list of issues, set the display name properly for the steps:
 
 ![Multiple setps with different name](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/MultipleStepsWithDifferentName.png)
 
+If the webpack projects are not even in the root folder, then don't forget to modify it in the advanced settings like this:
+
+![Different working folder](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/ModifiedWorkingFolder.png)
+
 The issues in case of multiple build steps:
 
 ![Issues section for multiple steps](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/IssuesForMultipleSteps.png)
