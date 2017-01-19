@@ -1,8 +1,10 @@
-# Webpack build task for Visual Studio Team Services [PREVIEW]
+# webpack build task for Visual Studio Team Services
 
-[Webpack](https://webpack.github.io/) build task for [Visual Studio Team Services](https://www.visualstudio.com/fr-fr/products/visual-studio-team-services-vs.aspx).
+A build task made with ♥ by
 
-### ![build status](https://dealogic.visualstudio.com/DefaultCollection/_apis/public/build/definitions/4cd19643-db3a-4dcc-b481-76a7800dd64d/7871/badge) with ♥ by <span style="vertical-align: middle"><img src="https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png"></span>
+<img src="https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png">
+
+to bundle JavaScript modules with webpack.
 
 ## Installation
 
