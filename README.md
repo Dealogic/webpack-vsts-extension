@@ -2,7 +2,7 @@
 
 A build task made with ♥ by
 
-[![dealogic logo](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png)](www.dealogic.com)
+[![dealogic logo](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png)](http://www.dealogic.com)
 
 to bundle JavaScript modules with webpack.
 
