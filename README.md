@@ -20,7 +20,7 @@ Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-ex
 
 Add the task to your build configuration:
 
-![Add webpack task](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/TaskCatalogPreview.png)
+![Add webpack task](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/TaskCatalog.png)
 
 By default without any configuration the build task is trying to run the locally installed webpack.js from the root folder in the repository with the `--json` flag. For example:
 ```
