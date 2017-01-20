@@ -14,8 +14,8 @@
     "node.js"
   ],
   "version": {
-    "Major": "1",
-    "Minor": "0",
+    "Major": "0",
+    "Minor": "11",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
