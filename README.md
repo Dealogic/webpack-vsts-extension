@@ -4,7 +4,7 @@
 
 [![dealogic logo](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png)](http://www.dealogic.com)
 
-### to bundle JavaScript modules with webpack.
+### to bundle your assets, scripts, images and styles with webpack.
 
 ![build status](https://dealogic.visualstudio.com/DefaultCollection/_apis/public/build/definitions/4cd19643-db3a-4dcc-b481-76a7800dd64d/7871/badge)
 
