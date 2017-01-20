@@ -1,6 +1,6 @@
 # webpack build task
 
-### A build task for Visual Studio Team Services (VSTS) made with ♥ by
+### A build task for [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/fr-fr/products/visual-studio-team-services-vs.aspx) made with ♥ by
 
 [![dealogic logo](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/dealogic-logo.png)](http://www.dealogic.com)
 
