@@ -1,0 +1,17 @@
+{
+  "name": "webpack-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "4.17.4"
+  },
+  "devDependencies": {
+    "webpack": "2.2.0"
+  }
+}
