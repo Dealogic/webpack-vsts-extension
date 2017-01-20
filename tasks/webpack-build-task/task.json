@@ -2,7 +2,7 @@
   "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
   "name": "webpack",
   "friendlyName": "webpack",
-  "description": "[PREVIEW] Create bundle from JavaScript modules",
+  "description": "bundle your assets, scripts, images, styles",
   "author": "Dealogic",
   "helpMarkDown": "[More information](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension) [webpack](https://webpack.github.io/)",
   "category": "Build",
@@ -14,9 +14,9 @@
     "node.js"
   ],
   "version": {
-    "Major": "0",
-    "Minor": "10",
-    "Patch": "1"
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
   "groups": [
