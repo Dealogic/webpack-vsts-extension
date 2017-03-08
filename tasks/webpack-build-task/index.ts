@@ -24,7 +24,7 @@ const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: s
     return webpackResultFilename;
 };
 
-const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult): void => {
+const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
     let resultFileContent = `Hash: ${result.hash}  ${os.EOL}`;
     resultFileContent += `Version: ${result.version}  ${os.EOL}`;
     resultFileContent += `Time: ${result.time}ms  ${os.EOL}  ${os.EOL}`;
@@ -54,7 +54,6 @@ const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpack
         resultFileContent += `ERROR IN ${error}  ${os.EOL}`;
     }
 
-    const taskDisplayName = tl.getVariable("task.displayname");
     const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
 
     tl.writeFile(webpackResultFilename, resultFileContent);
@@ -73,7 +72,13 @@ const convertMessageToSingleLine = (message: string): string => {
 };
 
 async function run(): Promise<void> {
-    const taskDisplayName = tl.getVariable("task.displayname");
+    let taskDisplayName = tl.getVariable("task.displayname");
+
+    if (!taskDisplayName) {
+        taskDisplayName = "webpack";
+    }
+
+    console.log(taskDisplayName);
 
     try {
         const workingFolder = tl.getPathInput("workingFolder", false);
@@ -113,7 +118,7 @@ async function run(): Promise<void> {
             console.log("##vso[task.complete result=SucceededWithIssues;]DONE");
         }
 
-        createWebpackResultMarkdownFile(workingFolder, result);
+        createWebpackResultMarkdownFile(workingFolder, result, taskDisplayName);
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err.message);

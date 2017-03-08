@@ -9,5 +9,7 @@
         "tasks/webpack-build-task/node_modules/**": true,
         "tasks/**/*.js": true,
         "tasks/**/*.js.map": true
-    }
+    },
+    "vsicons.presets.angular": false,
+    "typescript.tsdk": "./node_modules/typescript/lib"
 }
