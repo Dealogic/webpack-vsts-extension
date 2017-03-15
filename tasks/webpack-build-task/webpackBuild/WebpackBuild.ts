@@ -14,7 +14,7 @@ const executeWebpackCommand = (workingFolder: string, webpackJsLocation: string,
     webpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
     const webpackCommand = `node "${webpackJsLocation}" ${webpackArguments}`;
 
-    console.log(`Running command: ${webpackCommand}`);
+    console.log(`executing the command: ${webpackCommand}`);
 
     const options: ExecOptionsWithStringEncoding = {
         encoding: "utf8"
@@ -35,6 +35,8 @@ const processStdOut = (stdout: string) => {
 };
 
 export function build(currentWorkingDirectory: string, webpackJsLocation: string, webpackArguments: string): IWebpackBuildResult {
+    console.log("building the webpack project");
+
     const stdout = executeWebpackCommand(currentWorkingDirectory, webpackJsLocation, webpackArguments);
 
     return processStdOut(stdout);

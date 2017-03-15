@@ -1,6 +1,7 @@
 import * as path from "path";
 import { MockTestRunner } from "vsts-task-lib/mock-test";
 import { assert } from "chai";
+import * as fs from "fs";
 
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
@@ -83,4 +84,31 @@ describe("webpack build task", () => {
 
         done();
     });
+
+    it("should log information about the process", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfNoErrorsAndWarnings.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        const expectedWebpackBuildLog = "building the webpack project";
+        assert.isTrue(testRunner.stdOutContained(expectedWebpackBuildLog), `stdout should contain ${expectedWebpackBuildLog}`);
+
+        const expectedSummarySectionLog = "creating the summary section";
+        assert.isTrue(testRunner.stdOutContained(expectedSummarySectionLog), `stdout should contain ${expectedSummarySectionLog}`);
+
+        done();
+    });
+
+    it("should generate markdown file in case of a successful run", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfNoErrorsAndWarnings.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        const expectedContent = fs.readFileSync("tests/expectedMarkdownFileInCaseOfSuccessfulRun.md", "utf8");
+
+        assert.equal(content, expectedContent, "generated markdown file is not correct");
+
+        done();
+    })
 });
