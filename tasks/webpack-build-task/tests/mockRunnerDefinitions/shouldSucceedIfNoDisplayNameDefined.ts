@@ -16,7 +16,7 @@ taskMockRunner.setInput("treatWarningsAs", "warnings");
 
 taskMockRunner.setAnswers({
     exist: {
-        "C:\W\GitHub\Dealogic\webpack-vsts-extension\tasks\webpack-build-task\webpack.webpack.result.md": false
+        "": false
     }
 });
 

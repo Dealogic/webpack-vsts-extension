@@ -25,8 +25,8 @@ describe("webpack build task", () => {
         const expectedMarkdownFilename = "webpack test.webpack.result.md";
         const expectedResultMessage = "webpack test failed";
 
-        assert.isFalse(testRunner.succeeded, "should not be succeeded");
-        assert.isTrue(testRunner.failed, "should be failed");
+        assert.isFalse(testRunner.succeeded, "task should not be succeeded");
+        assert.isTrue(testRunner.failed, "task should be failed");
         assert.isTrue(testRunner.stdOutContained(expectedMarkdownFilename), `stdout should contain ${expectedMarkdownFilename}`);
         assert.isTrue(testRunner.stdOutContained(expectedResultMessage), `stdout should contain ${expectedResultMessage}`);
         assert.equal(testRunner.warningIssues.length, 1, "there should be one warning");
@@ -47,8 +47,8 @@ describe("webpack build task", () => {
         const expectedMarkdownFilename = "webpack test.webpack.result.md";
         const expectedResultMessage = "webpack test partially succeeded";
 
-        assert.isTrue(testRunner.succeeded, "should be succeeded");
-        assert.isFalse(testRunner.failed, "should not be failed");
+        assert.isTrue(testRunner.succeeded, "task should be succeeded");
+        assert.isFalse(testRunner.failed, "task should not be failed");
         assert.isTrue(testRunner.stdOutContained(expectedMarkdownFilename), `stdout should contain ${expectedMarkdownFilename}`);
         assert.isTrue(testRunner.stdOutContained(expectedResultMessage), `stdout should contain ${expectedResultMessage}`);
         assert.equal(testRunner.warningIssues.length, 2, "there should be two warnings");
@@ -68,7 +68,7 @@ describe("webpack build task", () => {
         const expectedMarkdownFilename = "webpack.webpack.result.md";
         const expectedResultMessage = "webpack succeeded";
 
-        assert.isTrue(testRunner.succeeded, "should be succeeded");
+        assert.isTrue(testRunner.succeeded, "task should be succeeded");
         assert.isTrue(testRunner.stdOutContained(expectedMarkdownFilename), `stdout should contain ${expectedMarkdownFilename}`);
         assert.isTrue(testRunner.stdOutContained(expectedResultMessage), `stdout should contain ${expectedResultMessage}`);
         assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
@@ -86,7 +86,7 @@ describe("webpack build task", () => {
         const expectedMarkdownFilename = "webpack test.webpack.result.md";
         const expectedResultMessage = "webpack test succeeded";
 
-        assert.isTrue(testRunner.succeeded, "should be succeeded");
+        assert.isTrue(testRunner.succeeded, "task should be succeeded");
         assert.isTrue(testRunner.stdOutContained(expectedMarkdownFilename), `stdout should contain ${expectedMarkdownFilename}`);
         assert.isTrue(testRunner.stdOutContained(expectedResultMessage), `stdout should contain ${expectedResultMessage}`);
         assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
@@ -115,10 +115,102 @@ describe("webpack build task", () => {
         testRunner.run();
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = fs.readFileSync("tests/expectedMarkdownFileInCaseOfSuccessfulRun.md", "utf8");
+        const expectedContent =
+            `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\nmain.js|100 bytes|1, 2|[emitted]|1, 2\r\n	+ 3 hidden modules  \r\n`;
 
-        assert.equal(content, expectedContent, "generated markdown file is not correct");
+        assert.equal(content, expectedContent, "summary section file should be generated");
 
         done();
-    })
+    });
+
+    it("should succeed if there are errors, but those are treated as info", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfThereAreErrosButTreatedAsInfo.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        assert.isTrue(testRunner.succeeded, "should be succeeded");
+        assert.equal(testRunner.errorIssues.length, 0, "there should be no errors");
+        assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
+
+        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        const expectedContent =
+        `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nERROR IN error  \r\n`;
+
+        assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
+
+        done();
+    });
+
+    it("should partially succeed if there are errors, but those are treated as warnings", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        assert.isTrue(testRunner.succeeded, "task should be succeeded");
+        assert.isFalse(testRunner.failed, "task should be not failed");
+
+        const expectedResultMessage = "webpack test partially succeeded";
+        assert.isTrue(testRunner.stdOutContained(expectedResultMessage), `stdout should contain ${expectedResultMessage}`);
+
+        assert.equal(testRunner.errorIssues.length, 0, "there should be no errors");
+
+        assert.equal(testRunner.warningIssues.length, 2, "there should be two warnings");
+        assert.equal(testRunner.warningIssues[0], "webpack test partially succeeded");
+        assert.equal(testRunner.warningIssues[1], "webpack test: error");
+
+        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        const expectedContent =
+        `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nERROR IN error  \r\n`;
+
+        assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
+
+        done();
+    });
+
+    it("should succeed if there are warnings, but those are treated as info", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfThereAreWarningsButTreatedAsInfo.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        assert.isTrue(testRunner.succeeded, "should be succeeded");
+        assert.equal(testRunner.errorIssues.length, 0, "there should be no errors");
+        assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
+
+        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        const expectedContent =
+        `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nWARNING IN warning  \r\n`;
+
+        assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
+
+        done();
+    });
+
+    it("should fail if there are warnings, but those are treated as errors", (done: MochaDone) => {
+        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldFailIfThereAreWarningsButTreatedAsErrors.js");
+        let testRunner = new MockTestRunner(testPath);
+        testRunner.run();
+
+        assert.isFalse(testRunner.succeeded, "task should be not succeeded");
+        assert.isTrue(testRunner.failed, "task should be failed");
+
+        assert.equal(testRunner.errorIssues.length, 2, "there should be two errors");
+        assert.equal(testRunner.errorIssues[0], "webpack test failed");
+        assert.equal(testRunner.errorIssues[1], "webpack test: warning");
+
+        assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
+
+
+        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        const expectedContent =
+        `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nWARNING IN warning  \r\n`;
+
+        assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
+
+        done();
+    });
 });
