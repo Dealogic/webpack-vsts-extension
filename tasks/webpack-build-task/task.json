@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/AArnott/vso-agent-tasks/9b41d803a/tasks.schema.json",
-  "id": "6752a610-c2f3-11e6-949e-5d3841f133f2",
-  "name": "webpackTest",
-  "friendlyName": "webpack test",
+  "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
+  "name": "webpack",
+  "friendlyName": "webpack",
   "description": "bundle your assets, scripts, images, styles",
   "author": "Dealogic",
   "helpMarkDown": "[More information](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension) [webpack](https://webpack.github.io/)",
