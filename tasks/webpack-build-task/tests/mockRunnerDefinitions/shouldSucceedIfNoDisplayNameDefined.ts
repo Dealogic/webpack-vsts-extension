@@ -20,6 +20,10 @@ taskMockRunner.setAnswers({
     }
 });
 
+taskMockRunner.registerMockExport("getVariable", (variableName: string) => {
+    return "";
+});
+
 taskMockRunner.registerMock("child_process", {
     execSync: (webpackCommand: string) => {
         const expectedWebpackCommand = `node "${path.resolve(workingFolder, webpackJsLocation)}" --json ${webpackArguments}`;
