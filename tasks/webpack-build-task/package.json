@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install",
-    "upload": "npm run build && tfx build tasks upload",
-    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f1"
+    "upload": "tfx build tasks upload",
+    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f2"
   },
   "keywords": [
     "webpack",

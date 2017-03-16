@@ -13,6 +13,8 @@ const webpackArguments = "--config webpack.dist.config.js";
 taskMockRunner.setInput("webpackJsLocation", webpackJsLocation);
 taskMockRunner.setInput("arguments", webpackArguments);
 taskMockRunner.setInput("workingFolder", workingFolder);
+taskMockRunner.setInput("treatErrorsAs", "errors");
+taskMockRunner.setInput("treatWarningsAs", "warnings");
 
 taskMockRunner.setAnswers({
     exist: {

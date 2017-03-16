@@ -6,6 +6,16 @@ import * as fs from "fs";
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 describe("webpack build task", () => {
+    after((done: MochaDone) => {
+        const filename = "tests/webpack test.webpack.result.md";
+
+        if (fs.existsSync(filename)) {
+            fs.unlinkSync(filename);
+        }
+
+        done();
+    });
+
     it("should fail if there are errors and warnings", (done: MochaDone) => {
         let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldFailIfThereAreErrorsAndWarnings.js");
         let testRunner = new MockTestRunner(testPath);
