@@ -32,6 +32,12 @@ Through the arguments setting additional webpack arguments can be provided. For 
 --config webpack.dist.config.js
 ```
 
+Errors and Warnings can be treated differently:
+* treat errors as (errors / warnings / info)
+* treat warnings as (errors / warnings / info)
+
+Warnings means the task will partially succeed, in case of errors the task will fail. If there are no errors and no warnings, then the task will succeed. You can treat the errors as warnings, so in case of errors, the task will just partially succeed. Or if you would like to ignore the warnings, those should be handled as info.
+
 ![webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
 
 The webpack build errors and warnings are reported under the issues / build section on the summary page:
