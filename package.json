@@ -7,6 +7,7 @@
     "setup": "npm install && typings install && cd tasks/webpack-build-task && npm run build",
     "build": "npm run setup && tsc && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
     "test": "tsc && cd tasks/webpack-build-task && mocha tests/suite.js",
+    "test-reporter": "cd tasks/webpack-build-task && mocha tests/suite.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",
     "upload-webpack-build-task": "cd tasks/webpack-build-task && npm run upload",
     "delete-webpack-build-task": "cd tasks/webpack-build-task && npm run delete"
   },
@@ -16,6 +17,7 @@
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "3.2.0",
+    "mocha-junit-reporter": "1.13.0",
     "tfx-cli": "0.3.45",
     "tslint": "4.1.1",
     "typescript": "2.1.4",

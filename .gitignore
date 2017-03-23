@@ -5,3 +5,4 @@ tasks/**/*.js.map
 **/npm-debug.log
 **/.taskkey
 dist
+**/test-results.xml
