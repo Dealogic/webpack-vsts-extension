@@ -210,6 +210,7 @@ describe("webpack build task", () => {
             + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nWARNING IN warning  \r\n`;
 
         assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
+        assert.equal(1, 0, "testing CI build");
 
         done();
     });
