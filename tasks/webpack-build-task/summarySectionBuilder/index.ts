@@ -12,12 +12,14 @@ const getSizeString = (size: number) => {
 };
 
 const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
-    let webpackResultFilename: string = path.join(workingFolder, `${filenamify(taskDisplayName).trim()}.webpack.result.md`);
+    const webpackResultFilenamePostfix = ".webpack.result.md";
+
+    let webpackResultFilename: string = path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
 
     let counter = 0;
     while (tl.exist(webpackResultFilename)) {
         counter++;
-        webpackResultFilename = generateWebpackResultFilename(workingFolder, `${taskDisplayName}${counter}`);
+        webpackResultFilename = path.join(workingFolder, `${filenamify(`${taskDisplayName}${counter}`).trim()}${webpackResultFilenamePostfix}`);
     }
 
     return webpackResultFilename;

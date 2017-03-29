@@ -1,6 +1,6 @@
 {
   "name": "webpack-build-task",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Webpack build task for Visual Studio Team System (VSTS)",
   "main": "index.js",
   "scripts": {
