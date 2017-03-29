@@ -80,6 +80,8 @@ async function run(): Promise<void> {
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err);
+
+        console.log(err);
     }
 }
 
