@@ -106,6 +106,9 @@ describe("webpack build task", () => {
         const expectedSummarySectionLog = "creating the summary section";
         assert.isTrue(testRunner.stdOutContained(expectedSummarySectionLog), `stdout should contain ${expectedSummarySectionLog}`);
 
+        const expectedSummarySectionFileCreatedLog = `Result file '${path.join(__dirname, "webpack test.webpack.result.md")}' is created.`;
+        assert.isTrue(testRunner.stdOutContained(expectedSummarySectionFileCreatedLog), `stdout should contain ${expectedSummarySectionFileCreatedLog}`);
+
         done();
     });
 

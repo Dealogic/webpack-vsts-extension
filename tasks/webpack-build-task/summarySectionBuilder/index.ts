@@ -14,15 +14,7 @@ const getSizeString = (size: number) => {
 const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
     const webpackResultFilenamePostfix = ".webpack.result.md";
 
-    let webpackResultFilename: string = path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
-
-    let counter = 0;
-    while (tl.exist(webpackResultFilename)) {
-        counter++;
-        webpackResultFilename = path.join(workingFolder, `${filenamify(`${taskDisplayName}${counter}`).trim()}${webpackResultFilenamePostfix}`);
-    }
-
-    return webpackResultFilename;
+    return path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
 };
 
 const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
@@ -61,6 +53,7 @@ const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpack
 
     tl.writeFile(webpackResultFilename, resultFileContent);
 
+    console.log(`Result file '${webpackResultFilename}' is created.`);
     console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${taskDisplayName} result;]${webpackResultFilename}`);
 };
 

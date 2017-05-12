@@ -1,96 +1,96 @@
 {
-  "$schema": "https://raw.githubusercontent.com/AArnott/vso-agent-tasks/9b41d803a/tasks.schema.json",
-  "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
-  "name": "webpack",
-  "friendlyName": "webpack",
-  "description": "bundle your assets, scripts, images, styles",
-  "author": "Dealogic",
-  "helpMarkDown": "[More information](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension) [webpack](https://webpack.github.io/)",
-  "category": "Build",
-  "visibility": [
-    "Build",
-    "Release"
-  ],
-  "demands": [
-    "node.js"
-  ],
-  "version": {
-    "Major": 1,
-    "Minor": 1,
-    "Patch": 1
-  },
-  "minimumAgentVersion": "1.95.0",
-  "groups": [
-    {
-      "name": "advanced",
-      "displayName": "Advanced",
-      "isExpanded": false
-    }
-  ],
-  "instanceNameFormat": "webpack",
-  "inputs": [
-    {
-      "name": "arguments",
-      "type": "string",
-      "label": "arguments",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The arguments for the webpack command."
+    "$schema": "https://raw.githubusercontent.com/AArnott/vso-agent-tasks/9b41d803a/tasks.schema.json",
+    "id": "6752a610-c2f3-11e6-949e-5d3841f133f1",
+    "name": "webpack",
+    "friendlyName": "webpack",
+    "description": "bundle your assets, scripts, images, styles",
+    "author": "Dealogic",
+    "helpMarkDown": "[More information](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension) [webpack](https://webpack.github.io/)",
+    "category": "Build",
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "demands": [
+        "node.js"
+    ],
+    "version": {
+        "Major": 2,
+        "Minor": 0,
+        "Patch": 0
     },
-    {
-      "name": "treatErrorsAs",
-      "type": "pickList",
-      "label": "treat errors as",
-      "defaultValue": "erros",
-      "required": true,
-      "helpMarkDown": "How to treat errors.",
-      "options": {
-        "errors": "errors",
-        "warnings": "warnings",
-        "info": "info"
-      }
-    },
-    {
-      "name": "treatWarningsAs",
-      "type": "pickList",
-      "label": "treat warnings as",
-      "defaultValue": "warnings",
-      "required": true,
-      "helpMarkDown": "How to treat warnings.",
-      "options": {
-        "errors": "errors",
-        "warnings": "warnings",
-        "info": "info"
-      }
-    },
-    {
-      "name": "workingFolder",
-      "type": "filePath",
-      "label": "working folder",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "Working folder where webpack command is run. If you leave it blank it is the root of the repo.",
-      "groupName": "advanced"
-    },
-    {
-      "name": "webpackJsLocation",
-      "type": "string",
-      "label": "webpack.js location",
-      "defaultValue": "node_modules/webpack/bin/webpack.js",
-      "required": true,
-      "helpMarkDown": "Location of the webpack.js.",
-      "groupName": "advanced"
+    "minimumAgentVersion": "1.95.0",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": false
+        }
+    ],
+    "instanceNameFormat": "webpack",
+    "inputs": [
+        {
+            "name": "arguments",
+            "type": "string",
+            "label": "arguments",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "The arguments for the webpack command."
+        },
+        {
+            "name": "treatErrorsAs",
+            "type": "pickList",
+            "label": "treat errors as",
+            "defaultValue": "errors",
+            "required": true,
+            "helpMarkDown": "How to treat errors.",
+            "options": {
+                "errors": "errors",
+                "warnings": "warnings",
+                "info": "info"
+            }
+        },
+        {
+            "name": "treatWarningsAs",
+            "type": "pickList",
+            "label": "treat warnings as",
+            "defaultValue": "warnings",
+            "required": true,
+            "helpMarkDown": "How to treat warnings.",
+            "options": {
+                "errors": "errors",
+                "warnings": "warnings",
+                "info": "info"
+            }
+        },
+        {
+            "name": "workingFolder",
+            "type": "filePath",
+            "label": "working folder",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Working folder where webpack command is run. If you leave it blank it is the root of the repo.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "webpackJsLocation",
+            "type": "string",
+            "label": "webpack.js location",
+            "defaultValue": "node_modules/webpack/bin/webpack.js",
+            "required": true,
+            "helpMarkDown": "Location of the webpack.js.",
+            "groupName": "advanced"
+        }
+    ],
+    "sourceDefinitions": [
+        {
+            "target": "treatErrorsAs",
+            "endpoint": ""
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "index.js"
+        }
     }
-  ],
-  "sourceDefinitions": [
-    {
-      "target": "treatErrorsAs",
-      "endpoint": ""
-    }
-  ],
-  "execution": {
-    "Node": {
-      "target": "index.js"
-    }
-  }
 }

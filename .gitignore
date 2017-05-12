@@ -6,3 +6,7 @@ tasks/**/*.js.map
 **/.taskkey
 dist
 **/test-results.xml
+updateVersion.js
+updateVersion.js.map
+version.js
+version.js.map

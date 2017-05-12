@@ -8,7 +8,11 @@
         "node_modules": true,
         "tasks/webpack-build-task/node_modules/**": true,
         "tasks/**/*.js": true,
-        "tasks/**/*.js.map": true
+        "tasks/**/*.js.map": true,
+        "version.js": true,
+        "version.js.map": true,
+        "updateVersion.js": true,
+        "updateVersion.js.map": true
     },
     "vsicons.presets.angular": false,
     "typescript.tsdk": "./node_modules/typescript/lib"
