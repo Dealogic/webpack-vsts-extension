@@ -15,7 +15,21 @@ function updateVersionInVssExtensionJsonFile(vssExtensionJsonFilePath: string, v
     const vssExtensionJsonContent = fs.readFileSync(vssExtensionJsonFilePath, "utf8");
     const vssExtensionJson = JSON.parse(vssExtensionJsonContent);
 
-    vssExtensionJson.version = version;
+    vssExtensionJson.version = version.split("-")[0];
+
+    const Preview = "Preview";
+
+    if (version.split("-").length > 1 && !vssExtensionJson.galleryFlags.includes(Preview)) {
+        vssExtensionJson.galleryFlags.push(Preview);
+    }
+
+    if (version.split("-").length === 1 && vssExtensionJson.galleryFlags.includes(Preview)) {
+        const index = vssExtensionJson.galleryFlags.indexOf(Preview, 0);
+
+        if (index > -1) {
+            vssExtensionJson.galleryFlags.splice(index, 1);
+        }
+    }
 
     fs.writeFileSync(vssExtensionJsonFilePath, JSON.stringify(vssExtensionJson, null, 4).concat(os.EOL));
 }
