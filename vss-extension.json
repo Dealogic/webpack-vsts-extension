@@ -1,7 +1,10 @@
 {
     "manifestVersion": 1,
     "id": "webpack-vsts-extension",
-    "version": "2.0.0",
+    "version": "2.0.0-preview",
+    "gallaryFlags": [
+        "Preview"
+    ],
     "name": "webpack",
     "description": "bundle your assets, scripts, images, styles",
     "publisher": "Dealogic",

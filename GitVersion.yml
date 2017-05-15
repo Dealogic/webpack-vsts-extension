@@ -1,2 +1,2 @@
-next-version: 2.0
-assembly-informational-format: '{FullSemVer}'
+next-version: 2.0.0-preview
+assembly-informational-format: '{SemVer}'

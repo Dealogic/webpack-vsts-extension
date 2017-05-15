@@ -27,7 +27,7 @@ function updateVersionInTaskJsonFile(taskJsonFilePath: string, version: string):
     const splittedVersion = version.split(".");
     taskJson.version.Major = Number(splittedVersion[0]);
     taskJson.version.Minor = Number(splittedVersion[1]);
-    taskJson.version.Patch = Number(splittedVersion[2]);
+    taskJson.version.Patch = Number(splittedVersion[2].split("-")[0]);
 
     fs.writeFileSync(taskJsonFilePath, JSON.stringify(taskJson, null, 4).concat(os.EOL));
 }
