@@ -15,7 +15,7 @@ const convertMessageToSingleLine = (message: string): string => {
 async function run(): Promise<void> {
     let taskDisplayName = tl.getVariable("task.displayname");
 
-    if (!taskDisplayName) {
+    if (!taskDisplayName {
         taskDisplayName = "webpack";
     }
 
