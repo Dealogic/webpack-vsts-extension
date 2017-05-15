@@ -34,6 +34,7 @@ describe("webpack build task", () => {
         assert.equal(testRunner.errorIssues.length, 2, "there should be 2 errors");
         assert.equal(testRunner.errorIssues[0], "webpack test failed");
         assert.equal(testRunner.errorIssues[1], "webpack test: error");
+        assert.equal(1, 2);
 
         done();
     });
