@@ -17,20 +17,6 @@ function updateVersionInVssExtensionJsonFile(vssExtensionJsonFilePath: string, v
 
     vssExtensionJson.version = version.split("-")[0];
 
-    const Preview = "Preview";
-
-    if (version.split("-").length > 1 && !vssExtensionJson.galleryFlags.includes(Preview)) {
-        vssExtensionJson.galleryFlags.push(Preview);
-    }
-
-    if (version.split("-").length === 1 && vssExtensionJson.galleryFlags.includes(Preview)) {
-        const index = vssExtensionJson.galleryFlags.indexOf(Preview, 0);
-
-        if (index > -1) {
-            vssExtensionJson.galleryFlags.splice(index, 1);
-        }
-    }
-
     fs.writeFileSync(vssExtensionJsonFilePath, JSON.stringify(vssExtensionJson, null, 4).concat(os.EOL));
 }
 
@@ -42,6 +28,20 @@ function updateVersionInTaskJsonFile(taskJsonFilePath: string, version: string):
     taskJson.version.Major = Number(splittedVersion[0]);
     taskJson.version.Minor = Number(splittedVersion[1]);
     taskJson.version.Patch = Number(splittedVersion[2].split("-")[0]);
+
+    const Preview = "Preview";
+
+    if (version.split("-").length > 1 && !taskJson.visibility.includes(Preview)) {
+        taskJson.visibility.push(Preview);
+    }
+
+    if (version.split("-").length === 1 && taskJson.visibility.includes(Preview)) {
+        const index = taskJson.visibility.indexOf(Preview, 0);
+
+        if (index > -1) {
+            taskJson.visibility.splice(index, 1);
+        }
+    }
 
     fs.writeFileSync(taskJsonFilePath, JSON.stringify(taskJson, null, 4).concat(os.EOL));
 }
