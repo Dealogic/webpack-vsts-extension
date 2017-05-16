@@ -9,8 +9,7 @@
     "category": "Build",
     "visibility": [
         "Build",
-        "Release",
-        "Preview"
+        "Release"
     ],
     "demands": [
         "node.js"
