@@ -37,7 +37,29 @@ const processStdOut = (stdout: string) => {
 export function build(currentWorkingDirectory: string, webpackJsLocation: string, webpackArguments: string): IWebpackBuildResult {
     console.log("building the webpack project");
 
-    const stdout = executeWebpackCommand(currentWorkingDirectory, webpackJsLocation, webpackArguments);
+    let stdout: string;
+    let result: IWebpackBuildResult;
+    let error: any;
 
-    return processStdOut(stdout);
+    try {
+        stdout = executeWebpackCommand(currentWorkingDirectory, webpackJsLocation, webpackArguments);
+    } catch (executeWebpackCommandError) {
+        error = executeWebpackCommandError;
+        stdout = executeWebpackCommandError.stdout;
+    }
+
+    if (stdout) {
+        try {
+            result = processStdOut(stdout);
+        } catch (processStdOutError) {
+            throw {
+                processStdOutError,
+                error
+            };
+        }
+    } else {
+        throw error;
+    }
+
+    return result;
 }

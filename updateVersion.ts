@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as os from "os";
-import version  from "./version";
+import version from "./version";
 
 function updateVersionInackageJsonFile(packageJsonFilePath: string, version: string): void {
     const packageJsonContent = fs.readFileSync(packageJsonFilePath, "utf8");
