@@ -11,7 +11,9 @@ export const executeTest = (done: MochaDone) => {
         testRunner.run();
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = "formatted output";
+        const expectedContent =
+            `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\nmain.js|100 bytes|1, 2|[emitted]|1, 2\r\n	+ 3 hidden modules  \r\n`;
 
         assert.equal(content, expectedContent, "summary section file should be generated");
 
