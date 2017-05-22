@@ -14,11 +14,11 @@ const createWebpackResultMarkdownFile = (workingFolder: string, webpackJsLocatio
 
     const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
 
-    const absolutePathOfWebpackJsBinLocation = path.resolve(workingFolder, webpackJsLocation);
-    const absolutePathOfWebpackJsLibLocation = path.resolve(path.dirname(absolutePathOfWebpackJsBinLocation), "../lib/webpack");
-    const webpack = require(absolutePathOfWebpackJsLibLocation);
+    const absolutePathOfWebpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
+    const absolutePathOfStatsJsLocation = path.resolve(path.dirname(absolutePathOfWebpackJsLocation), "../lib/Stats");
+    const Stats = require(absolutePathOfStatsJsLocation);
 
-    const resultFileContent = webpack.Stats.jsonToString(result);
+    const resultFileContent = Stats.jsonToString(result);
 
     tl.writeFile(webpackResultFilename, resultFileContent);
 
