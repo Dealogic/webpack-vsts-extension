@@ -20,7 +20,6 @@
   "license": "MIT",
   "dependencies": {
     "filenamify": "2.0.0",
-    "pretty-bytes": "4.0.2",
     "vsts-task-lib": "1.1.0"
   },
   "devDependencies": {}

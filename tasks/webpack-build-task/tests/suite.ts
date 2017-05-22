@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as shouldCollectErrorsAndWarningsFromChildren from "./shouldCollectErrorsAndWarningsFromChildren";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreErrorsAndWarningsWebpack2 from "./shouldFailIfThereAreErrorsAndWarningsWebpack2";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
@@ -24,6 +25,11 @@ describe("webpack build task", () => {
 
         done();
     });
+
+    it(
+        "should collect errors and warnings from children",
+        shouldCollectErrorsAndWarningsFromChildren.executeTest
+    );
 
     it(
         "should fail if there are errors and warnings",

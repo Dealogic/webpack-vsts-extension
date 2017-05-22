@@ -1,6 +1,7 @@
 import tl = require("vsts-task-lib/task");
 import { build } from "./webpackBuild";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
+import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
 
 const convertMessageToSingleLine = (message: string): string => {
     let messageParts = message.split("\n");
@@ -34,8 +35,11 @@ async function run(): Promise<void> {
 
         const result = build(workingFolder, webpackJsLocation, webpackArguments);
 
-        let hasErrors = result && result.errors && result.errors.length > 0;
-        let hasWarnings = result && result.warnings && result.warnings.length > 0;
+        const errorsArray: string[] = collectErrors(result);
+        const warningsArray: string[] = collectWarnings(result);
+
+        let hasErrors = errorsArray.length > 0;
+        let hasWarnings = warningsArray.length > 0;
 
         if ((hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors)) {
             tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
@@ -46,7 +50,7 @@ async function run(): Promise<void> {
         }
 
         if (hasErrors && treatErrorsAs !== info) {
-            for (let error of result.errors) {
+            for (let error of errorsArray) {
                 error = `${taskDisplayName}: ${convertMessageToSingleLine(error)}`;
 
                 if (treatErrorsAs === errors) {
@@ -58,7 +62,7 @@ async function run(): Promise<void> {
         }
 
         if (hasWarnings && treatWarningsAs !== info) {
-            for (let warning of result.warnings) {
+            for (let warning of warningsArray) {
                 warning = `${taskDisplayName}: ${convertMessageToSingleLine(warning)}`;
 
                 if (treatWarningsAs === errors) {
@@ -76,7 +80,7 @@ async function run(): Promise<void> {
             console.log("##vso[task.complete result=SucceededWithIssues;]DONE");
         }
 
-        createWebpackResultMarkdownFile(workingFolder, result, taskDisplayName);
+        createWebpackResultMarkdownFile(workingFolder, webpackJsLocation, result, taskDisplayName);
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err);

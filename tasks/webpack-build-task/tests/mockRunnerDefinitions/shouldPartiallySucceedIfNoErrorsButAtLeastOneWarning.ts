@@ -1,10 +1,11 @@
 import { TaskMockRunner } from "vsts-task-lib/mock-run";
 import * as path from "path";
+import registerMockWebpack from "./shared/mockWebpackRegister";
 
 const taskPath = path.join(__dirname, "..", "..", "index.js");
 const taskMockRunner = new TaskMockRunner(taskPath);
 
-let webpackJsLocation = "node_modules/webpack/bin/webpack.js";
+const webpackJsLocation = "node_modules/webpack/bin/webpack.js";
 const workingFolder = path.join(__dirname);
 const webpackArguments = "--config webpack.dist.config.js";
 
@@ -27,6 +28,8 @@ taskMockRunner.registerMockExport("getVariable", (variableName: string) => {
 
     return "";
 });
+
+registerMockWebpack(taskMockRunner, workingFolder, webpackJsLocation);
 
 taskMockRunner.registerMock("child_process", {
     execSync: (webpackCommand: string) => {

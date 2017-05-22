@@ -9,4 +9,5 @@ export interface IWebpackBuildResult {
     version: string;
     time: number;
     chunks: IChunk[];
+    children?: IWebpackBuildResult[];
 }
