@@ -80,7 +80,12 @@ async function run(): Promise<void> {
             console.log("##vso[task.complete result=SucceededWithIssues;]DONE");
         }
 
-        createWebpackResultMarkdownFile(workingFolder, webpackJsLocation, result, taskDisplayName);
+        try {
+            createWebpackResultMarkdownFile(workingFolder, webpackJsLocation, result, taskDisplayName);
+        } catch (error) {
+            console.log("Couldn't create webpack result markdown file");
+            console.log(error);
+        }
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err);

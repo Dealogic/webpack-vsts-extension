@@ -23,7 +23,9 @@ export const executeTest = (done: MochaDone) => {
         assert.equal(testRunner.warningIssues[1], "webpack test: error");
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = "formatted output";
+        const expectedContent =
+            `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
+            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nERROR IN error  \r\n`;
 
         assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
 
