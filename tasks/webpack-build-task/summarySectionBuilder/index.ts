@@ -10,20 +10,25 @@ const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: s
 };
 
 const createWebpackResultMarkdownFile = (workingFolder: string, webpackJsLocation: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
-    console.log("creating the summary section");
+    try {
+        console.log("creating the summary section");
 
-    const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
+        const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
 
-    const absolutePathOfWebpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
-    const absolutePathOfStatsJsLocation = path.resolve(path.dirname(absolutePathOfWebpackJsLocation), "../lib/Stats");
-    const Stats = require(absolutePathOfStatsJsLocation);
+        const absolutePathOfWebpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
+        const absolutePathOfStatsJsLocation = path.resolve(path.dirname(absolutePathOfWebpackJsLocation), "../lib/Stats");
+        const Stats = require(absolutePathOfStatsJsLocation);
 
-    const resultFileContent = Stats.jsonToString(result);
+        const resultFileContent = Stats.jsonToString(result);
 
-    tl.writeFile(webpackResultFilename, resultFileContent);
+        tl.writeFile(webpackResultFilename, resultFileContent);
 
-    console.log(`Result file '${webpackResultFilename}' is created.`);
-    console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${taskDisplayName} result;]${webpackResultFilename}`);
+        console.log(`Result file '${webpackResultFilename}' is created.`);
+        console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${taskDisplayName} result;]${webpackResultFilename}`);
+    } catch(error) {
+        console.log("Couldn't create the summary section, because of the following error: ");
+        console.log(error);
+    }
 };
 
 export {
