@@ -36,12 +36,12 @@ taskMockRunner.registerMock("child_process", {
         const expectedWebpackCommand = `node "${path.resolve(workingFolder, webpackJsLocation)}" --json ${webpackArguments}`;
 
         if (webpackCommand === expectedWebpackCommand) {
-            const stdout = JSON.stringify({
+            const childForFirstChild = {
                 hash: "hash",
                 version: "1.0.0",
                 time: "1",
-                errors: ["error"],
-                warnings: ["warning"],
+                errors: ["child-for-first-child-error"],
+                warnings: ["child-for-first-child-warning"],
                 assets: [],
                 chunks: [
                     {
@@ -50,6 +50,64 @@ taskMockRunner.registerMock("child_process", {
                             }
                         ]
                     }
+                ]
+            };
+
+            const firstChild = {
+                hash: "hash",
+                version: "1.0.0",
+                time: "1",
+                errors: ["first-child-error"],
+                warnings: ["first-child-warning"],
+                assets: [],
+                chunks: [
+                    {
+                        modules: [
+                            {
+                            }
+                        ]
+                    }
+                ],
+                children: [
+                    childForFirstChild
+                ]
+            };
+
+            const secondChild = {
+                hash: "hash",
+                version: "1.0.0",
+                time: "1",
+                errors: ["second-child-error"],
+                warnings: ["second-child-warning"],
+                assets: [],
+                chunks: [
+                    {
+                        modules: [
+                            {
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            const stdout = JSON.stringify({
+                hash: "hash",
+                version: "1.0.0",
+                time: "1",
+                errors: ["root-error"],
+                warnings: ["root-warning"],
+                assets: [],
+                chunks: [
+                    {
+                        modules: [
+                            {
+                            }
+                        ]
+                    }
+                ],
+                children: [
+                    firstChild,
+                    secondChild
                 ]
             });
 
