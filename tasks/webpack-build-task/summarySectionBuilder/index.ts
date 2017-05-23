@@ -3,7 +3,7 @@ import path = require("path");
 import os = require("os");
 import prettyBytes = require("pretty-bytes");
 import filenamify = require("filenamify");
-import { IWebpackBuildResult } from "../webpackBuild";
+import { IWebpackCompilationResult } from "../webpackCompiler";
 
 const getSizeString = (size: number) => {
     const sizeAsString = prettyBytes(size);
@@ -17,7 +17,7 @@ const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: s
     return path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
 };
 
-const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
+const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackCompilationResult, taskDisplayName: string): void => {
     console.log("creating the summary section");
 
     let resultFileContent = `Hash: ${result.hash}  ${os.EOL}`;

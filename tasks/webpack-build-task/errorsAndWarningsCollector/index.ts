@@ -1,6 +1,6 @@
-import { IWebpackBuildResult } from "../webpackBuild";
+import { IWebpackCompilationResult } from "../webpackCompiler";
 
-const collectErrors = (result: IWebpackBuildResult) => {
+const collectErrors = (result: IWebpackCompilationResult) => {
     if (!result) {
         return;
     }
@@ -20,7 +20,7 @@ const collectErrors = (result: IWebpackBuildResult) => {
     return errors;
 };
 
-const collectWarnings = (result: IWebpackBuildResult) => {
+const collectWarnings = (result: IWebpackCompilationResult) => {
     if (!result) {
         return;
     }

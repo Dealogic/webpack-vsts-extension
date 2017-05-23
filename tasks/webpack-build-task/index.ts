@@ -1,5 +1,5 @@
 import tl = require("vsts-task-lib/task");
-import { compile, IWebpackBuildResult } from "./webpackBuild";
+import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
 import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
 
@@ -33,7 +33,7 @@ async function run(): Promise<void> {
         const warnings = "warnings";
         const info = "info";
 
-        compile(webpackModuleLocation, webpackConfigLocation, (error: any, result: IWebpackBuildResult) => {
+        compile(webpackModuleLocation, webpackConfigLocation, (error: any, result: IWebpackCompilationResult) => {
             const errorsArray: string[] = collectErrors(result);
             const warningsArray: string[] = collectWarnings(result);
 

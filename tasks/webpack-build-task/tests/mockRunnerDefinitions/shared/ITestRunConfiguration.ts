@@ -1,4 +1,4 @@
-import { IWebpackBuildResult } from "../../../webpackBuild";
+import { IWebpackCompilationResult } from "../../../webpackCompiler";
 
 export interface ITestRunConfiguration {
     workingFolder?: string;
@@ -7,7 +7,7 @@ export interface ITestRunConfiguration {
     treatErrorsAs?: string;
     treatWarningsAs?: string;
     webpackCompilationError?: any;
-    webpackCompilationResult: IWebpackBuildResult;
+    webpackCompilationResult: IWebpackCompilationResult;
     webpackConfig?: any,
     taskDisplayName?: string;
     mockWriteFile?: boolean;

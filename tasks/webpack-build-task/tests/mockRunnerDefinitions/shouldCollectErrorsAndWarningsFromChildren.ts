@@ -1,7 +1,7 @@
-import { IWebpackBuildResult } from "../../webpackBuild";
+import { IWebpackCompilationResult } from "../../webpackCompiler";
 import runTestTask from "./shared/testTaskRunner";
 
-const childForFirstChild: IWebpackBuildResult = {
+const childForFirstChild: IWebpackCompilationResult = {
     hash: "hash",
     version: "1.0.0",
     time: 1,
@@ -18,7 +18,7 @@ const childForFirstChild: IWebpackBuildResult = {
     ]
 };
 
-const firstChild: IWebpackBuildResult = {
+const firstChild: IWebpackCompilationResult = {
     hash: "hash",
     version: "1.0.0",
     time: 1,
@@ -38,7 +38,7 @@ const firstChild: IWebpackBuildResult = {
     ]
 };
 
-const secondChild: IWebpackBuildResult = {
+const secondChild: IWebpackCompilationResult = {
     hash: "hash",
     version: "1.0.0",
     time: 1,
@@ -55,7 +55,7 @@ const secondChild: IWebpackBuildResult = {
     ]
 };
 
-const result: IWebpackBuildResult = {
+const result: IWebpackCompilationResult = {
     hash: "hash",
     version: "1.0.0",
     time: 1,
