@@ -10,4 +10,5 @@ export interface IWebpackCompilationResult {
     time: number;
     chunks: IChunk[];
     children?: IWebpackCompilationResult[];
+    toString: (webpackConfiguration: any) => string;
 }

@@ -17,7 +17,10 @@ runTestTask({
                     }
                 ]
             }
-        ]
+        ],
+        toString: (config: any) => {
+            return "shouldFailIfThereAreWarningsButTreatedAsErrorsResult";
+        }
     },
     mockWriteFile: true
 });

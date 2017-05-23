@@ -16,10 +16,10 @@ export const executeTest = (done: MochaDone) => {
         const expectedWebpackCompilationDoneLog = "compilation of the webpack project is done";
         assert.isTrue(testRunner.stdOutContained(expectedWebpackCompilationDoneLog), `stdout should contain ${expectedWebpackCompilationDoneLog}`);
 
-        const expectedSummarySectionLog = "creating the summary section";
+        const expectedSummarySectionLog = "webpack summary section markdown file creation is started";
         assert.isTrue(testRunner.stdOutContained(expectedSummarySectionLog), `stdout should contain ${expectedSummarySectionLog}`);
 
-        const expectedSummarySectionFileCreatedLog = `Result file '${path.join(__dirname, "webpack test.webpack.result.md")}' is created.`;
+        const expectedSummarySectionFileCreatedLog = `webpack sumamry section markdown file is created with the name '${path.join(__dirname, "webpack test.webpack.result.md")}'`;
         assert.isTrue(testRunner.stdOutContained(expectedSummarySectionFileCreatedLog), `stdout should contain ${expectedSummarySectionFileCreatedLog}`);
 
         done();

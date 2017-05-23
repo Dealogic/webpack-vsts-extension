@@ -1,16 +1,13 @@
 import { IWebpackCompilationResult } from "./IWebpackCompilationResult";
 
 export default function compile(
-    webpackModuleLocation: string,
-    webpackConfigLocation: string,
+    webpack: new(config: any) => any,
+    webpackConfig: any,
     done: (error: any, result: IWebpackCompilationResult) => void): void {
 
     console.log("compilation of the webpack project is started");
 
-    const webpack = require(webpackModuleLocation);
-    const options = require(webpackConfigLocation);
-
-    const compiler = new webpack(options);
+    const compiler = new webpack(webpackConfig);
 
     compiler.run((error: any, result: IWebpackCompilationResult) => {
         console.log("compilation of the webpack project is done");

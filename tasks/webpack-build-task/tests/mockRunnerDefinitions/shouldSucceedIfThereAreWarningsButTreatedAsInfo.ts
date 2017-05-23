@@ -15,7 +15,10 @@ runTestTask({
                     }
                 ]
             }
-        ]
+        ],
+        toString: (config: any) => {
+            return "shouldSucceedIfThereAreWarningsButTreatedAsInfoResult";
+        }
     },
     treatErrorsAs: "info",
     treatWarningsAs: "info",

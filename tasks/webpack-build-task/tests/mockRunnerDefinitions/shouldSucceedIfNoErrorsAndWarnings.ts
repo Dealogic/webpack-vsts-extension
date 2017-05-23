@@ -31,7 +31,10 @@ runTestTask({
                     }
                 ]
             }
-        ]
+        ],
+        toString: (config: any) => {
+            return "shouldSucceedIfNoErrorsAndWarningsResult";
+        }
     },
     mockWriteFile: true
 });

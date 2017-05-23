@@ -33,7 +33,10 @@ async function run(): Promise<void> {
         const warnings = "warnings";
         const info = "info";
 
-        compile(webpackModuleLocation, webpackConfigLocation, (error: any, result: IWebpackCompilationResult) => {
+        const webpackModule = require(webpackModuleLocation);
+        const webpackConfig = require(webpackConfigLocation);
+
+        compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
             const errorsArray: string[] = collectErrors(result);
             const warningsArray: string[] = collectWarnings(result);
 
@@ -80,7 +83,7 @@ async function run(): Promise<void> {
             }
 
             try {
-                createWebpackResultMarkdownFile(workingFolder, result, taskDisplayName);
+                createWebpackResultMarkdownFile(workingFolder, taskDisplayName, result, webpackConfig);
             } catch (error) {
                 console.log("Couldn't create webpack result markdown file");
                 console.log(error);

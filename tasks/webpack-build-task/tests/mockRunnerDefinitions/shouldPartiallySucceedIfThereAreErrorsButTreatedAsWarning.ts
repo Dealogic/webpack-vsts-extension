@@ -15,7 +15,10 @@ runTestTask({
                     }
                 ]
             }
-        ]
+        ],
+        toString: (config: any) => {
+            return "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningResult";
+        }
     },
     treatErrorsAs: "warnings",
     mockWriteFile: true
