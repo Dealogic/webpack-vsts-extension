@@ -1,19 +1,16 @@
 import * as fs from "fs";
 import * as shouldCollectErrorsAndWarningsFromChildren from "./shouldCollectErrorsAndWarningsFromChildren";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
-import * as shouldFailIfThereAreErrorsAndWarningsWebpack2 from "./shouldFailIfThereAreErrorsAndWarningsWebpack2";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
+import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGenerateMarkdownFileInCaseOfASuccessfulRun";
+import * as shouldLogInformationAboutTheProcess from "./shouldLogInformationAboutTheProcess";
 import * as shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning from "./shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning";
 import * as shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning from "./shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning";
-import * as shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningWebpack2 from "./shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningWebpack2";
 import * as shouldReportErrorDetailInCaseOfWebpackBuildFailure from "./shouldReportErrorDetailInCaseOfWebpackBuildFailure";
 import * as shouldSucceedIfNoDisplayNameDefined from "./shouldSucceedIfNoDisplayNameDefined";
 import * as shouldSucceedIfNoErrorsAndWarnings from "./shouldSucceedIfNoErrorsAndWarnings";
 import * as shouldSucceedIfThereAreErrorsButTreatedAsInfo from "./shouldSucceedIfThereAreErrorsButTreatedAsInfo";
-import * as shouldSucceedIfThereAreErrorsButTreatedAsInfoWebpack2 from "./shouldSucceedIfThereAreErrorsButTreatedAsInfoWebpack2";
 import * as shouldSucceedIfThereAreWarningsButTreatedAsInfo from "./shouldSucceedIfThereAreWarningsButTreatedAsInfo";
-import * as shouldLogInformationAboutTheProcess from "./shouldLogInformationAboutTheProcess";
-import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGenerateMarkdownFileInCaseOfASuccessfulRun";
 
 describe("webpack build task", () => {
     after((done: MochaDone) => {
@@ -36,10 +33,6 @@ describe("webpack build task", () => {
         shouldFailIfThereAreErrorsAndWarnings.executeTest);
 
     it(
-        "should fail if there are errors and warnings in case of webpack 2",
-        shouldFailIfThereAreErrorsAndWarningsWebpack2.executeTest);
-
-    it(
         "should fail if there are warnings, but those are treated as errors",
         shouldFailIfThereAreWarningsButTreatedAsErrors.executeTest);
 
@@ -60,10 +53,6 @@ describe("webpack build task", () => {
         shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.executeTest);
 
     it(
-        "should partially succeed if there are errors, but those are treated as warnings in case of webpack 2",
-        shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningWebpack2.executeTest);
-
-    it(
         "should report error detail in case of webpack build failure",
         shouldReportErrorDetailInCaseOfWebpackBuildFailure.executeTest);
 
@@ -78,10 +67,6 @@ describe("webpack build task", () => {
     it(
         "should succeed if there are errors, but those are treated as info",
         shouldSucceedIfThereAreErrorsButTreatedAsInfo.executeTest);
-
-    it(
-        "should succeed if there are errors, but those are treated as info in case of webpack 2",
-        shouldSucceedIfThereAreErrorsButTreatedAsInfoWebpack2.executeTest);
 
     it(
         "should succeed if there are warnings, but those are treated as info",

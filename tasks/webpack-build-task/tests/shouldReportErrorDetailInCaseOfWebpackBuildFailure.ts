@@ -13,8 +13,7 @@ export const executeTest = (done: MochaDone) => {
         assert.isTrue(testRunner.failed, "task should be failed");
         assert.equal(testRunner.errorIssues.length, 2);
         assert.equal(testRunner.errorIssues[0], "webpack test failed");
-        assert.equal(testRunner.errorIssues[1], "Error: error happened during execution of webpack command");
-        assert.isTrue(testRunner.stdOutContained("at executeWebpackCommand"), "task should report the error detail on the console");
+        assert.equal(testRunner.errorIssues[1], "Error: error happened during compilation of the webpack project");
 
         done();
 };

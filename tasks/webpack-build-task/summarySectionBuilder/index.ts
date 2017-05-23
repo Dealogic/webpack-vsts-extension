@@ -17,7 +17,7 @@ const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: s
     return path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
 };
 
-const createWebpackResultMarkdownFile = (workingFolder: string, webpackJsLocation: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
+const createWebpackResultMarkdownFile = (workingFolder: string, result: IWebpackBuildResult, taskDisplayName: string): void => {
     console.log("creating the summary section");
 
     let resultFileContent = `Hash: ${result.hash}  ${os.EOL}`;

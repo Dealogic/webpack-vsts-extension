@@ -10,8 +10,11 @@ export const executeTest = (done: MochaDone) => {
         let testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
-        const expectedWebpackBuildLog = "building the webpack project";
-        assert.isTrue(testRunner.stdOutContained(expectedWebpackBuildLog), `stdout should contain ${expectedWebpackBuildLog}`);
+        const expectedWebpackCompilationStartedLog = "compilation of the webpack project is started";
+        assert.isTrue(testRunner.stdOutContained(expectedWebpackCompilationStartedLog), `stdout should contain ${expectedWebpackCompilationStartedLog}`);
+
+        const expectedWebpackCompilationDoneLog = "compilation of the webpack project is done";
+        assert.isTrue(testRunner.stdOutContained(expectedWebpackCompilationDoneLog), `stdout should contain ${expectedWebpackCompilationDoneLog}`);
 
         const expectedSummarySectionLog = "creating the summary section";
         assert.isTrue(testRunner.stdOutContained(expectedSummarySectionLog), `stdout should contain ${expectedSummarySectionLog}`);

@@ -1,65 +1,26 @@
-import { execSync, ExecOptionsWithStringEncoding } from "child_process";
-import * as path from "path";
 import { IWebpackBuildResult } from "./IWebpackBuildResult";
-import * as tl from "vsts-task-lib/task";
 
-const executeWebpackCommand = (workingFolder: string, webpackJsLocation: string, webpackArguments: string) => {
-    if (webpackArguments) {
-        webpackArguments = `--json ${webpackArguments}`;
-    } else {
-        webpackArguments = "--json";
-    }
+export default function compile(
+    webpackModuleLocation: string,
+    webpackConfigLocation: string,
+    done: (error: any, result: IWebpackBuildResult) => void): void {
 
-    tl.cd(workingFolder);
-    webpackJsLocation = path.resolve(workingFolder, webpackJsLocation);
-    const webpackCommand = `node "${webpackJsLocation}" ${webpackArguments}`;
+    console.log("compilation of the webpack project is started");
 
-    console.log(`executing the command: ${webpackCommand}`);
+    const webpack = require(webpackModuleLocation);
+    const options = require(webpackConfigLocation);
 
-    const options: ExecOptionsWithStringEncoding = {
-        encoding: "utf8"
-    };
+    const compiler = new webpack(options);
 
-    return execSync(webpackCommand, options);
-};
+    compiler.run((error: any, result: IWebpackBuildResult) => {
+        console.log("compilation of the webpack project is done");
 
-const fixStdOut = (stdout: string) => {
-    return stdout.slice(stdout.indexOf("{"), stdout.lastIndexOf("}") + 1);
-};
+        if (done) {
+            if (error) {
+                throw error;
+            }
 
-const processStdOut = (stdout: string) => {
-    const fixedStdOut = fixStdOut(stdout);
-    const result = <IWebpackBuildResult>JSON.parse(fixedStdOut);
-
-    return result;
-};
-
-export function build(currentWorkingDirectory: string, webpackJsLocation: string, webpackArguments: string): IWebpackBuildResult {
-    console.log("building the webpack project");
-
-    let stdout: string;
-    let result: IWebpackBuildResult;
-    let error: any;
-
-    try {
-        stdout = executeWebpackCommand(currentWorkingDirectory, webpackJsLocation, webpackArguments);
-    } catch (executeWebpackCommandError) {
-        error = executeWebpackCommandError;
-        stdout = executeWebpackCommandError.stdout;
-    }
-
-    if (stdout) {
-        try {
-            result = processStdOut(stdout);
-        } catch (processStdOutError) {
-            throw {
-                processStdOutError,
-                error
-            };
+            done(error, result);
         }
-    } else {
-        throw error;
-    }
-
-    return result;
+    });
 }
