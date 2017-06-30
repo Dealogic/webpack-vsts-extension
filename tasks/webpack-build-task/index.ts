@@ -5,7 +5,7 @@ import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
 import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
-    const messageParts = message.split("\n");
+    let messageParts = message.split("\n");
 
     for (let index = 0; index < messageParts.length; index++) {
         messageParts[index] = messageParts[index].trim();
