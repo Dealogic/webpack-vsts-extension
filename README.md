@@ -91,7 +91,7 @@ The result sections in case of multiple build steps:
 ## Summary of Task Settings
 
 Name | Required | Default Value | Description
---- | --- | --- | ---
+--- | :---: | --- | ---
 webpack config location | true | ./webpack.config.js | The location of the configuration for the webpack compilation. Relative to the working folder.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
