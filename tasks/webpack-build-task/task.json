@@ -34,7 +34,8 @@
             "type": "string",
             "label": "webpack config location",
             "required": true,
-            "helpMarkDown": "The location of the configuration for the webpack compilation."
+            "defaultValue": "./webpack.config.js",
+            "helpMarkDown": "The location of the configuration for the webpack compilation. Relative to the working folder."
         },
         {
             "name": "treatErrorsAs",
