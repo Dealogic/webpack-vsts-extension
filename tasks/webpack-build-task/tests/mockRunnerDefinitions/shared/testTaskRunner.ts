@@ -18,10 +18,6 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
         testRunConfiguration.workingFolder = path.resolve(__dirname, "..", "..");
     }
 
-    if (!testRunConfiguration.webpackModuleLocation) {
-        testRunConfiguration.webpackModuleLocation = "webpack";
-    }
-
     if (!testRunConfiguration.webpackConfigLocation) {
         testRunConfiguration.webpackConfigLocation = "./webpack.config";
     }

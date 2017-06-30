@@ -76,7 +76,7 @@
             "name": "webpackModuleLocation",
             "type": "string",
             "label": "webpack module location",
-            "defaultValue": "webpack",
+            "defaultValue": "",
             "required": false,
             "helpMarkDown": "Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.",
             "groupName": "advanced"
