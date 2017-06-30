@@ -31,5 +31,7 @@ export const executeTest = (done: MochaDone) => {
         assert.equal(testRunner.errorIssues[3], "webpack test: child-for-first-child-error");
         assert.equal(testRunner.errorIssues[4], "webpack test: second-child-error");
 
+        assert.equal(0, 1);
+
         done();
 };
