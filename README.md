@@ -16,6 +16,7 @@
 * [Usage](#usage)
     * [Advanced Settings](#advanced-settings)
     * [Multiple Build Steps](#multiple-build-steps)
+* [Summary of Task Settings](#summary-of-task-settings)
 * [Release Notes](#release-notes)
 * [License](#license)
 
@@ -86,6 +87,16 @@ The issues in case of multiple build steps:
 The result sections in case of multiple build steps:
 
 ![Result sections for multiple steps](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/ResultSectionsForMultipleSteps.png)
+
+## Summary of Task Settings
+
+Name | Required | Default Value | Description
+--- | --- | --- | ---
+webpack config location | true | ./webpack.config.js | The location of the configuration for the webpack compilation. Relative to the working folder.
+treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
+treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
+workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
+webpack module location | false | | Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.
 
 ## Release Notes
 
