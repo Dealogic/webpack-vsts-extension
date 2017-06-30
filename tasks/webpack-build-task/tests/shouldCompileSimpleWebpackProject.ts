@@ -5,9 +5,12 @@ import * as fs from "fs";
 
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
-export const executeTest = (done: MochaDone) => {
-        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileSimpleWebpackProject.js");
-        let testRunner = new MockTestRunner(testPath);
+export function executeTest(done: MochaDone): void {
+        // tslint:disable-next-line:no-invalid-this
+        this.timeout(5000);
+
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileSimpleWebpackProject.js");
+        const testRunner = new MockTestRunner(testPath);
 
         testRunner.run();
 
@@ -15,9 +18,9 @@ export const executeTest = (done: MochaDone) => {
 
         assert.include(content, "Hash: 49f2492b5de21b031033", "Expected hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 1.14.0", "Expected webpack version is not found in the markdown file.");
-        assert.include(content, "main.bundle.js  1.44 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.")
+        assert.include(content, "main.bundle.js  1.44 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
 
         assert.include(testRunner.stdout, content, "The markdown file output has to be included in the standard out.");
 
         done();
-};
+}

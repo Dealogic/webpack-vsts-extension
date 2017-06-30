@@ -6,8 +6,8 @@ import * as fs from "fs";
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export const executeTest = (done: MochaDone) => {
-        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfNoErrorsAndWarnings.js");
-        let testRunner = new MockTestRunner(testPath);
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldSucceedIfNoErrorsAndWarnings.js");
+        const testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");

@@ -5,7 +5,7 @@ import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
 import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
-    let messageParts = message.split("\n");
+    const messageParts = message.split("\n");
 
     for (let index = 0; index < messageParts.length; index++) {
         messageParts[index] = messageParts[index].trim();
@@ -44,8 +44,8 @@ async function run(): Promise<void> {
             const errorsArray: string[] = collectErrors(result);
             const warningsArray: string[] = collectWarnings(result);
 
-            let hasErrors = errorsArray.length > 0;
-            let hasWarnings = warningsArray.length > 0;
+            const hasErrors = errorsArray.length > 0;
+            const hasWarnings = warningsArray.length > 0;
 
             if ((hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors)) {
                 tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
@@ -56,25 +56,25 @@ async function run(): Promise<void> {
             }
 
             if (hasErrors && treatErrorsAs !== info) {
-                for (let error of errorsArray) {
-                    error = `${taskDisplayName}: ${convertMessageToSingleLine(error)}`;
+                for (let errorItem of errorsArray) {
+                    errorItem = `${taskDisplayName}: ${convertMessageToSingleLine(errorItem)}`;
 
                     if (treatErrorsAs === errors) {
-                        tl.error(error);
+                        tl.error(errorItem);
                     } else if (treatErrorsAs === warnings) {
-                        tl.warning(error);
+                        tl.warning(errorItem);
                     }
                 }
             }
 
             if (hasWarnings && treatWarningsAs !== info) {
-                for (let warning of warningsArray) {
-                    warning = `${taskDisplayName}: ${convertMessageToSingleLine(warning)}`;
+                for (let warningItem of warningsArray) {
+                    warningItem = `${taskDisplayName}: ${convertMessageToSingleLine(warningItem)}`;
 
                     if (treatWarningsAs === errors) {
-                        tl.error(warning);
+                        tl.error(warningItem);
                     } else if (treatWarningsAs === warnings) {
-                        tl.warning(warning);
+                        tl.warning(warningItem);
                     }
                 }
             }

@@ -7,10 +7,10 @@ const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export function executeTest(done: MochaDone): void {
         // tslint:disable-next-line:no-invalid-this
-        this.timeout(3000);
+        this.timeout(5000);
 
-        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileWebpack2Project.js");
-        let testRunner = new MockTestRunner(testPath);
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileWebpack2Project.js");
+        const testRunner = new MockTestRunner(testPath);
 
         testRunner.run();
 
@@ -18,9 +18,9 @@ export function executeTest(done: MochaDone): void {
 
         assert.include(content, "Hash: 2ffab36eb69fd0498db5", "Expected hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 2.2.0", "Expected webpack version is not found in the markdown file.");
-        assert.include(content, "bundle.js  544 kB       0  [emitted]  [big]  main", "Expected bundle.js row is not found in the markdown file.")
+        assert.include(content, "bundle.js  544 kB       0  [emitted]  [big]  main", "Expected bundle.js row is not found in the markdown file.");
 
         assert.include(testRunner.stdout, content, "The markdown file output has to be included in the standard out.");
 
         done();
-};
+}

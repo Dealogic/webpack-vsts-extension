@@ -4,4 +4,4 @@ export interface IAsset {
     chunks: number[];
     chunkNames: string[];
     emitted: boolean;
-};
+}

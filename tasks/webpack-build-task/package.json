@@ -3,11 +3,7 @@
   "version": "3.0.0",
   "description": "Webpack build task for Visual Studio Team System (VSTS)",
   "main": "index.js",
-  "scripts": {
-    "build": "npm install",
-    "upload": "tfx build tasks upload",
-    "delete": "tfx build tasks delete --task.id 6752a610-c2f3-11e6-949e-5d3841f133f2"
-  },
+  "scripts": {},
   "keywords": [
     "webpack",
     "build",
@@ -20,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "filenamify": "2.0.0",
-    "vsts-task-lib": "1.1.0"
+    "vsts-task-lib": "2.0.5"
   },
   "devDependencies": {}
 }

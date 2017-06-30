@@ -8,8 +8,8 @@ export interface ITestRunConfiguration {
     treatWarningsAs?: string;
     webpackCompilationError?: any;
     webpackCompilationResult?: IWebpackCompilationResult;
-    webpackConfig?: any,
+    webpackConfig?: any;
     taskDisplayName?: string;
     mockWriteFile?: boolean;
     nullTaskDisplayName?: boolean;
-};
+}

@@ -24,4 +24,3 @@ runTestTask({
     treatWarningsAs: "info",
     mockWriteFile: true
 });
-
