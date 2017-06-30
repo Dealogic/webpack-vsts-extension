@@ -1,5 +1,7 @@
 import * as fs from "fs";
 import * as shouldCollectErrorsAndWarningsFromChildren from "./shouldCollectErrorsAndWarningsFromChildren";
+import * as shouldCompileSimpleWebpackProject from "./shouldCompileSimpleWebpackProject";
+import * as shouldCompileWebpack2Project from "./shouldCompileWebpack2Project";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
 import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGenerateMarkdownFileInCaseOfASuccessfulRun";
@@ -26,6 +28,16 @@ describe("webpack build task", () => {
     it(
         "should collect errors and warnings from children",
         shouldCollectErrorsAndWarningsFromChildren.executeTest
+    );
+
+    it(
+        "should compile simple webpack project",
+        shouldCompileSimpleWebpackProject.executeTest
+    );
+
+    it(
+        "should compile webpack 2 project",
+        shouldCompileWebpack2Project.executeTest
     );
 
     it(

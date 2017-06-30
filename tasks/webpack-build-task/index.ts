@@ -2,6 +2,7 @@ import tl = require("vsts-task-lib/task");
 import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
 import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
+import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
     let messageParts = message.split("\n");
@@ -33,8 +34,11 @@ async function run(): Promise<void> {
         const warnings = "warnings";
         const info = "info";
 
-        const webpackModule = require(webpackModuleLocation);
-        const webpackConfig = require(webpackConfigLocation);
+        tl.cd(workingFolder);
+        process.chdir(workingFolder);
+
+        const webpackModule = resolveWebpackModule(workingFolder, webpackModuleLocation);
+        const webpackConfig = resolveWebpackConfig(workingFolder, webpackConfigLocation);
 
         compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
             const errorsArray: string[] = collectErrors(result);

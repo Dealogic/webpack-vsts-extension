@@ -17,6 +17,8 @@ export default function compile(
                 throw error;
             }
 
+            console.log(result.toString(webpackConfig));
+
             done(error, result);
         }
     });

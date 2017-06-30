@@ -1,10 +1,10 @@
 {
   "name": "wepback-vsts-extension",
-  "version": "2.1.3",
+  "version": "3.0.0",
   "description": "webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && typings install && cd tasks/webpack-build-task && npm run build",
+    "setup": "npm install && typings install && cd tasks/webpack-build-task && npm run build && cd ../../samples/multiple-webpack-build-steps/webpack-project-one && npm install && cd ../../webpack-2 && npm install",
     "build": "npm run setup && tsc && node updateVersion.js && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
     "test": "tsc && cd tasks/webpack-build-task && mocha tests/suite.js",
     "test-reporter": "cd tasks/webpack-build-task && mocha tests/suite.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",

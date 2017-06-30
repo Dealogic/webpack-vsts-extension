@@ -7,7 +7,7 @@ export interface ITestRunConfiguration {
     treatErrorsAs?: string;
     treatWarningsAs?: string;
     webpackCompilationError?: any;
-    webpackCompilationResult: IWebpackCompilationResult;
+    webpackCompilationResult?: IWebpackCompilationResult;
     webpackConfig?: any,
     taskDisplayName?: string;
     mockWriteFile?: boolean;

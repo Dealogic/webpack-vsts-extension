@@ -1,8 +1,7 @@
 import { ITestRunConfiguration } from "./ITestRunConfiguration";
 import createTaskMockRunner from "./taskMockRunnerFactory";
 import registerTaskDisplayNameVariableMockExport from "./taskDisplayNameVariableMockExportRegister";
-import registerMockWebpackModule from "./mockWebpackModuleRegister";
-import registerMockWebpackConfig from "./mockWebpackConfigRegister";
+import registerMockWebpackModuleResolver from "./mockWebpackModuleResolverRegister";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -24,7 +23,7 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
     }
 
     if (!testRunConfiguration.webpackConfigLocation) {
-        testRunConfiguration.webpackConfigLocation = "webpack.config.js";
+        testRunConfiguration.webpackConfigLocation = "./webpack.config";
     }
 
     if (!testRunConfiguration.treatErrorsAs) {
@@ -49,13 +48,13 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
 
     registerTaskDisplayNameVariableMockExport(taskMockRunner, testRunConfiguration.taskDisplayName);
 
-    registerMockWebpackModule(
-        taskMockRunner,
-        testRunConfiguration.webpackModuleLocation,
-        testRunConfiguration.webpackCompilationError,
-        testRunConfiguration.webpackCompilationResult);
-
-    registerMockWebpackConfig(taskMockRunner, testRunConfiguration.webpackConfigLocation, testRunConfiguration.webpackConfig);
+    if (testRunConfiguration.webpackCompilationResult) {
+        registerMockWebpackModuleResolver(
+            taskMockRunner,
+            testRunConfiguration.webpackConfig,
+            testRunConfiguration.webpackCompilationError,
+            testRunConfiguration.webpackCompilationResult);
+    }
 
     if (testRunConfiguration.mockWriteFile) {
         taskMockRunner.registerMockExport("writeFile", (resultFileName: string, content: string) => {
