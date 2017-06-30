@@ -1,7 +1,7 @@
 import { IAsset } from "./IAsset";
 import { IChunk } from "./IChunk";
 
-export interface IWebpackBuildResult {
+export interface IWebpackCompilationResult {
     warnings?: string[];
     errors?: string[];
     assets?: IAsset[];
@@ -9,5 +9,6 @@ export interface IWebpackBuildResult {
     version: string;
     time: number;
     chunks: IChunk[];
-    children?: IWebpackBuildResult[];
+    children?: IWebpackCompilationResult[];
+    toString: (webpackConfiguration: any) => string;
 }

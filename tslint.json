@@ -59,9 +59,9 @@
         ],
         "no-string-literal": false,
         "no-switch-case-fall-through": true,
-        "no-unused-variable": true,
+        "no-unused-variable": false,
         "no-unused-expression": true,
-        "no-use-before-declare": true,
+        "no-use-before-declare": false,
         "object-literal-sort-keys": false,
         "ordered-imports": [
             false

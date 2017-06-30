@@ -15,9 +15,9 @@
         "node.js"
     ],
     "version": {
-        "Major": 2,
-        "Minor": 1,
-        "Patch": 3
+        "Major": 3,
+        "Minor": 0,
+        "Patch": 0
     },
     "minimumAgentVersion": "1.95.0",
     "groups": [
@@ -30,12 +30,12 @@
     "instanceNameFormat": "webpack",
     "inputs": [
         {
-            "name": "arguments",
+            "name": "webpackConfigLocation",
             "type": "string",
-            "label": "arguments",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "The arguments for the webpack command."
+            "label": "webpack config location",
+            "required": true,
+            "defaultValue": "./webpack.config.js",
+            "helpMarkDown": "The location of the configuration for the webpack compilation. Relative to the working folder."
         },
         {
             "name": "treatErrorsAs",
@@ -69,16 +69,16 @@
             "label": "working folder",
             "defaultValue": "",
             "required": false,
-            "helpMarkDown": "Working folder where webpack command is run. If you leave it blank it is the root of the repo.",
+            "helpMarkDown": "Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.",
             "groupName": "advanced"
         },
         {
-            "name": "webpackJsLocation",
+            "name": "webpackModuleLocation",
             "type": "string",
-            "label": "webpack.js location",
-            "defaultValue": "node_modules/webpack/bin/webpack.js",
-            "required": true,
-            "helpMarkDown": "Location of the webpack.js.",
+            "label": "webpack module location",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.",
             "groupName": "advanced"
         }
     ],

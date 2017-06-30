@@ -1,10 +1,11 @@
 import tl = require("vsts-task-lib/task");
-import { build } from "./webpackBuild";
+import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
 import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
+import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
-    let messageParts = message.split("\n");
+    const messageParts = message.split("\n");
 
     for (let index = 0; index < messageParts.length; index++) {
         messageParts[index] = messageParts[index].trim();
@@ -24,8 +25,8 @@ async function run(): Promise<void> {
 
     try {
         const workingFolder = tl.getPathInput("workingFolder", false);
-        const webpackJsLocation = tl.getInput("webpackJsLocation", true);
-        const webpackArguments = tl.getInput("arguments", false);
+        const webpackModuleLocation = tl.getInput("webpackModuleLocation", false);
+        const webpackConfigLocation = tl.getInput("webpackConfigLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
 
@@ -33,59 +34,65 @@ async function run(): Promise<void> {
         const warnings = "warnings";
         const info = "info";
 
-        const result = build(workingFolder, webpackJsLocation, webpackArguments);
+        tl.cd(workingFolder);
+        process.chdir(workingFolder);
 
-        const errorsArray: string[] = collectErrors(result);
-        const warningsArray: string[] = collectWarnings(result);
+        const webpackModule = resolveWebpackModule(workingFolder, webpackModuleLocation);
+        const webpackConfig = resolveWebpackConfig(workingFolder, webpackConfigLocation);
 
-        let hasErrors = errorsArray.length > 0;
-        let hasWarnings = warningsArray.length > 0;
+        compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
+            const errorsArray: string[] = collectErrors(result);
+            const warningsArray: string[] = collectWarnings(result);
 
-        if ((hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors)) {
-            tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
-        } else if ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings)) {
-            tl.warning(`${taskDisplayName} partially succeeded`);
-        } else {
-            console.log(`${taskDisplayName} succeeded`);
-        }
+            const hasErrors = errorsArray.length > 0;
+            const hasWarnings = warningsArray.length > 0;
 
-        if (hasErrors && treatErrorsAs !== info) {
-            for (let error of errorsArray) {
-                error = `${taskDisplayName}: ${convertMessageToSingleLine(error)}`;
+            if ((hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors)) {
+                tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
+            } else if ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings)) {
+                tl.warning(`${taskDisplayName} partially succeeded`);
+            } else {
+                console.log(`${taskDisplayName} succeeded`);
+            }
 
-                if (treatErrorsAs === errors) {
-                    tl.error(error);
-                } else if (treatErrorsAs === warnings) {
-                    tl.warning(error);
+            if (hasErrors && treatErrorsAs !== info) {
+                for (let errorItem of errorsArray) {
+                    errorItem = `${taskDisplayName}: ${convertMessageToSingleLine(errorItem)}`;
+
+                    if (treatErrorsAs === errors) {
+                        tl.error(errorItem);
+                    } else if (treatErrorsAs === warnings) {
+                        tl.warning(errorItem);
+                    }
                 }
             }
-        }
 
-        if (hasWarnings && treatWarningsAs !== info) {
-            for (let warning of warningsArray) {
-                warning = `${taskDisplayName}: ${convertMessageToSingleLine(warning)}`;
+            if (hasWarnings && treatWarningsAs !== info) {
+                for (let warningItem of warningsArray) {
+                    warningItem = `${taskDisplayName}: ${convertMessageToSingleLine(warningItem)}`;
 
-                if (treatWarningsAs === errors) {
-                    tl.error(warning);
-                } else if (treatWarningsAs === warnings) {
-                    tl.warning(warning);
+                    if (treatWarningsAs === errors) {
+                        tl.error(warningItem);
+                    } else if (treatWarningsAs === warnings) {
+                        tl.warning(warningItem);
+                    }
                 }
             }
-        }
 
-        const taskFailed = (hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors);
-        const taskPartiallySucceeded = !taskFailed && ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings));
+            const taskFailed = (hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors);
+            const taskPartiallySucceeded = !taskFailed && ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings));
 
-        if (taskPartiallySucceeded) {
-            console.log("##vso[task.complete result=SucceededWithIssues;]DONE");
-        }
+            if (taskPartiallySucceeded) {
+                console.log("##vso[task.complete result=SucceededWithIssues;]DONE");
+            }
 
-        try {
-            createWebpackResultMarkdownFile(workingFolder, webpackJsLocation, result, taskDisplayName);
-        } catch (error) {
-            console.log("Couldn't create webpack result markdown file");
-            console.log(error);
-        }
+            try {
+                createWebpackResultMarkdownFile(workingFolder, taskDisplayName, result, webpackConfig);
+            } catch (error) {
+                console.log("Couldn't create webpack result markdown file");
+                console.log(error);
+            }
+        });
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);
         tl.error(err);

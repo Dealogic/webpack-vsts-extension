@@ -32,4 +32,3 @@ const webpackBuildResult = {
 };
 
 export default webpackBuildResult;
-

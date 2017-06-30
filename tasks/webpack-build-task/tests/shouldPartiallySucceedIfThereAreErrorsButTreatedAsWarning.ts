@@ -6,8 +6,8 @@ import * as fs from "fs";
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export const executeTest = (done: MochaDone) => {
-        let testPath = path.join(__dirname, mockRunnerDefinitions, "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.js");
-        let testRunner = new MockTestRunner(testPath);
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.js");
+        const testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
         assert.isTrue(testRunner.succeeded, "task should be succeeded");
@@ -23,9 +23,7 @@ export const executeTest = (done: MochaDone) => {
         assert.equal(testRunner.warningIssues[1], "webpack test: error");
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent =
-            `Hash: hash  \r\nVersion: 1.0.0  \r\nTime: 1ms  \r\n  \r\nAsset | Size | Chunks | | `
-            + `Chunk Names\r\n---: | ---: | ---: | ---: | ---\r\n	+ 1 hidden modules  \r\nERROR IN error  \r\n`;
+        const expectedContent = "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningResult";
 
         assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
 
