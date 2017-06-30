@@ -16,10 +16,16 @@ import * as shouldSucceedIfThereAreWarningsButTreatedAsInfo from "./shouldSuccee
 
 describe("webpack build task", () => {
     after((done: MochaDone) => {
-        const filename = "tests/webpack test.webpack.result.md";
+        const filesToDelete = [
+            "../../samples/multiple-webpack-build-steps/webpack-project-one/webpack test.webpack.result.md",
+            "../../samples/webpack-2/webpack test.webpack.result.md",
+            "tests/webpack test.webpack.result.md"
+        ];
 
-        if (fs.existsSync(filename)) {
-            fs.unlinkSync(filename);
+        for (const fileToDelete of filesToDelete) {
+            if (fs.existsSync(fileToDelete)) {
+                fs.unlinkSync(fileToDelete);
+            }
         }
 
         done();
