@@ -18,7 +18,7 @@ Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-ex
 
 ## What The Build Step Does
 
-This build step is trying to use the webpack's node.js API to compile a 'web' application into a bundle. The result, warnings and errors are reported onto the build summary section.
+This build step is using the webpack's node.js API to compile a 'web' application into a bundle. The result, warnings and errors are reported onto the build summary section.
 
 ## Usage
 
