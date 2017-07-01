@@ -48,8 +48,13 @@ async function run(): Promise<void> {
         tl.cd(workingFolder);
         process.chdir(workingFolder);
 
+        console.log("webpack module resolution started");
         const webpackModule = resolveWebpackModule(workingFolder, webpackModuleLocation);
+        console.log("webpack module resolution finished");
+
+        console.log("webpack config resolution started");
         const webpackConfig = resolveWebpackConfig(workingFolder, webpackConfigLocation);
+        console.log("webpack config resolution finished");
 
         compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
             const errorsArray: string[] = collectErrors(result);
