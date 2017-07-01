@@ -38,6 +38,13 @@ async function run(): Promise<void> {
             workingFolder = __dirname;
         }
 
+        console.log(`webpackConfigLocation: ${webpackConfigLocation}`);
+        console.log(`treatErrorsAs: ${treatErrorsAs}`);
+        console.log(`treatWarningsAs: ${treatWarningsAs}`);
+
+        console.log(`workingFolder: ${workingFolder}`);
+        console.log(`webpackModuleLocation: ${webpackModuleLocation}`);
+
         tl.cd(workingFolder);
         process.chdir(workingFolder);
 
