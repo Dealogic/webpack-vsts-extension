@@ -24,7 +24,7 @@ async function run(): Promise<void> {
     console.log(taskDisplayName);
 
     try {
-        const workingFolder = tl.getPathInput("workingFolder", false);
+        let workingFolder = tl.getPathInput("workingFolder", false);
         const webpackModuleLocation = tl.getInput("webpackModuleLocation", false);
         const webpackConfigLocation = tl.getInput("webpackConfigLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
@@ -33,6 +33,10 @@ async function run(): Promise<void> {
         const errors = "errors";
         const warnings = "warnings";
         const info = "info";
+
+        if (!workingFolder) {
+            workingFolder = __dirname;
+        }
 
         tl.cd(workingFolder);
         process.chdir(workingFolder);
