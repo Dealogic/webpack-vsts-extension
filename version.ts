@@ -1,1 +1,1 @@
-export default "__GitVersion.SemVer__".replace("GitVersion.SemVer", "3.0.6").replace(/__/g, "");
+export default "__GitVersion.SemVer__".replace("GitVersion.SemVer", "3.0.7").replace(/__/g, "");
