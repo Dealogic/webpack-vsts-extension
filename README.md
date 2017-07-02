@@ -20,19 +20,19 @@
 * [Release Notes](#release-notes)
 * [License](#license)
 
-## Installation
+## <a id="installation"></a>Installation
 
 Installation can be done using [Visual Studio MarketPlace](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension).
 
-## Source Code
+## <a id="source-code"></a>Source Code
 
 Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-extension).
 
-## What The Build Step Does
+## <a id="what-the-build-step-does"></a>What The Build Step Does
 
 This build step is using the webpack's node.js API to compile a 'web' application into a bundle. The result, warnings and errors are reported onto the build summary section.
 
-## Usage
+## <a id="usage"></a>Usage
 
 Add the task to your build configuration:
 
@@ -62,14 +62,14 @@ The webpack build result section is added onto the summary page to summarize the
 
 ![webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
-### Advanced Settings
+### <a id="advanced-settings"></a>Advanced Settings
 
 - Working folder where webpack command is run. If you leave it blank it is the root of the repo.
 - Location of the webpack module. If you leave it blank it is using the locally installed webpack node module in the working folder, e.g. `./node_modules/webpack`.
 
 ![Advanced settings](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/AdvancedSettings.png)
 
-### Multiple Build Steps
+### <a id="multiple-build-steps"></a>Multiple Build Steps
 
 Multiple webpack build steps are supported now. To distinguish the webpack build steps on the summary page
 and in the list of issues, set the display name properly for the steps:
@@ -88,7 +88,7 @@ The result sections in case of multiple build steps:
 
 ![Result sections for multiple steps](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/ResultSectionsForMultipleSteps.png)
 
-## Summary of Task Settings
+## <a id="summary-of-task-settings"></a>Summary of Task Settings
 
 Name | Required | Default Value | Description
 --- | :---: | --- | ---
@@ -98,9 +98,9 @@ treat warnings as | true | warnings | How to treat warnings. Options are: errors
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack module location | false | | Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.
 
-## Release Notes
+## <a id="release-notes"></a>Release Notes
 
-* 3.0.13 (02/07/2017)
+* 3.0.14 (02/07/2017)
     * As the build step is using webpack's node.js API the arguments setting is gone. Instead of that there's the webpack config file location where custom configuration files can be specified for the compilation.
     * The setting of webpack.js location is gone, instead of that use webpack module location if you don't want to use the locally installed webpack module.
     * The webpack build step summary section is using webpack node.js API to show the result information.
@@ -113,6 +113,6 @@ webpack module location | false | | Location of the webpack module. If you leave
 * 1.1.1 (29/03/2017)
 * 1.1.0 (21/01/2017)
 
-## License
+## <a id="license"></a>License
 
 [MIT](https://github.com/Dealogic/webpack-vsts-extension/blob/master/LICENSE)
