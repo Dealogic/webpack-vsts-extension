@@ -1,14 +1,6 @@
-import { IAsset } from "./IAsset";
-import { IChunk } from "./IChunk";
+import { IWebpackCompilationResultAsJson } from "./IWebpackCompilationResultAsJson";
 
 export interface IWebpackCompilationResult {
-    warnings?: string[];
-    errors?: string[];
-    assets?: IAsset[];
-    hash: string;
-    version: string;
-    time: number;
-    chunks: IChunk[];
-    children?: IWebpackCompilationResult[];
-    toString: (webpackConfiguration: any) => string;
+    toJson: (webpackConif: any, forToString: boolean) => IWebpackCompilationResultAsJson;
+    toString: (webpackConfig: any) => string;
 }

@@ -4,20 +4,12 @@ runTestTask({
     treatErrorsAs: "info",
     treatWarningsAs: "errors",
     webpackCompilationResult: {
-        hash: "hash",
-        version: "1.0.0",
-        time: 1,
-        errors: [],
-        warnings: ["warning"],
-        assets: [],
-        chunks: [
-            {
-                modules: [
-                    {
-                    }
-                ]
-            }
-        ],
+        toJson: () => {
+            return {
+                errors: [],
+                warnings: ["warning"]
+            };
+        },
         toString: (config: any) => {
             return "shouldFailIfThereAreWarningsButTreatedAsErrorsResult";
         }

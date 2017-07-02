@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import * as shouldCollectErrorsAndWarningsFromChildren from "./shouldCollectErrorsAndWarningsFromChildren";
 import * as shouldCompileSimpleWebpackProject from "./shouldCompileSimpleWebpackProject";
+import * as shouldCompileSimpleWebpackProjectWithIssues from "./shouldCompileSimpleWebpackProjectWithIssues";
 import * as shouldCompileWebpack2Project from "./shouldCompileWebpack2Project";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
@@ -18,6 +18,7 @@ describe("webpack build task", () => {
     after((done: MochaDone) => {
         const filesToDelete = [
             "../../samples/multiple-webpack-build-steps/webpack-project-one/webpack test.webpack.result.md",
+            "../../samples/multiple-webpack-build-steps/webpack-project-two/webpack test.webpack.result.md",
             "../../samples/webpack-2/webpack test.webpack.result.md",
             "tests/webpack test.webpack.result.md"
         ];
@@ -32,13 +33,13 @@ describe("webpack build task", () => {
     });
 
     it(
-        "should collect errors and warnings from children",
-        shouldCollectErrorsAndWarningsFromChildren.executeTest
+        "should compile simple webpack project",
+        shouldCompileSimpleWebpackProject.executeTest
     );
 
     it(
-        "should compile simple webpack project",
-        shouldCompileSimpleWebpackProject.executeTest
+        "should compile simple webpack project with issues",
+        shouldCompileSimpleWebpackProjectWithIssues.executeTest
     );
 
     it(

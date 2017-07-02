@@ -1,7 +1,6 @@
 import tl = require("vsts-task-lib/task");
 import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
-import { collectErrors, collectWarnings } from "./errorsAndWarningsCollector";
 import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
@@ -57,8 +56,10 @@ async function run(): Promise<void> {
         console.log("webpack config resolution finished");
 
         compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
-            const errorsArray: string[] = collectErrors(result);
-            const warningsArray: string[] = collectWarnings(result);
+            const resultJson = result.toJson(webpackConfig, true);
+
+            const errorsArray: string[] = resultJson.errors;
+            const warningsArray: string[] = resultJson.warnings;
 
             const hasErrors = errorsArray.length > 0;
             const hasWarnings = warningsArray.length > 0;
