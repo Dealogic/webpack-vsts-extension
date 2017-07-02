@@ -11,7 +11,7 @@ export const executeTest = (done: MochaDone) => {
         testRunner.run();
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = "shouldSucceedIfNoErrorsAndWarningsResult";
+        const expectedContent = "<pre>shouldSucceedIfNoErrorsAndWarningsResult</pre>";
 
         assert.equal(content, expectedContent, "summary section file should be generated");
 

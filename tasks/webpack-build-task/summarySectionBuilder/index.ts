@@ -18,7 +18,7 @@ const createWebpackResultMarkdownFile = (
     console.log("webpack summary section markdown file creation is started");
 
     const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
-    const resultFileContent = result.toString(webpackConfiguration);
+    const resultFileContent = `<pre>${result.toString(webpackConfiguration)}</pre>`;
 
     tl.writeFile(webpackResultFilename, resultFileContent);
 
