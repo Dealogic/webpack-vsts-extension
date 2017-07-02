@@ -15,7 +15,7 @@ export const executeTest = (done: MochaDone) => {
         assert.equal(testRunner.warningIssues.length, 0, "there should be no warnings");
 
         const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = "shouldSucceedIfThereAreErrorsButTreatedAsInfoResult";
+        const expectedContent = "<pre>shouldSucceedIfThereAreErrorsButTreatedAsInfoResult</pre>";
 
         assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
 
