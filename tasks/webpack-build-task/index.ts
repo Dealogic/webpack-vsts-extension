@@ -24,7 +24,7 @@ async function run(): Promise<void> {
     console.log(taskDisplayName);
 
     try {
-        const workingFolder = tl.getPathInput("workingFolder", false);
+        let workingFolder = tl.getPathInput("workingFolder", false);
         const webpackModuleLocation = tl.getInput("webpackModuleLocation", false);
         const webpackConfigLocation = tl.getInput("webpackConfigLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
@@ -34,11 +34,27 @@ async function run(): Promise<void> {
         const warnings = "warnings";
         const info = "info";
 
+        if (!workingFolder) {
+            workingFolder = __dirname;
+        }
+
+        console.log(`webpackConfigLocation: ${webpackConfigLocation}`);
+        console.log(`treatErrorsAs: ${treatErrorsAs}`);
+        console.log(`treatWarningsAs: ${treatWarningsAs}`);
+
+        console.log(`workingFolder: ${workingFolder}`);
+        console.log(`webpackModuleLocation: ${webpackModuleLocation}`);
+
         tl.cd(workingFolder);
         process.chdir(workingFolder);
 
+        console.log("webpack module resolution started");
         const webpackModule = resolveWebpackModule(workingFolder, webpackModuleLocation);
+        console.log("webpack module resolution finished");
+
+        console.log("webpack config resolution started");
         const webpackConfig = resolveWebpackConfig(workingFolder, webpackConfigLocation);
+        console.log("webpack config resolution finished");
 
         compile(webpackModule, webpackConfig, (error: any, result: IWebpackCompilationResult) => {
             const errorsArray: string[] = collectErrors(result);
