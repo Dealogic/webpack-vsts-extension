@@ -6,6 +6,7 @@
     },
     "exclude": [
         "node_modules",
-        "tasks/webpack-build-task/node_modules"
+        "tasks/webpack-build-task/node_modules",
+        "samples/**/*"
     ]
 }
