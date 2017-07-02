@@ -1,20 +1,22 @@
 {
   "name": "wepback-vsts-extension",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "description": "webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
     "setup-sample-one": "cd samples/multiple-webpack-build-steps/webpack-project-one && npm install",
     "setup-sample-two": "cd samples/multiple-webpack-build-steps/webpack-project-two && npm install",
     "setup-sample-webpack2": "cd samples/webpack-2 && npm install",
-    "setup-samples": "npm run setup-sample-one && npm run setup-sample-two && npm run setup-sample-webpack2",
+    "setup-sample-webpack3": "cd samples/webpack-3 && npm install",
+    "setup-sample-webpack3-with-issues": "cd samples/webpack-3-with-issues && npm install",
+    "setup-samples": "npm run setup-sample-one && npm run setup-sample-two && npm run setup-sample-webpack2 && npm run setup-sample-webpack3 && npm run setup-sample-webpack3-with-issues",
     "setup": "npm run setup-samples && npm install && cd tasks/webpack-build-task && npm install",
     "tslint": "tslint tasks/webpack-build-task/**/*.ts -e tasks/webpack-build-task/node_modules/**/*",
     "build-without-setup": "tsc && npm run tslint",
     "build": "npm run setup && npm run build-without-setup",
     "release": "npm run build && node updateVersion.js && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
     "test-reporter": "cd tasks/webpack-build-task && mocha tests/suite.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",
-    "test": "npm run build-without-setup && npm run tslint && cd tasks/webpack-build-task && mocha tests/suite.js"
+    "test": "npm run build-without-setup && cd tasks/webpack-build-task && mocha tests/suite.js"
   },
   "author": "Dealogic",
   "license": "MIT",

@@ -2,6 +2,8 @@ import * as fs from "fs";
 import * as shouldCompileSimpleWebpackProject from "./shouldCompileSimpleWebpackProject";
 import * as shouldCompileSimpleWebpackProjectWithIssues from "./shouldCompileSimpleWebpackProjectWithIssues";
 import * as shouldCompileWebpack2Project from "./shouldCompileWebpack2Project";
+import * as shouldCompileWebpack3Project from "./shouldCompileWebpack3Project";
+import * as shouldCompileWebpack3ProjectWithIssues from "./shouldCompileWebpack3ProjectWithIssues";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
 import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGenerateMarkdownFileInCaseOfASuccessfulRun";
@@ -20,6 +22,8 @@ describe("webpack build task", () => {
             "../../samples/multiple-webpack-build-steps/webpack-project-one/webpack test.webpack.result.md",
             "../../samples/multiple-webpack-build-steps/webpack-project-two/webpack test.webpack.result.md",
             "../../samples/webpack-2/webpack test.webpack.result.md",
+            "../../samples/webpack-3/webpack test.webpack.result.md",
+            "../../samples/webpack-3-with-issues/webpack test.webpack.result.md",
             "tests/webpack test.webpack.result.md"
         ];
 
@@ -45,6 +49,16 @@ describe("webpack build task", () => {
     it(
         "should compile webpack 2 project",
         shouldCompileWebpack2Project.executeTest
+    );
+
+    it(
+        "should compile webpack 3 project",
+        shouldCompileWebpack3Project.executeTest
+    );
+
+    it(
+        "should compile webpack 3 project with issues",
+        shouldCompileWebpack3ProjectWithIssues.executeTest
     );
 
     it(
