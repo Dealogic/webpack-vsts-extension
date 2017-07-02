@@ -100,7 +100,7 @@ webpack module location | false | | Location of the webpack module. If you leave
 
 ## <a id="release-notes"></a>Release Notes
 
-* 3.0.18 (03/07/2017)
+* 3.0.19 (03/07/2017)
     * As the build step is using webpack's node.js API the arguments setting is gone. Instead of that there's the webpack config file location where custom configuration files can be specified for the compilation.
     * The setting of webpack.js location is gone, instead of that use webpack module location if you don't want to use the locally installed webpack module.
     * The webpack build step summary section is using webpack node.js API to show the result information.
