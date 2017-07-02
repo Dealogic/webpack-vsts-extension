@@ -10,15 +10,15 @@
 
 ## Content
 
-* [Installation](#installation)
-* [Source Code](#source-code)
-* [What The Build Step Does](#what-the-build-step-does)
-* [Usage](#usage)
-    * [Advanced Settings](#advanced-settings)
-    * [Multiple Build Steps](#multiple-build-steps)
-* [Summary of Task Settings](#summary-of-task-settings)
-* [Release Notes](#release-notes)
-* [License](#license)
+* [Installation](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#installation)
+* [Source Code](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#source-code)
+* [What The Build Step Does](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#what-the-build-step-does)
+* [Usage](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#usage)
+    * [Advanced Settings](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#advanced-settings)
+    * [Multiple Build Steps](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#multiple-build-steps)
+* [Summary of Task Settings](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#summary-of-task-settings)
+* [Release Notes](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#release-notes)
+* [License](https://marketplace.visualstudio.com/items?itemName=Dealogic.webpack-vsts-extension#license)
 
 ## <a id="installation"></a>Installation
 
@@ -100,7 +100,7 @@ webpack module location | false | | Location of the webpack module. If you leave
 
 ## <a id="release-notes"></a>Release Notes
 
-* 3.0.18 (03/07/2017)
+* 3.0.17 (03/07/2017)
     * As the build step is using webpack's node.js API the arguments setting is gone. Instead of that there's the webpack config file location where custom configuration files can be specified for the compilation.
     * The setting of webpack.js location is gone, instead of that use webpack module location if you don't want to use the locally installed webpack module.
     * The webpack build step summary section is using webpack node.js API to show the result information.
