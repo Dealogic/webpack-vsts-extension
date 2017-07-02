@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "webpack-vsts-extension",
-    "version": "3.0.14",
+    "version": "3.0.18",
     "name": "webpack",
     "description": "bundle your assets, scripts, images, styles",
     "publisher": "Dealogic",
@@ -31,7 +31,7 @@
     ],
     "content": {
         "details": {
-            "path": "README.md"
+            "path": "DETAILS.md"
         },
         "license": {
             "path": "LICENSE"
