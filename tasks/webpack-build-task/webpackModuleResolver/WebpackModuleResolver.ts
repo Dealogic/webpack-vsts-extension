@@ -7,7 +7,13 @@ const resolveWebpackModule = (workingFolder: string, webpackModuleLocation: stri
 };
 
 const resolveWebpackConfig = (workingFolder: string, webpackConfigLocation: string) => {
-    return require(path.resolve(workingFolder, webpackConfigLocation));
+    const webpackConfig = require(path.resolve(workingFolder, webpackConfigLocation));
+
+    if (webpackConfig.default) {
+        return webpackConfig.default;
+    } else {
+        return webpackConfig;
+    }
 };
 
 export {

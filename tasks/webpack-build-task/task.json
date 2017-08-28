@@ -80,6 +80,24 @@
             "required": false,
             "helpMarkDown": "Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.",
             "groupName": "advanced"
+        },
+        {
+            "name": "tsNodeModuleLocation",
+            "type": "string",
+            "label": "ts-node module location",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Location of the ts-node module. If you leave it blank it is the locally installed 'ts-node' module.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "tsNodeOptionsLocation",
+            "type": "string",
+            "label": "ts-node options location",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Location of the ts-node options. If you leave it blank then no options will be used for ts-node.",
+            "groupName": "advanced"
         }
     ],
     "sourceDefinitions": [

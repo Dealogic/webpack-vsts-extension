@@ -2,6 +2,7 @@ import tl = require("vsts-task-lib/task");
 import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
 import { resolveWebpackModule, resolveWebpackConfig } from "./webpackModuleResolver";
+import { resolveTsNodeModule, resolveTsNodeOptions } from "./tsNodeResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
     const messageParts = message.split("\n");
@@ -28,6 +29,8 @@ async function run(): Promise<void> {
         const webpackConfigLocation = tl.getInput("webpackConfigLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
+        const tsNodeModuleLocation = tl.getInput("tsNodeModuleLocation", false);
+        const tsNodeOptionsLocation = tl.getInput("tsNodeOptionsLocation", false);
 
         const errors = "errors";
         const warnings = "warnings";
@@ -46,6 +49,22 @@ async function run(): Promise<void> {
 
         tl.cd(workingFolder);
         process.chdir(workingFolder);
+
+        console.log("trying to resolve ts-node module");
+        const tsNodeModule = resolveTsNodeModule(workingFolder, tsNodeModuleLocation);
+        console.log("ts-node module resolution finsihed");
+
+        if (tsNodeModule) {
+            console.log("trying to resolve ts-node options");
+            const tsNodeOptions = resolveTsNodeOptions(workingFolder, tsNodeOptionsLocation);
+            console.log("ts-node options resolution finished");
+
+            if (tsNodeOptions) {
+                tsNodeModule.register(tsNodeOptions);
+            } else {
+                tsNodeModule.register();
+            }
+        }
 
         console.log("webpack module resolution started");
         const webpackModule = resolveWebpackModule(workingFolder, webpackModuleLocation);
