@@ -1,0 +1,21 @@
+{
+  "name": "webpack-ts-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "8.0.25",
+    "@types/webpack": "3.0.10",
+    "awesome-typescript-loader": "3.2.3",
+    "ts-node": "3.3.0",
+    "tslint": "5.7.0",
+    "tslint-loader": "3.5.3",
+    "typescript": "2.4.2",
+    "webpack": "3.5.5"
+  }
+}
