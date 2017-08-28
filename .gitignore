@@ -12,3 +12,5 @@ version.js
 version.js.map
 samples/webpack-ts-config/src/**/*.js
 samples/webpack-ts-config/src/**/*.js.map
+samples/webpack-3/src/**/*.js
+samples/webpack-3/src/**/*.js.map
