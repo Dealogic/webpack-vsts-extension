@@ -97,9 +97,15 @@ treat errors as | true | errors | How to treat errors. Options are: errors (brea
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack module location | false | | Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.
+ts-node module location | false | | Location of the ts-node module. If you leave it blank it is the locally installed 'ts-node' module.
+ts-node options location | false | | Location of the ts-node options. If you leave it blank the ts-node default options will be used.
 
 ## <a id="release-notes"></a>Release Notes
 
+* 3.1.0 (29/08/2017)
+    * Support for TypeScript webpack configuration is added.
+    * The ts-node module location can be modified.
+    * The ts-node module options file location can be supplied.
 * 3.0.19 (03/07/2017)
     * As the build step is using webpack's node.js API the arguments setting is gone. Instead of that there's the webpack config file location where custom configuration files can be specified for the compilation.
     * The setting of webpack.js location is gone, instead of that use webpack module location if you don't want to use the locally installed webpack module.

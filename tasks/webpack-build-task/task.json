@@ -16,8 +16,8 @@
     ],
     "version": {
         "Major": 3,
-        "Minor": 0,
-        "Patch": 19
+        "Minor": 1,
+        "Patch": 0
     },
     "minimumAgentVersion": "1.95.0",
     "groups": [
@@ -79,6 +79,24 @@
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "tsNodeModuleLocation",
+            "type": "string",
+            "label": "ts-node module location",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Location of the ts-node module. If you leave it blank it is the locally installed 'ts-node' module.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "tsNodeOptionsLocation",
+            "type": "string",
+            "label": "ts-node options location",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Location of the ts-node options. If you leave it blank then no options will be used for ts-node.",
             "groupName": "advanced"
         }
     ],

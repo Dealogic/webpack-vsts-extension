@@ -9,17 +9,18 @@ export function executeTest(done: MochaDone): void {
         // tslint:disable-next-line:no-invalid-this
         this.timeout(10000);
 
-        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileWebpack3Project.js");
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileWebpackTypeScriptConfigProject.js");
         const testRunner = new MockTestRunner(testPath);
 
         testRunner.run();
 
-        const content = fs.readFileSync("../../samples/webpack-3/webpack test.webpack.result.md", "utf8");
+        const content = fs.readFileSync("../../samples/webpack-ts-config/webpack test.webpack.result.md", "utf8");
 
         assert.isTrue(testRunner.succeeded, "webpack task should be succeeded");
+        assert.isFalse(testRunner.failed, "webpack task should not be failed");
 
         assert.include(content, "Hash: a5ffd6ca9cbba72e1044", "Expected hash is not found in the markdown file.");
-        assert.include(content, "Version: webpack 3.0.0", "Expected webpack version is not found in the markdown file.");
+        assert.include(content, "Version: webpack 3.5.5", "Expected webpack version is not found in the markdown file.");
         assert.include(content, "bundle.js  2.5 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
 
         assert.include(testRunner.stdout, content.replace("<pre>", "").replace("</pre>", ""), "The markdown file output has to be included in the standard out.");
