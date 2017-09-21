@@ -102,7 +102,7 @@ ts-node options location | false | | Location of the ts-node options. If you lea
 
 ## <a id="release-notes"></a>Release Notes
 
-* 3.1.0 (29/08/2017)
+* 3.1.0 (21/09/2017)
     * Support for TypeScript webpack configuration is added.
     * The ts-node module location can be modified.
     * The ts-node module options file location can be supplied.
