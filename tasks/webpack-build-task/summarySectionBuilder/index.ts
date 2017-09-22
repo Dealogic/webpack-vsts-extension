@@ -6,7 +6,8 @@ import { IWebpackCompilationResult } from "../webpackCompiler";
 const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
     const webpackResultFilenamePostfix = ".webpack.result.md";
 
-    return path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
+    const filename = filenamify(taskDisplayName).replace(/\[/g, "(").replace(/\]/g, ")").trim();
+    return path.join(workingFolder, `${filename}${webpackResultFilenamePostfix}`);
 };
 
 const createWebpackResultMarkdownFile = (

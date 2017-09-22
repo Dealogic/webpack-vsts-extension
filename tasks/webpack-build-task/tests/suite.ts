@@ -11,6 +11,7 @@ import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGener
 import * as shouldLogInformationAboutTheProcess from "./shouldLogInformationAboutTheProcess";
 import * as shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning from "./shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning";
 import * as shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning from "./shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning";
+import * as shouldReplaceBracketsToParenthesisInFilename from "./shouldReplaceBracketsToParenthesisInFilename";
 import * as shouldReportErrorDetailInCaseOfWebpackBuildFailure from "./shouldReportErrorDetailInCaseOfWebpackBuildFailure";
 import * as shouldSucceedIfNoDisplayNameDefined from "./shouldSucceedIfNoDisplayNameDefined";
 import * as shouldSucceedIfNoErrorsAndWarnings from "./shouldSucceedIfNoErrorsAndWarnings";
@@ -26,7 +27,8 @@ describe("webpack build task", () => {
             "../../samples/webpack-3/webpack test.webpack.result.md",
             "../../samples/webpack-3-with-issues/webpack test.webpack.result.md",
             "../../samples/webpack-ts-config/webpack test.webpack.result.md",
-            "tests/webpack test.webpack.result.md"
+            "tests/webpack test.webpack.result.md",
+            "tests/webpack (something in brackets).webpack.result.md"
         ];
 
         for (const fileToDelete of filesToDelete) {
@@ -91,6 +93,11 @@ describe("webpack build task", () => {
     it(
         "should partially succeed if there are errors, but those are treated as warnings",
         shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.executeTest);
+
+    it(
+        "should replace brackets to parenthesis in filename",
+        shouldReplaceBracketsToParenthesisInFilename.executeTest
+    );
 
     it(
         "should report error detail in case of webpack build failure",
