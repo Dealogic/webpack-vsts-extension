@@ -6,8 +6,7 @@ import { IWebpackCompilationResult } from "../webpackCompiler";
 const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
     const webpackResultFilenamePostfix = ".webpack.result.md";
 
-    const filename = filenamify(taskDisplayName).replace(/\[/g, "(").replace(/\]/g, ")").trim();
-    return path.join(workingFolder, `${filename}${webpackResultFilenamePostfix}`);
+    return path.join(workingFolder, `${filenamify(taskDisplayName).trim()}${webpackResultFilenamePostfix}`);
 };
 
 const createWebpackResultMarkdownFile = (
@@ -18,13 +17,15 @@ const createWebpackResultMarkdownFile = (
 
     console.log("webpack summary section markdown file creation is started");
 
-    const webpackResultFilename = generateWebpackResultFilename(workingFolder, taskDisplayName);
+    const fixedTaskDisplayName = taskDisplayName.replace(/\[/g, "(").replace(/\]/g, ")").trim();
+
+    const webpackResultFilename = generateWebpackResultFilename(workingFolder, fixedTaskDisplayName);
     const resultFileContent = `<pre>${result.toString(webpackConfiguration)}</pre>`;
 
     tl.writeFile(webpackResultFilename, resultFileContent);
 
     console.log(`webpack sumamry section markdown file is created with the name '${webpackResultFilename}'`);
-    console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${taskDisplayName} result;]${webpackResultFilename}`);
+    console.log(`##vso[task.addattachment type=Distributedtask.Core.Summary;name=${fixedTaskDisplayName} result;]${webpackResultFilename}`);
 };
 
 export {

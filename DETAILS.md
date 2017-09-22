@@ -102,6 +102,8 @@ ts-node options location | false | | Location of the ts-node options. If you lea
 
 ## <a id="release-notes"></a>Release Notes
 
+* 3.2.1 (22(09/2017)
+    * Replacing `[]` brackets to `()` parenthesis in the title of the result summary section.
 * 3.2.0 (22/09/2017)
     * Support `[]` brackets in the display name of the task.
 * 3.1.0 (21/09/2017)

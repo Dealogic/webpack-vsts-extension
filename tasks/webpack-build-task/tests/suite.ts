@@ -11,7 +11,7 @@ import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGener
 import * as shouldLogInformationAboutTheProcess from "./shouldLogInformationAboutTheProcess";
 import * as shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning from "./shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning";
 import * as shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning from "./shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning";
-import * as shouldReplaceBracketsToParenthesisInFilename from "./shouldReplaceBracketsToParenthesisInFilename";
+import * as shouldReplaceBracketsToParenthesisInTaskName from "./shouldReplaceBracketsToParenthesisInTaskName";
 import * as shouldReportErrorDetailInCaseOfWebpackBuildFailure from "./shouldReportErrorDetailInCaseOfWebpackBuildFailure";
 import * as shouldSucceedIfNoDisplayNameDefined from "./shouldSucceedIfNoDisplayNameDefined";
 import * as shouldSucceedIfNoErrorsAndWarnings from "./shouldSucceedIfNoErrorsAndWarnings";
@@ -95,8 +95,8 @@ describe("webpack build task", () => {
         shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.executeTest);
 
     it(
-        "should replace brackets to parenthesis in filename",
-        shouldReplaceBracketsToParenthesisInFilename.executeTest
+        "should replace brackets to parenthesis in task name",
+        shouldReplaceBracketsToParenthesisInTaskName.executeTest
     );
 
     it(
