@@ -9,7 +9,7 @@ runTestTask({
             };
         },
         toString: (config: any) => {
-            return "shouldReplaceBracketsToParenthesisInFilename";
+            return "shouldReplaceBracketsToParenthesisInTaskName";
         }
     },
     taskDisplayName: "webpack [something in brackets]",

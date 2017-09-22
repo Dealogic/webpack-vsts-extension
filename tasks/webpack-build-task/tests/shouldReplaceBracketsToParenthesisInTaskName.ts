@@ -5,7 +5,7 @@ import { assert } from "chai";
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export const executeTest = (done: MochaDone) => {
-        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldReplaceBracketsToParenthesisInFilename.js");
+        const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldReplaceBracketsToParenthesisInTaskName.js");
         const testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
