@@ -12,7 +12,7 @@ export const executeTest = (done: MochaDone) => {
         assert.isTrue(testRunner.succeeded, "task should be succeeded");
         assert.isFalse(testRunner.failed, "task should be not failed");
 
-        const resultFileIsAttached = testRunner.stdOutContained("##vso[task.addattachment type=Distributedtask.Core.Summary;name=webpack [something in brackets] result;]");
+        const resultFileIsAttached = testRunner.stdOutContained("##vso[task.addattachment type=Distributedtask.Core.Summary;name=webpack (something in brackets) result;]");
         assert.isTrue(resultFileIsAttached, "result file should be attached");
 
         const resultFilenameConverted = testRunner.stdOutContained("webpack (something in brackets).webpack.result.md");

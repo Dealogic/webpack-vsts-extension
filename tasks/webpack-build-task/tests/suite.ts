@@ -95,7 +95,7 @@ describe("webpack build task", () => {
         shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning.executeTest);
 
     it(
-        "should replace brackets to parenthesis in filename",
+        "should replace brackets to parenthesis in task name",
         shouldReplaceBracketsToParenthesisInFilename.executeTest
     );
 
