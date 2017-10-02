@@ -20,7 +20,7 @@ const createWebpackResultMarkdownFile = (
     const fixedTaskDisplayName = taskDisplayName.replace(/\[/g, "(").replace(/\]/g, ")").trim();
 
     const webpackResultFilename = generateWebpackResultFilename(workingFolder, fixedTaskDisplayName);
-    const resultFileContent = `<pre>${result.toString(webpackConfiguration)}</pre>`;
+    const resultFileContent = `<div class="copy-content-textarea"><pre style="font: inherit">${result.toString(webpackConfiguration)}</pre></div>`;
 
     tl.writeFile(webpackResultFilename, resultFileContent);
 

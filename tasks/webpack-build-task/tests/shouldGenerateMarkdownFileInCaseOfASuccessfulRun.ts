@@ -10,8 +10,10 @@ export const executeTest = (done: MochaDone) => {
         const testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
-        const content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        const expectedContent = "<pre>shouldSucceedIfNoErrorsAndWarningsResult</pre>";
+        let content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        content = content.replace("<div class=\"copy-content-textarea\"><pre style=\"font: inherit\">", "").replace("</pre></div>", "");
+
+        const expectedContent = "shouldSucceedIfNoErrorsAndWarningsResult";
 
         assert.equal(content, expectedContent, "summary section file should be generated");
 
