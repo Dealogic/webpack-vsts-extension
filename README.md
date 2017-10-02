@@ -102,7 +102,10 @@ ts-node options location | false | | Location of the ts-node options. If you lea
 
 ## <a id="release-notes"></a>Release Notes
 
-* 3.2.1 (22(09/2017)
+* 3.2.2 (03/10/2017)
+    * Avoid webpack task summary section overflow with adding scrollbar.
+    * Webpack task summary section uses same font as other sections.
+* 3.2.1 (22/09/2017)
     * Replacing `[]` brackets to `()` parenthesis in the title of the result summary section.
 * 3.2.0 (22/09/2017)
     * Support `[]` brackets in the display name of the task.
