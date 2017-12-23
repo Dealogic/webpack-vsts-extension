@@ -71,9 +71,9 @@ uuid@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
-vsts-task-lib@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.0.5.tgz#cbd5ab232eabb710c96979053187269591c0d510"
+vsts-task-lib@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.1.0.tgz#c371aeff2a8d98438865235dc9fc94701c404c84"
   dependencies:
     minimatch "^3.0.0"
     mockery "^1.7.0"
