@@ -2,6 +2,7 @@ import tl = require("vsts-task-lib/task");
 import path = require("path");
 import filenamify = require("filenamify");
 import { IWebpackCompilationResult } from "../webpackCompiler";
+import resolveWebpackStats from "../webpackStatsResolver";
 
 const generateWebpackResultFilename = (workingFolder: string, taskDisplayName: string) => {
     const webpackResultFilenamePostfix = ".webpack.result.md";
@@ -13,15 +14,16 @@ const createWebpackResultMarkdownFile = (
     workingFolder: string,
     taskDisplayName: string,
     result: IWebpackCompilationResult,
-    webpackConfiguration: any): void => {
+    statsjsLocation: string): void => {
 
     console.log("webpack summary section markdown file creation is started");
 
     const fixedTaskDisplayName = taskDisplayName.replace(/\[/g, "(").replace(/\]/g, ")").trim();
 
-    const webpackResultFilename = generateWebpackResultFilename(workingFolder, fixedTaskDisplayName);
-    const resultFileContent = `<div class="copy-content-textarea"><pre style="font: inherit">${result.toString(webpackConfiguration)}</pre></div>`;
+    const stats = resolveWebpackStats(workingFolder, statsjsLocation);
+    const resultFileContent = `<div class="copy-content-textarea"><pre style="font: inherit">${stats.jsonToString(result)}</pre></div>`;
 
+    const webpackResultFilename = generateWebpackResultFilename(workingFolder, fixedTaskDisplayName);
     tl.writeFile(webpackResultFilename, resultFileContent);
 
     console.log(`webpack sumamry section markdown file is created with the name '${webpackResultFilename}'`);

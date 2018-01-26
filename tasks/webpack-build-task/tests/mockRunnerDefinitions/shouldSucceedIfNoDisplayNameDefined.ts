@@ -2,12 +2,15 @@ import runTestTask from "./shared/testTaskRunner";
 
 runTestTask({
     webpackCompilationResult: {
-        toJson: () => {
-            return {
-                errors: [],
-                warnings: []
-            };
-        }
+        hash: "",
+        time: 1,
+        version: "",
+        assets: [],
+        children: [],
+        chunks: [],
+        errors: [],
+        warnings: []
     },
+    jsonToStringResult: "shouldSucceedIfNoDisplayNameDefined",
     nullTaskDisplayName: true
 });

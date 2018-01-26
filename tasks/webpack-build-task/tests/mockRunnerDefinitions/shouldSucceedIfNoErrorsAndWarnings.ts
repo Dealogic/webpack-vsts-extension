@@ -2,15 +2,15 @@ import runTestTask from "./shared/testTaskRunner";
 
 runTestTask({
     webpackCompilationResult: {
-        toJson: () => {
-            return {
-                errors: [],
-                warnings: []
-            };
-        },
-        toString: (config: any) => {
-            return "shouldSucceedIfNoErrorsAndWarningsResult";
-        }
+        hash: "",
+        time: 1,
+        version: "",
+        assets: [],
+        children: [],
+        chunks: [],
+        errors: [],
+        warnings: []
     },
+    jsonToStringResult: "shouldSucceedIfNoErrorsAndWarningsResult",
     mockWriteFile: true
 });

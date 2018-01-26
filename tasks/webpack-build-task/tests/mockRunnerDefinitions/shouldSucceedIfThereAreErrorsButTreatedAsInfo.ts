@@ -2,16 +2,16 @@ import runTestTask from "./shared/testTaskRunner";
 
 runTestTask({
     webpackCompilationResult: {
-        toJson: () => {
-            return {
-                errors: ["error"],
-                warnings: []
-            };
-        },
-        toString: (config: any) => {
-            return "shouldSucceedIfThereAreErrorsButTreatedAsInfoResult";
-        }
+        hash: "",
+        time: 1,
+        version: "",
+        assets: [],
+        children: [],
+        chunks: [],
+        errors: ["error"],
+        warnings: []
     },
+    jsonToStringResult: "shouldSucceedIfThereAreErrorsButTreatedAsInfoResult",
     treatErrorsAs: "info",
     treatWarningsAs: "info",
     mockWriteFile: true

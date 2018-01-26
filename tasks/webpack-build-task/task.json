@@ -30,12 +30,12 @@
     "instanceNameFormat": "webpack",
     "inputs": [
         {
-            "name": "webpackConfigLocation",
+            "name": "webpackCliArguments",
             "type": "string",
-            "label": "webpack config location",
-            "required": true,
-            "defaultValue": "./webpack.config.js",
-            "helpMarkDown": "The location of the configuration for the webpack compilation. Relative to the working folder."
+            "label": "webpack cli arguments",
+            "required": false,
+            "defaultValue": "",
+            "helpMarkDown": "Arguments to pass to the webpack cli."
         },
         {
             "name": "treatErrorsAs",
@@ -73,37 +73,22 @@
             "groupName": "advanced"
         },
         {
-            "name": "webpackModuleLocation",
+            "name": "webpackCliLocation",
             "type": "string",
-            "label": "webpack module location",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.",
+            "label": "webpack cli location",
+            "defaultValue": "./node_modules/webpack/bin/webpack.js",
+            "required": true,
+            "helpMarkDown": "Location of the webpack cli. By default it's the locally installed webpack cli.",
             "groupName": "advanced"
         },
         {
-            "name": "tsNodeModuleLocation",
+            "name": "statsjsLocation",
             "type": "string",
-            "label": "ts-node module location",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "Location of the ts-node module. If you leave it blank it is the locally installed 'ts-node' module.",
+            "label": "stats.js location",
+            "defaultValue": "./node_modules/webpack/lib/Stats.js",
+            "required": true,
+            "helpMarkDown": "Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.",
             "groupName": "advanced"
-        },
-        {
-            "name": "tsNodeOptionsLocation",
-            "type": "string",
-            "label": "ts-node options location",
-            "defaultValue": "",
-            "required": false,
-            "helpMarkDown": "Location of the ts-node options. If you leave it blank then no options will be used for ts-node.",
-            "groupName": "advanced"
-        }
-    ],
-    "sourceDefinitions": [
-        {
-            "target": "treatErrorsAs",
-            "endpoint": ""
         }
     ],
     "execution": {

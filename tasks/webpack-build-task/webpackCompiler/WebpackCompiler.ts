@@ -1,25 +1,48 @@
-import { IWebpackCompilationResult } from "./IWebpackCompilationResult";
+import { IWebpackBuildResult } from "./IWebpackBuildResult";
+import resolveWebpackStats from "../webpackStatsResolver";
+import executeWebpackCli from "./WebpackCliExecutor";
 
-export default function compile(
-    webpack: new(config: any) => any,
-    webpackConfig: any,
-    done: (error: any, result: IWebpackCompilationResult) => void): void {
+const fixStdOut = (stdout: string) => {
+    return stdout.slice(stdout.indexOf("{"), stdout.lastIndexOf("}") + 1);
+};
 
+const processStdOut = (stdout: string) => {
+    const fixedStdOut = fixStdOut(stdout);
+    const result = JSON.parse(fixedStdOut) as IWebpackBuildResult;
+
+    return result;
+};
+
+export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackBuildResult {
     console.log("compilation of the webpack project is started");
 
-    const compiler = new webpack(webpackConfig);
+    let stdout: string;
+    let result: IWebpackBuildResult;
+    let error: any;
 
-    compiler.run((error: any, result: IWebpackCompilationResult) => {
-        console.log("compilation of the webpack project is done");
+    try {
+        stdout = executeWebpackCli(workingFolder, webpackCliLocation, webpackCliArguments);
+    } catch (executeWebpackCliError) {
+        error = executeWebpackCliError;
+        stdout = executeWebpackCliError.stdout;
+    }
 
-        if (done) {
-            if (error) {
-                throw error;
-            }
-
-            console.log(result.toString(webpackConfig));
-
-            done(error, result);
+    if (stdout) {
+        try {
+            result = processStdOut(stdout);
+        } catch (processStdOutError) {
+            throw {
+                processStdOutError,
+                error
+            };
         }
-    });
+    } else {
+        throw error;
+    }
+
+    const stats = resolveWebpackStats(workingFolder, statsjsLocation);
+    console.log("compilation of the webpack project is done");
+    console.log(stats.jsonToString(result));
+
+    return result;
 }
