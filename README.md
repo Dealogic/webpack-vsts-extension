@@ -102,7 +102,7 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
-* 4.0.0 (26/01/2018)
+* 4.0.1 (27/01/2018)
     * Using webpack-cli again instead of node.js API.
 * 3.2.2 (03/10/2017)
     * Avoid webpack task summary section overflow with adding scrollbar.
