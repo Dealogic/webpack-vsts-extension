@@ -102,7 +102,11 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
-* 4.0.0 (26/01/2018)
+* 4.0.2 (27/01/2018)
+    * Documentation is updated.
+* 4.0.1 (27/01/2018)
+    * Errors and Warnings are reported correctly in the webpack like logs based on the --display none/errors-only/minimal/normal/detailed/verbose option.
+* 4.0.0 (27/01/2018)
     * Using webpack-cli again instead of node.js API.
 * 3.2.2 (03/10/2017)
     * Avoid webpack task summary section overflow with adding scrollbar.

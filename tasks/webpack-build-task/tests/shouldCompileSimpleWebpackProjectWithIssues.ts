@@ -7,7 +7,7 @@ const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export function executeTest(done: MochaDone): void {
         // tslint:disable-next-line:no-invalid-this
-        this.timeout(30000);
+        this.timeout(60000);
 
         const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileSimpleWebpackProjectWithIssues.js");
         const testRunner = new MockTestRunner(testPath);
