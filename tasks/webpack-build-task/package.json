@@ -1,6 +1,6 @@
 {
   "name": "webpack-build-task",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "description": "Webpack build task for Visual Studio Team System (VSTS)",
   "main": "index.js",
   "scripts": {},
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "filenamify": "2.0.0",
-    "vsts-task-lib": "2.0.5"
+    "vsts-task-lib": "2.1.0"
   },
   "devDependencies": {}
 }

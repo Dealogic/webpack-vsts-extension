@@ -2,11 +2,14 @@ import runTestTask from "./shared/testTaskRunner";
 
 runTestTask({
     webpackCompilationResult: {
-        toJson: () => {
-            return {
-                errors: ["error"],
-                warnings: ["warning"]
-            };
-        }
-    }
+        hash: "",
+        assets: [],
+        children: [],
+        chunks: [],
+        time: 1,
+        version: "",
+        errors: ["error"],
+        warnings: ["warning"]
+    },
+    jsonToStringResult: "shouldFailIfThereAreErrorsAndWarningsResult"
 });

@@ -4,15 +4,15 @@ runTestTask({
     treatErrorsAs: "info",
     treatWarningsAs: "errors",
     webpackCompilationResult: {
-        toJson: () => {
-            return {
-                errors: [],
-                warnings: ["warning"]
-            };
-        },
-        toString: (config: any) => {
-            return "shouldFailIfThereAreWarningsButTreatedAsErrorsResult";
-        }
+        hash: "",
+        assets: [],
+        children: [],
+        chunks: [],
+        time: 1,
+        version: "",
+        errors: [],
+        warnings: ["warning"]
     },
+    jsonToStringResult: "shouldFailIfThereAreWarningsButTreatedAsErrorsResult",
     mockWriteFile: true
 });

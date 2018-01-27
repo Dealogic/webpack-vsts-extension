@@ -30,7 +30,7 @@ Source code can be found on [GitHub](https://github.com/Dealogic/webpack-vsts-ex
 
 ## <a id="what-the-build-step-does"></a>What The Build Step Does
 
-This build step is using the webpack's node.js API to compile a 'web' application into a bundle. The result, warnings and errors are reported onto the build summary section.
+This build step is using the webpack's command line tool to compile a 'web' application into a bundle. The result, warnings and errors are reported onto the build summary section.
 
 ## <a id="usage"></a>Usage
 
@@ -40,10 +40,10 @@ Add the task to your build configuration:
 
 By default without any configuration the build task is trying to run the locally installed webpack.js from the root folder in the repository and trying to pick up the `webpack.config.js`.
 
-Through the `webpack config location` setting the webpack config can be modified:
+Through the `webpack cli arguments` setting custom arguments can be passed to the webpack cli:
 
 ```
-./webpack.dist.config.js
+-p --display normal
 ```
 
 Errors and Warnings can be treated differently:
@@ -65,7 +65,8 @@ The webpack build result section is added onto the summary page to summarize the
 ### <a id="advanced-settings"></a>Advanced Settings
 
 - Working folder where webpack command is run. If you leave it blank it is the root of the repo.
-- Location of the webpack module. If you leave it blank it is using the locally installed webpack node module in the working folder, e.g. `./node_modules/webpack`.
+- Location of the webpack cli. By default it is the locally installed webpack node module in the working folder, e.g. `./node_modules/webpack/bin/webpack.js`.
+- Location of the Stats.js. By default it is the locally installed webpack node module in the working folder, e.g. `./node_modules/webpack/lib/Stats.js`.
 
 ![Advanced settings](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/AdvancedSettings.png)
 
@@ -92,16 +93,17 @@ The result sections in case of multiple build steps:
 
 Name | Required | Default Value | Description
 --- | :---: | --- | ---
-webpack config location | true | ./webpack.config.js | The location of the configuration for the webpack compilation. Relative to the working folder.
+webpack cli arguments | false | | Arguments to pass to the webpack cli.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
-webpack module location | false | | Location of the webpack module. If you leave it blank it is the locally installed 'webpack' module.
-ts-node module location | false | | Location of the ts-node module. If you leave it blank it is the locally installed 'ts-node' module.
-ts-node options location | false | | Location of the ts-node options. If you leave it blank the ts-node default options will be used.
+webpack cli location | true | ./node_modules/webpack/bin/webpack.js | Location of the webpack cli. By default it's the locally installed webpack cli.
+stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.0.0 (26/01/2018)
+    * Using webpack-cli again instead of node.js API.
 * 3.2.2 (03/10/2017)
     * Avoid webpack task summary section overflow with adding scrollbar.
     * Webpack task summary section uses same font as other sections.

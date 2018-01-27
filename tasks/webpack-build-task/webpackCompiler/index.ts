@@ -1,9 +1,11 @@
-import { IWebpackCompilationResultAsJson } from "./IWebpackCompilationResultAsJson";
 import { IWebpackCompilationResult } from "./IWebpackCompilationResult";
-import compile from "./WebpackCompiler";
+import { IChunk } from "./IChunk";
+import { IAsset } from "./IAsset";
+import { compile } from "./WebpackCompiler";
 
 export {
     IWebpackCompilationResult,
-    IWebpackCompilationResultAsJson,
+    IChunk,
+    IAsset,
     compile
 };
