@@ -12,7 +12,6 @@ runTestTask({
         errors: ["error"],
         warnings: []
     },
-    jsonToStringResult: "shouldReportErrorDetailInCaseOfWebpackBuildFailure",
     treatErrorsAs: "info",
     treatWarningsAs: "info"
 });

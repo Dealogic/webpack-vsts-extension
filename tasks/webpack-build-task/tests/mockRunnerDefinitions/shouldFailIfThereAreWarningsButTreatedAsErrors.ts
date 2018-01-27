@@ -13,6 +13,5 @@ runTestTask({
         errors: [],
         warnings: ["warning"]
     },
-    jsonToStringResult: "shouldFailIfThereAreWarningsButTreatedAsErrorsResult",
     mockWriteFile: true
 });

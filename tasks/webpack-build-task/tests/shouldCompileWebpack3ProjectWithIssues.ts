@@ -7,7 +7,7 @@ const mockRunnerDefinitions = "mockRunnerDefinitions";
 
 export function executeTest(done: MochaDone): void {
         // tslint:disable-next-line:no-invalid-this
-        this.timeout(10000);
+        this.timeout(30000);
 
         const testPath = path.join(__dirname, mockRunnerDefinitions, "shouldCompileWebpack3ProjectWithIssues.js");
         const testRunner = new MockTestRunner(testPath);
@@ -26,6 +26,8 @@ export function executeTest(done: MochaDone): void {
         assert.include(content, "Hash: ab8505e5962e1f3e1446", "Expected hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 3.0.0", "Expected webpack version is not found in the markdown file.");
         assert.include(content, "bundle.js  2.53 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
+        assert.include(content, "ERROR in [at-loader]", "Error has to be reported in the markdown file.");
+        assert.include(content, "WARNING in ./src/index.ts", "Warning has to be reported in the markdown file.");
 
         assert.include(testRunner.stdout, content, "The markdown file output has to be included in the standard out.");
 

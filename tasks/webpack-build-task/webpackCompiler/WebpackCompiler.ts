@@ -13,6 +13,24 @@ const processStdOut = (stdout: string) => {
     return result;
 };
 
+const hasDisplayArgument = (webpackCliArguments: string, displayType: string) => {
+    if (!webpackCliArguments) {
+        return false;
+    }
+
+    return webpackCliArguments.indexOf(`--display ${displayType}`) >= 0
+        || webpackCliArguments.indexOf(`--display '${displayType}'`) >= 0
+        || webpackCliArguments.indexOf(`--display "${displayType}"`) >= 0;
+};
+
+const decorateWithShowErrorsAndShowWarnings = (result: IWebpackCompilationResult, webpackCliArguments: string): void => {
+    result._showErrors = !hasDisplayArgument(webpackCliArguments, "none");
+    result._showWarnings =
+        !hasDisplayArgument(webpackCliArguments, "none")
+        && !hasDisplayArgument(webpackCliArguments, "errors-only")
+        && !hasDisplayArgument(webpackCliArguments, "minimal");
+};
+
 export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackCompilationResult {
     console.log("compilation of the webpack project is started");
 
@@ -30,6 +48,7 @@ export function compile(workingFolder: string, webpackCliLocation: string, webpa
     if (stdout) {
         try {
             result = processStdOut(stdout);
+            decorateWithShowErrorsAndShowWarnings(result, webpackCliArguments);
         } catch (processStdOutError) {
             throw {
                 processStdOutError,

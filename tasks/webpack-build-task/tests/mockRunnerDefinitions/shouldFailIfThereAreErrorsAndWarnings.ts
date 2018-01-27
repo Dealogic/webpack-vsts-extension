@@ -10,6 +10,5 @@ runTestTask({
         version: "",
         errors: ["error"],
         warnings: ["warning"]
-    },
-    jsonToStringResult: "shouldFailIfThereAreErrorsAndWarningsResult"
+    }
 });

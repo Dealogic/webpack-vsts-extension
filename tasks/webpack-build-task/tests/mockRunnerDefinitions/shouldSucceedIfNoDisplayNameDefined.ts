@@ -11,6 +11,5 @@ runTestTask({
         errors: [],
         warnings: []
     },
-    jsonToStringResult: "shouldSucceedIfNoDisplayNameDefined",
     nullTaskDisplayName: true
 });

@@ -50,10 +50,7 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
 
     if (testRunConfiguration.webpackCompilationResult) {
         registerMockWebpackCliExecutorCompiler(taskMockRunner, testRunConfiguration.webpackCompilationResult, testRunConfiguration.webpackCompilationError);
-    }
-
-    if (testRunConfiguration.jsonToStringResult) {
-        registerMockWebpackStatsResolver(taskMockRunner, testRunConfiguration.jsonToStringResult);
+        registerMockWebpackStatsResolver(taskMockRunner);
     }
 
     registerTaskDisplayNameVariableMockExport(taskMockRunner, testRunConfiguration.taskDisplayName);

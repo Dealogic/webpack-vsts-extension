@@ -22,12 +22,5 @@ export const executeTest = (done: MochaDone) => {
         assert.equal(testRunner.warningIssues[0], "webpack test partially succeeded");
         assert.equal(testRunner.warningIssues[1], "webpack test: error");
 
-        let content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
-        content = content.replace("<div class=\"copy-content-textarea\"><pre style=\"font: inherit\">", "").replace("</pre></div>", "");
-
-        const expectedContent = "shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarningResult";
-
-        assert.equal(content, expectedContent, "summary section file should contain the errors and warnings");
-
         done();
 };
