@@ -10,4 +10,6 @@ export interface IWebpackCompilationResult {
     time: number;
     chunks: IChunk[];
     children?: IWebpackCompilationResult[];
+    _showErrors?: boolean;
+    _showWarnings?: boolean;
 }

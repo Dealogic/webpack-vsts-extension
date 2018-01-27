@@ -11,7 +11,6 @@ runTestTask({
         errors: [],
         warnings: []
     },
-    jsonToStringResult: "shouldReplaceBracketsToParenthesisInTaskName",
     taskDisplayName: "webpack [something in brackets]",
     mockWriteFile: true
 });

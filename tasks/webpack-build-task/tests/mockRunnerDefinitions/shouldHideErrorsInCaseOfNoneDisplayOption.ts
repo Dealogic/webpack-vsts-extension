@@ -1,7 +1,6 @@
 import runTestTask from "./shared/testTaskRunner";
 
 runTestTask({
-    treatErrorsAs: "warnings",
     webpackCompilationResult: {
         hash: "",
         time: 1,
@@ -10,7 +9,8 @@ runTestTask({
         children: [],
         chunks: [],
         errors: ["error"],
-        warnings: []
+        warnings: ["warning"]
     },
+    webpackCliArguments: "--display none",
     mockWriteFile: true
 });

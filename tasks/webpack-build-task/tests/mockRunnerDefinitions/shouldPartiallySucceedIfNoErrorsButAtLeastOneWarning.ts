@@ -10,6 +10,5 @@ runTestTask({
         chunks: [],
         errors: [],
         warnings: ["warning"]
-    },
-    jsonToStringResult: "shouldPartiallySucceedIfNoErrorsButAtLeastOneWarningResult"
+    }
 });

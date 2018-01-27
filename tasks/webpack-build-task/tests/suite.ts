@@ -8,6 +8,10 @@ import * as shouldCompileWebpackTypeScriptConfigProject from "./shouldCompileWeb
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
 import * as shouldGenerateMarkdownFileInCaseOfASuccessfulRun from "./shouldGenerateMarkdownFileInCaseOfASuccessfulRun";
+import * as shouldHideErrorsInCaseOfNoneDisplayOption from "./shouldHideErrorsInCaseOfNoneDisplayOption";
+import * as shouldHideWarningsInCaseOfErrorsOnlyDisplayOption from "./shouldHideWarningsInCaseOfErrorsOnlyDisplayOption";
+import * as shouldHideWarningsInCaseOfMinimalDisplayOption from "./shouldHideWarningsInCaseOfMinimalDisplayOption";
+import * as shouldHideWarningsInCaseOfNoneDisplayOption from "./shouldHideWarningsInCaseOfNoneDisplayOption";
 import * as shouldLogInformationAboutTheProcess from "./shouldLogInformationAboutTheProcess";
 import * as shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning from "./shouldPartiallySucceedIfNoErrorsButAtLeastOneWarning";
 import * as shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning from "./shouldPartiallySucceedIfThereAreErrorsButTreatedAsWarning";
@@ -81,6 +85,22 @@ describe("webpack build task", () => {
     it(
         "should generate markdown file in case of a successful run",
         shouldGenerateMarkdownFileInCaseOfASuccessfulRun.executeTest);
+
+    it(
+        "should hide errors in case of none display option",
+        shouldHideErrorsInCaseOfNoneDisplayOption.executeTest);
+
+    it(
+        "should hide warnings in case of errors-only display option",
+        shouldHideWarningsInCaseOfErrorsOnlyDisplayOption.executeTest);
+
+    it(
+        "should hide warnings in case ff minimal display option",
+        shouldHideWarningsInCaseOfMinimalDisplayOption.executeTest);
+
+    it(
+        "should hide warnings in case of none display option",
+        shouldHideWarningsInCaseOfNoneDisplayOption.executeTest);
 
     it(
         "should log information about the process",
