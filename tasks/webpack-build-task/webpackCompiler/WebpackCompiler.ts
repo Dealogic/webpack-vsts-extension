@@ -1,4 +1,4 @@
-import { IWebpackBuildResult } from "./IWebpackBuildResult";
+import { IWebpackCompilationResult } from "./IWebpackCompilationResult";
 import resolveWebpackStats from "../webpackStatsResolver";
 import executeWebpackCli from "./WebpackCliExecutor";
 
@@ -8,16 +8,16 @@ const fixStdOut = (stdout: string) => {
 
 const processStdOut = (stdout: string) => {
     const fixedStdOut = fixStdOut(stdout);
-    const result = JSON.parse(fixedStdOut) as IWebpackBuildResult;
+    const result = JSON.parse(fixedStdOut) as IWebpackCompilationResult;
 
     return result;
 };
 
-export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackBuildResult {
+export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackCompilationResult {
     console.log("compilation of the webpack project is started");
 
     let stdout: string;
-    let result: IWebpackBuildResult;
+    let result: IWebpackCompilationResult;
     let error: any;
 
     try {
