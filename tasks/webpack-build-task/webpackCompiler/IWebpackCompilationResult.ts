@@ -12,4 +12,5 @@ export interface IWebpackCompilationResult {
     children?: IWebpackCompilationResult[];
     _showErrors?: boolean;
     _showWarnings?: boolean;
+    modules?: any[];
 }

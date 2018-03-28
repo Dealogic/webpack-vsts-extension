@@ -3,7 +3,10 @@ import * as shouldCompileSimpleWebpackProject from "./shouldCompileSimpleWebpack
 import * as shouldCompileSimpleWebpackProjectWithIssues from "./shouldCompileSimpleWebpackProjectWithIssues";
 import * as shouldCompileWebpack2Project from "./shouldCompileWebpack2Project";
 import * as shouldCompileWebpack3Project from "./shouldCompileWebpack3Project";
+import * as shouldCompileWebpack3ProjectWithDisplayNone from "./shouldCompileWebpack3ProjectWithDisplayNone";
 import * as shouldCompileWebpack3ProjectWithIssues from "./shouldCompileWebpack3ProjectWithIssues";
+import * as shouldCompileWebpack4Project from "./shouldCompileWebpack4Project";
+import * as shouldCompileWebpack4ProjectWithDisplayNone from "./shouldCompileWebpack4ProjectWithDisplayNone";
 import * as shouldCompileWebpackTypeScriptConfigProject from "./shouldCompileWebpackTypeScriptConfigProject";
 import * as shouldFailIfThereAreErrorsAndWarnings from "./shouldFailIfThereAreErrorsAndWarnings";
 import * as shouldFailIfThereAreWarningsButTreatedAsErrors from "./shouldFailIfThereAreWarningsButTreatedAsErrors";
@@ -65,8 +68,23 @@ describe("webpack build task", () => {
     );
 
     it(
+        "should compile webpack 3 project with display none",
+        shouldCompileWebpack3ProjectWithDisplayNone.executeTest
+    );
+
+    it(
         "should compile webpack 3 project with issues",
         shouldCompileWebpack3ProjectWithIssues.executeTest
+    );
+
+    it(
+        "should compile webpack 4 project",
+        shouldCompileWebpack4Project.executeTest
+    );
+
+    it(
+        "should compile webpack 4 project with display none",
+        shouldCompileWebpack4ProjectWithDisplayNone.executeTest
     );
 
     it(
