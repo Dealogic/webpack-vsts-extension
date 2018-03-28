@@ -29,6 +29,10 @@ const decorateWithShowErrorsAndShowWarnings = (result: IWebpackCompilationResult
         !hasDisplayArgument(webpackCliArguments, "none")
         && !hasDisplayArgument(webpackCliArguments, "errors-only")
         && !hasDisplayArgument(webpackCliArguments, "minimal");
+
+    if (hasDisplayArgument(webpackCliArguments, "none")) {
+        result.modules = undefined;
+    }
 };
 
 export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackCompilationResult {
