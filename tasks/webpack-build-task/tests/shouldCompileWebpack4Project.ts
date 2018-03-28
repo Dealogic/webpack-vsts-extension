@@ -19,7 +19,6 @@ export function executeTest(done: MochaDone): void {
 
         assert.isTrue(testRunner.succeeded, "webpack task should be succeeded");
 
-        assert.include(content, "Hash: a8eefb6878b1679ac6fc", "Expected hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 4.3.0", "Expected webpack version is not found in the markdown file.");
         assert.include(content, "bundle.js  6.22 KiB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
 
