@@ -31,7 +31,7 @@ const decorateWithShowErrorsAndShowWarnings = (result: IWebpackCompilationResult
         && !hasDisplayArgument(webpackCliArguments, "minimal");
 };
 
-export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackCompilationResult {
+export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string): IWebpackCompilationResult {
     console.log("compilation of the webpack project is started");
 
     let stdout: string;
@@ -59,9 +59,7 @@ export function compile(workingFolder: string, webpackCliLocation: string, webpa
         throw error;
     }
 
-    const stats = resolveWebpackStats(workingFolder, statsjsLocation);
     console.log("compilation of the webpack project is done");
-    console.log(stats.jsonToString(result));
 
     return result;
 }

@@ -17,7 +17,7 @@
     "version": {
         "Major": 4,
         "Minor": 0,
-        "Patch": 2
+        "Patch": 3
     },
     "minimumAgentVersion": "1.95.0",
     "groups": [
@@ -88,6 +88,15 @@
             "defaultValue": "./node_modules/webpack/lib/Stats.js",
             "required": true,
             "helpMarkDown": "Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "displaySummaryResults",
+            "type": "boolean",
+            "label": "display summary results?",
+            "defaultValue": true,
+            "required": false,
+            "helpMarkDown": "Determines whether to display the results of the build.",
             "groupName": "advanced"
         }
     ],

@@ -1,6 +1,7 @@
 import tl = require("vsts-task-lib/task");
 import { compile, IWebpackCompilationResult } from "./webpackCompiler";
 import { createWebpackResultMarkdownFile } from "./summarySectionBuilder";
+import resolveWebpackStats from "./webpackStatsResolver";
 
 const convertMessageToSingleLine = (message: string): string => {
     const messageParts = message.split("\n");
@@ -28,6 +29,7 @@ async function run(): Promise<void> {
         const webpackStatsJsLocation = tl.getInput("statsjsLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
+        const displaySummaryResult = tl.getInput("displaySummaryResults", false);
 
         const errors = "errors";
         const warnings = "warnings";
@@ -41,6 +43,7 @@ async function run(): Promise<void> {
         console.log(`webpackCliLocation: ${webpackCliLocation}`);
         console.log(`webpackCliArguments: ${webpackCliArguments}`);
         console.log(`statsjsLocation: ${webpackStatsJsLocation}`);
+        console.log(`displaySummaryResult: ${displaySummaryResult}`);
 
         console.log(`treatErrorsAs: ${treatErrorsAs}`);
         console.log(`treatWarningsAs: ${treatWarningsAs}`);
@@ -48,7 +51,12 @@ async function run(): Promise<void> {
         tl.cd(workingFolder);
         process.chdir(workingFolder);
 
-        const result = compile(workingFolder, webpackCliLocation, webpackCliArguments, webpackStatsJsLocation);
+        const result = compile(workingFolder, webpackCliLocation, webpackCliArguments);
+
+        if (displaySummaryResult) {
+            const stats = resolveWebpackStats(workingFolder, webpackStatsJsLocation);
+            console.log(stats.jsonToString(result));
+        }
 
         const errorsArray: string[] = result.errors;
         const warningsArray: string[] = result.warnings;
