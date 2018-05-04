@@ -102,6 +102,8 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.0.4 (24/05/2018)
+    * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).
 * 4.0.3 (29/03/2018)
     * The `--display "none"` flag is working properly with webpack 4.
 * 4.0.2 (27/01/2018)
