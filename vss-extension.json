@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "webpack-vsts-extension",
-    "version": "4.0.3",
+    "version": "4.0.4",
     "name": "webpack",
     "description": "bundle your assets, scripts, images, styles",
     "publisher": "Dealogic",
