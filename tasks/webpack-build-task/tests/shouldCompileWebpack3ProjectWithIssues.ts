@@ -23,9 +23,9 @@ export function executeTest(done: MochaDone): void {
         assert.equal(2, testRunner.errorIssues.length, "webpack task should report 2 errors");
         assert.equal(1, testRunner.warningIssues.length, "webpack task should report 1 warning");
 
-        assert.include(content, "Hash: ab8505e5962e1f3e1446", "Expected hash is not found in the markdown file.");
+        assert.include(content, "Hash: ", "Hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 3.0.0", "Expected webpack version is not found in the markdown file.");
-        assert.include(content, "bundle.js  2.53 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
+        assert.include(content, "bundle.js", "Expected bundle.js row is not found in the markdown file.");
         assert.include(content, "ERROR in [at-loader]", "Error has to be reported in the markdown file.");
         assert.include(content, "WARNING in ./src/index.ts", "Warning has to be reported in the markdown file.");
 

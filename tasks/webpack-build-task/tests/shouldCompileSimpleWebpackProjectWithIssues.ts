@@ -22,9 +22,9 @@ export function executeTest(done: MochaDone): void {
 
         assert.equal(2, testRunner.errorIssues.length, "webpack task should report 2 errors");
 
-        assert.include(content, "Hash: ccf93733145cf833f33c", "Expected hash is not found in the markdown file.");
+        assert.include(content, "Hash: ", "Hash is not found in the markdown file.");
         assert.include(content, "Version: webpack 1.14.0", "Expected webpack version is not found in the markdown file.");
-        assert.include(content, "main.bundle.js  1.65 kB       0  [emitted]  main", "Expected bundle.js row is not found in the markdown file.");
+        assert.include(content, "main.bundle.js", "Expected bundle.js row is not found in the markdown file.");
 
         assert.include(testRunner.stdout, content, "The markdown file output has to be included in the standard out.");
 
