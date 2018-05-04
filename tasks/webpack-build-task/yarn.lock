@@ -33,7 +33,7 @@ filenamify@2.0.0:
     strip-outer "^1.0.0"
     trim-repeated "^1.0.0"
 
-minimatch@^3.0.0:
+minimatch@3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -71,11 +71,11 @@ uuid@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
-vsts-task-lib@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.1.0.tgz#c371aeff2a8d98438865235dc9fc94701c404c84"
+vsts-task-lib@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.4.0.tgz#db8da359506160b944d4b5b33bdfbd1592076576"
   dependencies:
-    minimatch "^3.0.0"
+    minimatch "3.0.4"
     mockery "^1.7.0"
     q "^1.1.2"
     semver "^5.1.0"
