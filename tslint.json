@@ -15,8 +15,7 @@
             4
         ],
         "linebreak-style": [
-            true,
-            "CRLF"
+            false
         ],
         "max-line-length": [
             true,
