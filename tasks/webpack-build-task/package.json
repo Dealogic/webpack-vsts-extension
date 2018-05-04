@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "filenamify": "2.0.0",
-    "vsts-task-lib": "2.1.0"
+    "vsts-task-lib": "2.4.0"
   },
   "devDependencies": {}
 }
