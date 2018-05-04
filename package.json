@@ -1,6 +1,6 @@
 {
   "name": "wepback-vsts-extension",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
