@@ -28,13 +28,13 @@ import * as shouldSucceedIfThereAreWarningsButTreatedAsInfo from "./shouldSuccee
 describe("webpack build task", () => {
     after((done: MochaDone) => {
         const filesToDelete = [
-            "../../../samples/multiple-webpack-build-steps/webpack-project-one/webpack test.webpack.result.md",
-            "../../../samples/multiple-webpack-build-steps/webpack-project-two/webpack test.webpack.result.md",
-            "../../../samples/webpack-2/webpack test.webpack.result.md",
-            "../../../samples/webpack-3/webpack test.webpack.result.md",
-            "../../../samples/webpack-3-with-issues/webpack test.webpack.result.md",
-            "../../../samples/webpack-ts-config/webpack test.webpack.result.md",
-            "../../../samples/webpack-4/webpack test.webpack.result.md",
+            "../../samples/multiple-webpack-build-steps/webpack-project-one/webpack test.webpack.result.md",
+            "../../samples/multiple-webpack-build-steps/webpack-project-two/webpack test.webpack.result.md",
+            "../../samples/webpack-2/webpack test.webpack.result.md",
+            "../../samples/webpack-3/webpack test.webpack.result.md",
+            "../../samples/webpack-3-with-issues/webpack test.webpack.result.md",
+            "../../samples/webpack-ts-config/webpack test.webpack.result.md",
+            "../../samples/webpack-4/webpack test.webpack.result.md",
             "tests/integrationTests/webpack test.webpack.result.md",
             "tests/integrationTests/webpack (something in brackets).webpack.result.md"
         ];
