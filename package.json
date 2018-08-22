@@ -19,8 +19,8 @@
     "update-version": "node updateVersion.js",
     "update-version-without-setup": "yarn run build-without-setup && yarn run update-version",
     "release": "yarn run build && yarn run update-version && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
-    "test-reporter": "cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",
-    "test": "yarn run build-without-setup && cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js"
+    "test-reporter": "cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js tests/messageParserTests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",
+    "test": "yarn run build-without-setup && cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js tests/messageParserTests/index.js"
   },
   "author": "Dealogic",
   "license": "MIT",
