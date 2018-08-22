@@ -1,6 +1,7 @@
 import tl = require("vsts-task-lib/task");
 import { IWebpackCompilationResult } from "../webpackCompiler";
 import { createWebpackResultMarkdownFile } from "../summarySectionBuilder";
+import publishResultAsPullRequestComments from "./publishResultAsPullRequestComments";
 
 const errors = "errors";
 const warnings = "warnings";
@@ -16,13 +17,14 @@ const convertMessageToSingleLine = (message: string): string => {
     return messageParts.join("; ");
 };
 
-const publishTaskResult = (
+const publishTaskResult = async (
     taskDisplayName: string,
     result: IWebpackCompilationResult,
     treatErrorsAs: string,
     treatWarningsAs: string,
     workingFolder: string,
-    webpackStatsJsLocation: string) => {
+    webpackStatsJsLocation: string,
+    enablePullRequestComments: boolean) => {
 
         const errorsArray: string[] = result.errors;
         const warningsArray: string[] = result.warnings;
@@ -61,6 +63,8 @@ const publishTaskResult = (
                 }
             }
         }
+
+        await publishResultAsPullRequestComments(enablePullRequestComments, taskDisplayName, errorsArray, warningsArray);
 
         const taskFailed = (hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors);
         const taskPartiallySucceeded = !taskFailed && ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings));

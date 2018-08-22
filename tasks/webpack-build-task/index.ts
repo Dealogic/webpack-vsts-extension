@@ -18,6 +18,7 @@ async function run(): Promise<void> {
         const webpackStatsJsLocation = tl.getInput("statsjsLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
+        const enablePullRequestComments = tl.getBoolInput("enablePullRequestComments", false);
 
         if (!workingFolder) {
             workingFolder = __dirname;
@@ -35,7 +36,7 @@ async function run(): Promise<void> {
         process.chdir(workingFolder);
 
         const result = compile(workingFolder, webpackCliLocation, webpackCliArguments, webpackStatsJsLocation);
-        publishTaskResult(taskDisplayName, result, treatErrorsAs, treatWarningsAs, workingFolder, webpackStatsJsLocation);
+        await publishTaskResult(taskDisplayName, result, treatErrorsAs, treatWarningsAs, workingFolder, webpackStatsJsLocation, enablePullRequestComments);
 
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, `${taskDisplayName} failed`);

@@ -10,18 +10,18 @@ export default (taskDisplayName: string, message: string): IMessage => {
     const filePath = lines[1].slice(2);
     const sublines = lines[2].split("\r\n");
     const line = Number(lines[2].slice(sublines[0].lastIndexOf("(") + 1, sublines[0].lastIndexOf(",")));
-    const position = Number(lines[2].slice(sublines[0].lastIndexOf(",") + 1, sublines[0].lastIndexOf(")")));
+    const offset = Number(lines[2].slice(sublines[0].lastIndexOf(",") + 1, sublines[0].lastIndexOf(")")));
     const messageWithTaskDisplayName = `${taskDisplayName}: ${message}`;
 
     return {
         filePath,
         start: {
             line,
-            position
+            offset
         },
         end: {
             line,
-            position
+            offset
         },
         message: messageWithTaskDisplayName
     };

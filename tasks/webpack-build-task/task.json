@@ -64,6 +64,13 @@
             }
         },
         {
+            "name": "enablePullRequestComments",
+            "type": "boolean",
+            "label": "enable pull request comments",
+            "defaultValue": false,
+            "helpMarkDown": "Enable errors and warnings appear as pull request comments."
+        },
+        {
             "name": "workingFolder",
             "type": "filePath",
             "label": "working folder",

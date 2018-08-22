@@ -9,7 +9,7 @@ export default () => {
     assert.equal(parsedMessage.filePath, "src/index.ts");
     assert.equal(parsedMessage.message, `task: ${unparsedTsLoaderMessage}`);
     assert.equal(parsedMessage.start.line, 456);
-    assert.equal(parsedMessage.start.position, 918);
+    assert.equal(parsedMessage.start.offset, 918);
     assert.equal(parsedMessage.end.line, 456);
-    assert.equal(parsedMessage.end.position, 918);
+    assert.equal(parsedMessage.end.offset, 918);
 };

@@ -2,11 +2,11 @@ export default interface IMessage {
     filePath: string;
     start?: {
         line: number,
-        position: number
+        offset: number
     };
     end?: {
         line: number,
-        position: number
+        offset: number
     };
     message: string;
 }
