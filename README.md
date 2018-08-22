@@ -102,7 +102,7 @@ Name | Required | Default Value | Description
 webpack cli arguments | false | | Arguments to pass to the webpack cli.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
-enable pull request comments | false | false | Enable errors and warnings reporting as pull request comments. Supported loaders: ts-loader, tslint-loader.
+enable pull request comments | false | false | Enable errors and warnings be reported as pull request comments. Supported loaders: ts-loader, tslint-loader.
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack cli location | true | ./node_modules/webpack/bin/webpack.js | Location of the webpack cli. By default it's the locally installed webpack cli.
 stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.
