@@ -62,6 +62,12 @@ The webpack build result section is added onto the summary page to summarize the
 
 ![webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
 
+Errors and Warnings can be reported as pull request comments. Currently only two loaders are supported:
+* ts-loader
+* tslint-loader
+
+Even general webpack errors and warnings are not supported yet. More support will come!
+
 ### <a id="advanced-settings"></a>Advanced Settings
 
 - Working folder where webpack command is run. If you leave it blank it is the root of the repo.
@@ -96,12 +102,15 @@ Name | Required | Default Value | Description
 webpack cli arguments | false | | Arguments to pass to the webpack cli.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
+enable pull request comments | false | false | Enable errors and warnings be reported as pull request comments. Supported loaders: ts-loader, tslint-loader.
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack cli location | true | ./node_modules/webpack/bin/webpack.js | Location of the webpack cli. By default it's the locally installed webpack cli.
 stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.1.0 (22/08/2018)
+    * Errors and warnings can be reported as pull request comments (ts-loader and tslint-loader are supported, more will come).
 * 4.0.4 (24/05/2018)
     * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).
 * 4.0.3 (29/03/2018)

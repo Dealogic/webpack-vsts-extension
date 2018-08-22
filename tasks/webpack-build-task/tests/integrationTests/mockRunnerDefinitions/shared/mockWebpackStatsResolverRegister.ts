@@ -1,6 +1,6 @@
 import { TaskMockRunner } from "vsts-task-lib/mock-run";
-import { IWebpackCompilationResult } from "../../../webpackCompiler/index";
-import IWebpackStats from "../../../webpackStatsResolver/IWebpackStats";
+import { IWebpackCompilationResult } from "../../../../webpackCompiler/index";
+import IWebpackStats from "../../../../webpackStatsResolver/IWebpackStats";
 
 const registerMockWebpackStatsResolver = (taskMockRunner: TaskMockRunner) => {
     class MockWebpackStatsResolver {

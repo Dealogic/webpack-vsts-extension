@@ -2,6 +2,6 @@ import runTestTask from "./shared/testTaskRunner";
 import * as path from "path";
 
 runTestTask({
-    workingFolder: path.resolve(__dirname, "../../../../samples/webpack-2"),
+    workingFolder: path.resolve(__dirname, "../../../../../samples/multiple-webpack-build-steps/webpack-project-two"),
     mockWriteFile: true
 });

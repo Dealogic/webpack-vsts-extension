@@ -1,5 +1,5 @@
 import { TaskMockRunner } from "vsts-task-lib/mock-run";
-import { IWebpackCompilationResult } from "../../../webpackCompiler";
+import { IWebpackCompilationResult } from "../../../../webpackCompiler";
 
 const registerMockWebpackCliExecutorCompiler = (taskMockRunner: TaskMockRunner, result: IWebpackCompilationResult, webpackCompilationError: any) => {
     class MockWebpackCliExecutor {

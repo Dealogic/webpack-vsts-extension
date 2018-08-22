@@ -1,4 +1,4 @@
-import { IWebpackCompilationResult } from "../../../webpackCompiler";
+import { IWebpackCompilationResult } from "../../../../webpackCompiler";
 
 export interface ITestRunConfiguration {
     workingFolder?: string;

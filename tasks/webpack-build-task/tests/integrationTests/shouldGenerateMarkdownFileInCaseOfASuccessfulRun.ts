@@ -10,7 +10,7 @@ export const executeTest = (done: MochaDone) => {
         const testRunner = new MockTestRunner(testPath);
         testRunner.run();
 
-        let content = fs.readFileSync("tests/webpack test.webpack.result.md", "utf8");
+        let content = fs.readFileSync("tests/integrationTests/webpack test.webpack.result.md", "utf8");
         content = content.replace("<div class=\"copy-content-textarea\"><pre style=\"font: inherit\">", "").replace("</pre></div>", "");
 
         const expectedContent = `{"hash":"","time":1,"version":"","assets":[],"children":[],"chunks":[],"errors":[],"warnings":[],"_showErrors":true,"_showWarnings":true}`;

@@ -1,7 +1,6 @@
 import * as path from "path";
 import { MockTestRunner } from "vsts-task-lib/mock-test";
 import { assert } from "chai";
-import * as fs from "fs";
 
 const mockRunnerDefinitions = "mockRunnerDefinitions";
 

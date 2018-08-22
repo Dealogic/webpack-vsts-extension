@@ -35,8 +35,8 @@ describe("webpack build task", () => {
             "../../samples/webpack-3-with-issues/webpack test.webpack.result.md",
             "../../samples/webpack-ts-config/webpack test.webpack.result.md",
             "../../samples/webpack-4/webpack test.webpack.result.md",
-            "tests/webpack test.webpack.result.md",
-            "tests/webpack (something in brackets).webpack.result.md"
+            "tests/integrationTests/webpack test.webpack.result.md",
+            "tests/integrationTests/webpack (something in brackets).webpack.result.md"
         ];
 
         for (const fileToDelete of filesToDelete) {
