@@ -7,7 +7,7 @@ export default (message: string): IMessage => {
 
     const lines = message.split("\n");
 
-    const filePath = lines[0].slice(2);
+    const filePath = lines[0].slice(1);
     const line = Number(lines[2].slice(1, lines[2].indexOf(",")));
     const offset = Number(lines[2].slice(lines[2].indexOf(",") + 1, lines[2].indexOf("]")));
 
