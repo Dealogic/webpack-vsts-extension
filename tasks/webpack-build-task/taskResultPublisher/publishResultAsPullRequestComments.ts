@@ -15,17 +15,19 @@ const threadEqualsToMessage = (thread: GitPullRequestCommentThread, message: IMe
     && thread.threadContext.rightFileStart.offset === message.start.offset
 );
 
-const parseMessages = (taskDisplayName: string, messagesToParse: string[]) => {
+const parseMessages = (taskDisplayName: string, messagesToParse: string[], isError: boolean) => {
     const parsedMessages: IMessage[] = [];
 
     for (const item of messagesToParse) {
-        let parsedMessage = parseTsLoaderMessage(taskDisplayName, item);
+        let parsedMessage = parseTsLoaderMessage(item);
 
         if (!parsedMessage) {
-            parsedMessage = parseTsLintLoaderMessage(taskDisplayName, item);
+            parsedMessage = parseTsLintLoaderMessage(item);
         }
 
         if (parsedMessage) {
+            parsedMessage.message = `${ isError ? "Error" : "Warning" } from task '${taskDisplayName}':\r\n${parsedMessage.message}"}`;
+
             parsedMessages.push(parsedMessage);
         }
     }
@@ -108,7 +110,8 @@ const publishResultAsPullRequestComments = async (
             return;
         }
 
-        const parsedMessages = parseMessages(taskDisplayName, errorsAndWarningsArray);
+        let parsedMessages = parseMessages(taskDisplayName, errorsArray, true);
+        parsedMessages = [...parsedMessages, ...parseMessages(taskDisplayName, warningsArray, false)];
 
         const gitApi = await getGitApi();
         const threads = await getThreads(gitApi, project, repositoryId, pullRequestId);
