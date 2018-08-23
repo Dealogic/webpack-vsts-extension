@@ -18,7 +18,9 @@ async function run(): Promise<void> {
         const webpackStatsJsLocation = tl.getInput("statsjsLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
-        const enablePullRequestComments = tl.getBoolInput("enablePullRequestComments", false);
+
+        // const enablePullRequestComments = tl.getBoolInput("enablePullRequestComments", false);
+        const enablePullRequestComments = false;
 
         if (!workingFolder) {
             workingFolder = __dirname;
