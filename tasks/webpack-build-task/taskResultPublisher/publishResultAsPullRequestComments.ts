@@ -58,7 +58,7 @@ const getGitApi = async () => {
 
 const getThreads = async (gitApi: GitApi, project: string, repositoryId: string, pullRequestId: number) => {
     const pullRequestIterations = await gitApi.getPullRequestIterations(repositoryId, pullRequestId, project);
-    const lastIterationId = pullRequestIterations[pullRequestIterations.length].id;
+    const lastIterationId = pullRequestIterations[pullRequestIterations.length - 1].id;
 
     return await gitApi.getThreads(repositoryId, pullRequestId, project, lastIterationId, lastIterationId);
 };
