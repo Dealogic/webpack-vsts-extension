@@ -112,7 +112,7 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
-* 4.1.2 (23/08/2018)
+* 4.1.3 (23/08/2018)
     * Errors and warnings can be reported as pull request comments (ts-loader and tslint-loader are supported, more will come).
 * 4.0.4 (24/05/2018)
     * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).

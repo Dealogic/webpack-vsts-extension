@@ -13,6 +13,8 @@ const threadEqualsToMessage = (thread: GitPullRequestCommentThread, message: IMe
     && message.start
     && thread.threadContext.rightFileStart.line === message.start.line
     && thread.threadContext.rightFileStart.offset === message.start.offset
+    && thread.comments
+    && thread.comments[0].content === message.message
 );
 
 const parseMessages = (taskDisplayName: string, messagesToParse: string[], isError: boolean) => {
