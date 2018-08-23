@@ -64,7 +64,12 @@ const publishTaskResult = async (
             }
         }
 
-        await publishResultAsPullRequestComments(enablePullRequestComments, taskDisplayName, errorsArray, warningsArray);
+        try {
+            await publishResultAsPullRequestComments(enablePullRequestComments, taskDisplayName, errorsArray, warningsArray);
+        } catch (error) {
+            console.log("Couldn't publish result as pull request comments. The reason is:");
+            console.log(error);
+        }
 
         const taskFailed = (hasErrors && treatErrorsAs === errors) || (hasWarnings && treatWarningsAs === errors);
         const taskPartiallySucceeded = !taskFailed && ((hasErrors && treatErrorsAs === warnings) || (hasWarnings && treatWarningsAs === warnings));

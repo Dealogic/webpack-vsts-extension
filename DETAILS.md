@@ -52,6 +52,15 @@ Errors and Warnings can be treated differently:
 
 Warnings means the task will partially succeed, in case of errors the task will fail. If there are no errors and no warnings, then the task will succeed. You can treat the errors as warnings, so in case of errors, the task will just partially succeed. Or if you would like to ignore the warnings, those should be handled as info.
 
+Errors and Warnings can be reported as pull request comments. Currently only two loaders are supported:
+* ts-loader
+* tslint-loader
+
+Even general webpack errors and warnings are not supported yet. More support will come!
+
+Don't forget to turn on the following agent phase setting:
+![Prerequisite for pull request commenting](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/PullRequestCommentingPrerequisite.png)
+
 ![webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
 
 The webpack build errors and warnings are reported under the issues / build section on the summary page:
@@ -61,12 +70,6 @@ The webpack build errors and warnings are reported under the issues / build sect
 The webpack build result section is added onto the summary page to summarize the result:
 
 ![webpack build result](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackBuildResult.png)
-
-Errors and Warnings can be reported as pull request comments. Currently only two loaders are supported:
-* ts-loader
-* tslint-loader
-
-Even general webpack errors and warnings are not supported yet. More support will come!
 
 ### <a id="advanced-settings"></a>Advanced Settings
 
@@ -109,7 +112,7 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
-* 4.1.0 (22/08/2018)
+* 4.1.1 (23/08/2018)
     * Errors and warnings can be reported as pull request comments (ts-loader and tslint-loader are supported, more will come).
 * 4.0.4 (24/05/2018)
     * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).

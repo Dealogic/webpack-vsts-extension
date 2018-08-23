@@ -34,18 +34,31 @@ const parseMessages = (taskDisplayName: string, messagesToParse: string[]) => {
 };
 
 const getGitApi = async () => {
-    const accessToken = tl.getVariable("System.AccessToken");
-    const collectionUri = tl.getVariable("System.TeamFoundationCollectionUri");
+    try {
+        const accessToken = tl.getVariable("System.AccessToken");
 
-    const authHandler = vstsApi.getBearerHandler(accessToken);
-    const connection = new vstsApi.WebApi(collectionUri, authHandler);
+        if (!accessToken) {
+            console.log("Please allow scripts to access OAuth token in the additional optionts of the agent phase.");
 
-    return await connection.getGitApi();
+            return null;
+        }
+
+        const collectionUri = tl.getVariable("System.TeamFoundationCollectionUri");
+
+        const authHandler = vstsApi.getBearerHandler(accessToken);
+        const connection = new vstsApi.WebApi(collectionUri, authHandler);
+
+        return await connection.getGitApi();
+    } catch (err) {
+        console.log("Could not connect to VSTS API.");
+
+        throw err;
+    }
 };
 
 const getThreads = async (gitApi: GitApi, project: string, repositoryId: string, pullRequestId: number) => {
     const pullRequestIterations = await gitApi.getPullRequestIterations(repositoryId, pullRequestId, project);
-    const lastIterationId = pullRequestIterations[pullRequestIterations.length].id;
+    const lastIterationId = pullRequestIterations[pullRequestIterations.length - 1].id;
 
     return await gitApi.getThreads(repositoryId, pullRequestId, project, lastIterationId, lastIterationId);
 };
