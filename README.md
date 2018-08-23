@@ -52,15 +52,6 @@ Errors and Warnings can be treated differently:
 
 Warnings means the task will partially succeed, in case of errors the task will fail. If there are no errors and no warnings, then the task will succeed. You can treat the errors as warnings, so in case of errors, the task will just partially succeed. Or if you would like to ignore the warnings, those should be handled as info.
 
-Errors and Warnings can be reported as pull request comments. Currently only two loaders are supported:
-* ts-loader
-* tslint-loader
-
-Even general webpack errors and warnings are not supported yet. More support will come!
-
-Don't forget to turn on the following agent phase setting:
-![Prerequisite for pull request commenting](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/PullRequestCommentingPrerequisite.png)
-
 ![webpack arguments](https://raw.githubusercontent.com/Dealogic/webpack-vsts-extension/master/screenshots/WebpackArguments.png)
 
 The webpack build errors and warnings are reported under the issues / build section on the summary page:
@@ -105,15 +96,12 @@ Name | Required | Default Value | Description
 webpack cli arguments | false | | Arguments to pass to the webpack cli.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
-enable pull request comments | false | false | Enable errors and warnings be reported as pull request comments. Supported loaders: ts-loader, tslint-loader.
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack cli location | true | ./node_modules/webpack/bin/webpack.js | Location of the webpack cli. By default it's the locally installed webpack cli.
 stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.
 
 ## <a id="release-notes"></a>Release Notes
 
-* 4.1.3 (23/08/2018)
-    * Errors and warnings can be reported as pull request comments (ts-loader and tslint-loader are supported, more will come).
 * 4.0.4 (24/05/2018)
     * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).
 * 4.0.3 (29/03/2018)
