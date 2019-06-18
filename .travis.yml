@@ -5,3 +5,10 @@ install:
   yarn release
 script:
   yarn test
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: node node_modules/tfx-cli/_build/tfx-cli.js extension publish --vsix ./dist/webpack-vsts-extension.vsix --token $VS_TOKEN
+  on:
+    branch: master
