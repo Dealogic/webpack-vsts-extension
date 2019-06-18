@@ -6,7 +6,7 @@
 
 ### to bundle your assets, scripts, images and styles with webpack.
 
-![build status](https://dealogic.visualstudio.com/DefaultCollection/_apis/public/build/definitions/4cd19643-db3a-4dcc-b481-76a7800dd64d/7871/badge)
+![build status](https://travis-ci.org/Dealogic/webpack-vsts-extension.svg?branch=master)
 
 ## Content
 
@@ -102,6 +102,8 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.1.5 (18/06/2019)
+    * New build/deployment badge on README page. (as build and deployment are on travis-ci.org)
 * 4.0.4 (24/05/2018)
     * Dependencies are updated to fix security vulnerabilities (though it was just in one of the samples).
 * 4.0.3 (29/03/2018)

@@ -1,6 +1,6 @@
 {
   "name": "wepback-vsts-extension",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "description": "webpack Visual Studio Team System (VSTS) Extension",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "build": "yarn run setup && yarn run build-without-setup",
     "update-version": "node updateVersion.js",
     "update-version-without-setup": "yarn run build-without-setup && yarn run update-version",
-    "release": "yarn run build && yarn run update-version && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist",
+    "release": "yarn run build && yarn run update-version && node node_modules/tfx-cli/_build/tfx-cli.js extension create --manifest-glob vss-extension.json --output-path ./dist/webpack-vsts-extension.vsix",
     "test-reporter": "cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js tests/messageParserTests/index.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results.xml",
     "test": "yarn run build-without-setup && cd tasks/webpack-build-task && mocha tests/integrationTests/suite.js tests/messageParserTests/index.js"
   },
