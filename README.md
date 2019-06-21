@@ -102,6 +102,8 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.1.6 (21/06/2019)
+    * Security warnings are fixed
 * 4.1.5 (18/06/2019)
     * New build/deployment badge on README page. (as build and deployment are on travis-ci.org)
 * 4.0.4 (24/05/2018)
