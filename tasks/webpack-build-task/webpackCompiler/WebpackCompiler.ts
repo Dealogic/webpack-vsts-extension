@@ -35,7 +35,13 @@ const decorateWithShowErrorsAndShowWarnings = (result: IWebpackCompilationResult
     }
 };
 
-export function compile(workingFolder: string, webpackCliLocation: string, webpackCliArguments: string, statsjsLocation: string): IWebpackCompilationResult {
+export function compile(
+    workingFolder: string,
+    webpackCliLocation: string,
+    webpackCliArguments: string,
+    statsjsLocation: string,
+    nodeCliArguments: string): IWebpackCompilationResult {
+
     console.log("compilation of the webpack project is started");
 
     let stdout: string;
@@ -43,7 +49,7 @@ export function compile(workingFolder: string, webpackCliLocation: string, webpa
     let error: any;
 
     try {
-        stdout = executeWebpackCli(workingFolder, webpackCliLocation, webpackCliArguments);
+        stdout = executeWebpackCli(workingFolder, webpackCliLocation, webpackCliArguments, nodeCliArguments);
     } catch (executeWebpackCliError) {
         error = executeWebpackCliError;
         stdout = executeWebpackCliError.stdout;

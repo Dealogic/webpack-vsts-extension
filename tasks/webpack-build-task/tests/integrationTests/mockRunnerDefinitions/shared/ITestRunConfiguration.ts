@@ -4,6 +4,7 @@ export interface ITestRunConfiguration {
     workingFolder?: string;
     webpackCliLocation?: string;
     webpackCliArguments?: string;
+    nodeCliArguments?: string;
     statsjsLocation?: string;
     treatErrorsAs?: string;
     treatWarningsAs?: string;

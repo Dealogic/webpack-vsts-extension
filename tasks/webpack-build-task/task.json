@@ -16,8 +16,8 @@
     ],
     "version": {
         "Major": 4,
-        "Minor": 1,
-        "Patch": 6
+        "Minor": 2,
+        "Patch": 0
     },
     "minimumAgentVersion": "1.95.0",
     "groups": [
@@ -62,6 +62,15 @@
                 "warnings": "warnings",
                 "info": "info"
             }
+        },
+        {
+            "name": "nodeCliArguments",
+            "type": "string",
+            "label": "node cli arguments",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Arguments for node cli.",
+            "groupName": "advanced"
         },
         {
             "name": "workingFolder",

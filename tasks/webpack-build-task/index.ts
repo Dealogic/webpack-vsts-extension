@@ -15,6 +15,7 @@ async function run(): Promise<void> {
         let workingFolder = tl.getPathInput("workingFolder", false);
         const webpackCliLocation = tl.getInput("webpackCliLocation", true);
         const webpackCliArguments = tl.getInput("webpackCliArguments", false);
+        const nodeCliArguments = tl.getInput("nodeCliArguments", false);
         const webpackStatsJsLocation = tl.getInput("statsjsLocation", true);
         const treatErrorsAs = tl.getInput("treatErrorsAs", true);
         const treatWarningsAs = tl.getInput("treatWarningsAs", true);
@@ -29,6 +30,7 @@ async function run(): Promise<void> {
         console.log(`workingFolder: ${workingFolder}`);
         console.log(`webpackCliLocation: ${webpackCliLocation}`);
         console.log(`webpackCliArguments: ${webpackCliArguments}`);
+        console.log(`nodeCliArguments: ${nodeCliArguments}`);
         console.log(`statsjsLocation: ${webpackStatsJsLocation}`);
 
         console.log(`treatErrorsAs: ${treatErrorsAs}`);
@@ -37,7 +39,7 @@ async function run(): Promise<void> {
         tl.cd(workingFolder);
         process.chdir(workingFolder);
 
-        const result = compile(workingFolder, webpackCliLocation, webpackCliArguments, webpackStatsJsLocation);
+        const result = compile(workingFolder, webpackCliLocation, webpackCliArguments, webpackStatsJsLocation, nodeCliArguments);
         await publishTaskResult(taskDisplayName, result, treatErrorsAs, treatWarningsAs, workingFolder, webpackStatsJsLocation, enablePullRequestComments);
 
     } catch (err) {

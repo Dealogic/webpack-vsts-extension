@@ -96,12 +96,15 @@ Name | Required | Default Value | Description
 webpack cli arguments | false | | Arguments to pass to the webpack cli.
 treat errors as | true | errors | How to treat errors. Options are: errors (breaks build) / warnings (marks build as partially succeeded) / info (reports errors as info).
 treat warnings as | true | warnings | How to treat warnings. Options are: errors (breaks build) / warnings (marks build partially succeeded) / info (reports warnings as info).
+node cli arguments | false | | Arguments to pass to the node cli.
 workingFolder | false | | Working folder where webpack compilation is run. If you leave it blank it is the root of the repository.
 webpack cli location | true | ./node_modules/webpack/bin/webpack.js | Location of the webpack cli. By default it's the locally installed webpack cli.
 stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the Stats.js. By default it's the Stats.js from the locally installed webpack.
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.2.0 (13/08/2019)
+    * Node.js arguments are supported.
 * 4.1.6 (21/06/2019)
     * Security warnings are fixed
 * 4.1.5 (18/06/2019)
