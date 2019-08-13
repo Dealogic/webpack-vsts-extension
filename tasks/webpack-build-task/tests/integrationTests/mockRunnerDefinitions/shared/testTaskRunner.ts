@@ -27,6 +27,10 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
         testRunConfiguration.webpackCliArguments = "";
     }
 
+    if (!testRunConfiguration.nodeCliArguments) {
+        testRunConfiguration.nodeCliArguments = "";
+    }
+
     if (!testRunConfiguration.statsjsLocation) {
         testRunConfiguration.statsjsLocation = "./node_modules/webpack/lib/Stats.js";
     }
@@ -43,6 +47,7 @@ const runTestTask = (testRunConfiguration: ITestRunConfiguration) => {
 
     taskMockRunner.setInput("webpackCliLocation", testRunConfiguration.webpackCliLocation);
     taskMockRunner.setInput("webpackCliArguments", testRunConfiguration.webpackCliArguments);
+    taskMockRunner.setInput("nodeCliArguments", testRunConfiguration.nodeCliArguments);
     taskMockRunner.setInput("statsjsLocation", testRunConfiguration.statsjsLocation);
     taskMockRunner.setInput("workingFolder", testRunConfiguration.workingFolder);
     taskMockRunner.setInput("treatErrorsAs", testRunConfiguration.treatErrorsAs);

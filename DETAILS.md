@@ -102,6 +102,8 @@ stats.js Location | true | ./node_modules/webpack/lib/Stats.js | Location of the
 
 ## <a id="release-notes"></a>Release Notes
 
+* 4.2.0 (13/08/2019)
+    * Node arguments are supported.
 * 4.1.6 (21/06/2019)
     * Security warnings are fixed
 * 4.1.5 (18/06/2019)

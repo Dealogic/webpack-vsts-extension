@@ -24,6 +24,7 @@ import * as shouldSucceedIfNoDisplayNameDefined from "./shouldSucceedIfNoDisplay
 import * as shouldSucceedIfNoErrorsAndWarnings from "./shouldSucceedIfNoErrorsAndWarnings";
 import * as shouldSucceedIfThereAreErrorsButTreatedAsInfo from "./shouldSucceedIfThereAreErrorsButTreatedAsInfo";
 import * as shouldSucceedIfThereAreWarningsButTreatedAsInfo from "./shouldSucceedIfThereAreWarningsButTreatedAsInfo";
+import * as shouldBeAbleToUseNodeArgs from "./shouldBeAbleToUseNodeArgs";
 
 describe("webpack build task", () => {
     after((done: MochaDone) => {
@@ -157,4 +158,9 @@ describe("webpack build task", () => {
     it(
         "should succeed if there are warnings, but those are treated as info",
         shouldSucceedIfThereAreWarningsButTreatedAsInfo.executeTest);
+
+    it(
+        "should be able to use node args",
+        shouldBeAbleToUseNodeArgs.executeTest
+    );
 });

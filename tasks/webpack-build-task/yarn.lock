@@ -30,13 +30,13 @@ filename-reserved-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/filename-reserved-regex/-/filename-reserved-regex-2.0.0.tgz#abf73dfab735d045440abfea2d91f389ebbfa229"
   integrity sha1-q/c9+rc10EVECr/qLZHzieu/oik=
 
-filenamify@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/filenamify/-/filenamify-2.1.0.tgz#88faf495fb1b47abfd612300002a16228c677ee9"
-  integrity sha512-ICw7NTT6RsDp2rnYKVd8Fu4cr6ITzGy3+u4vUujPkabyaz+03F24NWEX7fs5fp+kBonlaqPH8fAO2NM+SXt/JA==
+filenamify@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/filenamify/-/filenamify-4.1.0.tgz#54d110810ae74eebfe115c1b995bd07e03cf2184"
+  integrity sha512-KQV/uJDI9VQgN7sHH1Zbk6+42cD6mnQ2HONzkXUfPJ+K2FC8GZ1dpewbbHw0Sz8Tf5k3EVdHVayM4DoAwWlmtg==
   dependencies:
     filename-reserved-regex "^2.0.0"
-    strip-outer "^1.0.0"
+    strip-outer "^1.0.1"
     trim-repeated "^1.0.0"
 
 minimatch@3.0.4:
@@ -66,7 +66,7 @@ shelljs@^0.3.0:
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.3.0.tgz#3596e6307a781544f591f37da618360f31db57b1"
   integrity sha1-NZbmMHp4FUT1kfN9phg2DzHbV7E=
 
-strip-outer@^1.0.0:
+strip-outer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/strip-outer/-/strip-outer-1.0.1.tgz#b2fd2abf6604b9d1e6013057195df836b8a9d631"
   integrity sha512-k55yxKHwaXnpYGsOzg4Vl8+tDrWylxDEpknGjhTiZB8dFRU5rTo9CAzeycivxV3s+zlTKwrs6WxMxR95n26kwg==
@@ -112,10 +112,10 @@ vso-node-api@6.5.0:
     typed-rest-client "^0.12.0"
     underscore "1.8.3"
 
-vsts-task-lib@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.6.0.tgz#c82007e66829a1cd3a24ce031f153410256bf0a8"
-  integrity sha512-ja2qX4BIUvswcNbGtIoGo1SM5mRVc3Yaf7oM4oY64bNHs04chKfvH6f3cDDG0pd44OrZIGQE9LgECzeau6z2wA==
+vsts-task-lib@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/vsts-task-lib/-/vsts-task-lib-2.7.0.tgz#742973d2e9d6ad2fc30b732061088cdb6c7d2709"
+  integrity sha512-zQqgneIZG3VY84RoIzkQr07r9fDH3lPpj6Qp07K89co/vyFznWJYpkjcdxubQm1YvgNu/P0yWYLdDruHyGGdtA==
   dependencies:
     minimatch "3.0.4"
     mockery "^1.7.0"
