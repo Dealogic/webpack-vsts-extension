@@ -69,9 +69,9 @@ export function compile(
         throw error;
     }
 
-    const stats = resolveWebpackStats(workingFolder, statsjsLocation);
+    //const stats = resolveWebpackStats(workingFolder, statsjsLocation);
     console.log("compilation of the webpack project is done");
-    console.log(stats.jsonToString(result));
+    //console.log(stats.jsonToString(result));
 
     return result;
 }
